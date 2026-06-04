@@ -1,0 +1,332 @@
+"""Grading router (v2): BM25 rubric grading + teacher review."""
+import io
+import csv
+from datetime import datetime, timezone
+from fastapi import APIRouter, HTTPException, Depends
+from fastapi.responses import StreamingResponse
+from pydantic import BaseModel
+from typing import Optional
+from app.storage import submission_store, assignment_store, grading_store, user_store
+from app.auth import get_current_user, require_teacher
+from app.services.bm25_grading import grade_by_rubric, compute_total_score
+from app.services.grading import grade_by_rubric_gemini
+
+router = APIRouter(tags=["grading"])
+
+
+class CriteriaScoreUpdate(BaseModel):
+    criteria_id: str
+    final_score: float
+    teacher_comment: str = ""
+
+
+class SaveGradeRequest(BaseModel):
+    criteria_scores: list[CriteriaScoreUpdate]
+    overall_comment: str = ""
+
+
+# ---- AUTO GRADE ----
+
+@router.post("/submissions/{submission_id}/grade/auto")
+def auto_grade(submission_id: str, teacher: dict = Depends(require_teacher)):
+    sub = submission_store.get(submission_id)
+    if not sub:
+        raise HTTPException(404, "Không tìm thấy bài nộp")
+    assignment = assignment_store.get(sub["assignment_id"])
+    if not assignment or assignment["teacher_id"] != teacher["id"]:
+        raise HTTPException(403, "Không có quyền")
+
+    rubric = assignment.get("rubric", [])
+    if not rubric:
+        raise HTTPException(400, "Đề bài chưa có rubric")
+
+    # Try Gemini rubric grade, fallback to BM25 if it fails or isn't set up
+    try:
+        criteria_scores = grade_by_rubric_gemini(
+            sub.get("content_text", ""),
+            rubric,
+            api_key=teacher.get("gemini_api_key")
+        )
+    except Exception as e:
+        raise HTTPException(
+            status_code=502,
+            detail=f"Lỗi gọi API Gemini: {str(e)}"
+        )
+    total = compute_total_score(criteria_scores)
+
+    now = datetime.now(timezone.utc).isoformat()
+    result = {
+        "id": submission_id,
+        "submission_id": submission_id,
+        "assignment_id": sub["assignment_id"],
+        "student_id": sub["student_id"],
+        "student_name": sub.get("student_name", ""),
+        "graded_by": teacher["id"],
+        "criteria_scores": criteria_scores,
+        "total_score": total,
+        "overall_comment": "",
+        "graded_at": now,
+        "published_at": None,
+        "status": "graded",
+    }
+    grading_store.set(submission_id, result)
+
+    # Update submission status
+    sub["status"] = "graded"
+    submission_store.set(submission_id, sub)
+
+    return result
+
+
+# ---- GET GRADE ----
+
+@router.get("/submissions/{submission_id}/grade")
+def get_grade(submission_id: str, user: dict = Depends(get_current_user)):
+    sub = submission_store.get(submission_id)
+    if not sub:
+        raise HTTPException(404, "Không tìm thấy bài nộp")
+    if user["role"] == "student" and sub["student_id"] != user["id"]:
+        raise HTTPException(403, "Không có quyền")
+
+    grading = grading_store.get(submission_id)
+    if not grading:
+        raise HTTPException(404, "Bài nộp chưa được chấm")
+
+    # Students can only see published grades
+    if user["role"] == "student" and grading.get("status") != "published":
+        raise HTTPException(404, "Điểm chưa được công bố")
+
+    assignment = assignment_store.get(sub["assignment_id"])
+    return {
+        "grading": grading,
+        "submission": sub,
+        "rubric": assignment.get("rubric", []) if assignment else [],
+    }
+
+
+# ---- SAVE / UPDATE GRADE ----
+
+@router.put("/submissions/{submission_id}/grade")
+def save_grade(
+    submission_id: str,
+    req: SaveGradeRequest,
+    teacher: dict = Depends(require_teacher),
+):
+    sub = submission_store.get(submission_id)
+    if not sub:
+        raise HTTPException(404, "Không tìm thấy bài nộp")
+    assignment = assignment_store.get(sub["assignment_id"])
+    if not assignment or assignment["teacher_id"] != teacher["id"]:
+        raise HTTPException(403, "Không có quyền")
+
+    grading = grading_store.get(submission_id)
+    if not grading:
+        raise HTTPException(400, "Chưa có kết quả chấm AI. Vui lòng chạy auto-grade trước.")
+
+    # Apply teacher overrides
+    score_map = {u.criteria_id: u for u in req.criteria_scores}
+    for cs in grading["criteria_scores"]:
+        if cs["criteria_id"] in score_map:
+            upd = score_map[cs["criteria_id"]]
+            cs["final_score"] = upd.final_score
+            cs["teacher_comment"] = upd.teacher_comment
+
+    grading["total_score"] = compute_total_score(grading["criteria_scores"])
+    grading["overall_comment"] = req.overall_comment
+    grading["graded_by"] = teacher["id"]
+    grading["graded_at"] = datetime.now(timezone.utc).isoformat()
+    grading["status"] = "graded"
+
+    grading_store.set(submission_id, grading)
+    sub["status"] = "graded"
+    submission_store.set(submission_id, sub)
+    return grading
+
+
+# ---- PUBLISH GRADE ----
+
+@router.post("/submissions/{submission_id}/grade/publish")
+def publish_grade(submission_id: str, teacher: dict = Depends(require_teacher)):
+    sub = submission_store.get(submission_id)
+    if not sub:
+        raise HTTPException(404, "Không tìm thấy bài nộp")
+    assignment = assignment_store.get(sub["assignment_id"])
+    if not assignment or assignment["teacher_id"] != teacher["id"]:
+        raise HTTPException(403, "Không có quyền")
+    grading = grading_store.get(submission_id)
+    if not grading:
+        raise HTTPException(400, "Chưa có điểm để công bố")
+
+    now = datetime.now(timezone.utc).isoformat()
+    grading["published_at"] = now
+    grading["status"] = "published"
+    grading_store.set(submission_id, grading)
+    sub["status"] = "published"
+    submission_store.set(submission_id, sub)
+    return {"message": "Đã công bố điểm", "published_at": now}
+
+
+# ---- GRADES LIST (teacher) ----
+
+@router.get("/assignments/{assignment_id}/grades")
+def list_grades(assignment_id: str, teacher: dict = Depends(require_teacher)):
+    assignment = assignment_store.get(assignment_id)
+    if not assignment or assignment["teacher_id"] != teacher["id"]:
+        raise HTTPException(403, "Không có quyền")
+
+    subs = [s for s in submission_store.values() if s["assignment_id"] == assignment_id]
+    rows = []
+    for sub in subs:
+        grading = grading_store.get(sub["id"])
+        rows.append({
+            "submission_id": sub["id"],
+            "student_id": sub["student_id"],
+            "student_name": sub.get("student_name", ""),
+            "submitted_at": sub.get("submitted_at"),
+            "status": sub.get("status"),
+            "total_score": grading["total_score"] if grading else None,
+            "criteria_scores": grading["criteria_scores"] if grading else [],
+            "overall_comment": grading.get("overall_comment", "") if grading else "",
+        })
+    rows.sort(key=lambda r: (r["total_score"] or 0), reverse=True)
+
+    scores = [r["total_score"] for r in rows if r["total_score"] is not None]
+    stats = {}
+    if scores:
+        threshold = assignment.get("pass_threshold", 50)
+        stats = {
+            "count": len(scores),
+            "avg": round(sum(scores) / len(scores), 2),
+            "max": max(scores),
+            "min": min(scores),
+            "pass_count": sum(1 for s in scores if s >= threshold),
+            "fail_count": sum(1 for s in scores if s < threshold),
+        }
+    return {"grades": rows, "stats": stats, "rubric": assignment.get("rubric", [])}
+
+
+# ---- EXPORT CSV ----
+
+@router.get("/assignments/{assignment_id}/grades/export")
+def export_grades(assignment_id: str, teacher: dict = Depends(require_teacher)):
+    assignment = assignment_store.get(assignment_id)
+    if not assignment or assignment["teacher_id"] != teacher["id"]:
+        raise HTTPException(403, "Không có quyền")
+
+    subs = [s for s in submission_store.values() if s["assignment_id"] == assignment_id]
+    rubric = assignment.get("rubric", [])
+    criteria_names = [c["criteria_name"] for c in rubric]
+
+    output = io.StringIO()
+    writer = csv.writer(output)
+
+    header = ["student_name", "student_id", "submitted_at", "total_score"] + criteria_names + ["overall_comment"]
+    writer.writerow(header)
+
+    for sub in subs:
+        grading = grading_store.get(sub["id"])
+        criteria_scores_map = {}
+        overall = ""
+        total = ""
+        if grading:
+            total = grading.get("total_score", "")
+            overall = grading.get("overall_comment", "")
+            for cs in grading.get("criteria_scores", []):
+                criteria_scores_map[cs["criteria_name"]] = cs.get("final_score", "")
+        row = [
+            sub.get("student_name", ""),
+            sub.get("student_id", ""),
+            sub.get("submitted_at", ""),
+            total,
+        ] + [criteria_scores_map.get(n, "") for n in criteria_names] + [overall]
+        writer.writerow(row)
+
+    output.seek(0)
+    filename = f"grades_{assignment_id[:8]}.csv"
+    return StreamingResponse(
+        iter([output.getvalue()]),
+        media_type="text/csv",
+        headers={"Content-Disposition": f"attachment; filename={filename}"},
+    )
+
+
+# ---- BATCH AUTO GRADE ALL ----
+
+@router.post("/assignments/{assignment_id}/grade/auto-all")
+def auto_grade_all(assignment_id: str, teacher: dict = Depends(require_teacher)):
+    """Auto-grade all submitted (ungraded) submissions for an assignment."""
+    assignment = assignment_store.get(assignment_id)
+    if not assignment or assignment["teacher_id"] != teacher["id"]:
+        raise HTTPException(403, "Không có quyền")
+    rubric = assignment.get("rubric", [])
+    if not rubric:
+        raise HTTPException(400, "Đề bài chưa có rubric")
+
+    subs = [
+        s for s in submission_store.values()
+        if s["assignment_id"] == assignment_id and s["status"] == "submitted"
+    ]
+    graded_count = 0
+    now = datetime.now(timezone.utc).isoformat()
+    for sub in subs:
+        try:
+            criteria_scores = grade_by_rubric_gemini(
+                sub.get("content_text", ""),
+                rubric,
+                api_key=teacher.get("gemini_api_key")
+            )
+        except Exception as e:
+            raise HTTPException(
+                status_code=502,
+                detail=f"Lỗi gọi API Gemini cho bài nộp {sub['id']}: {str(e)}"
+            )
+        total = compute_total_score(criteria_scores)
+        result = {
+            "id": sub["id"],
+            "submission_id": sub["id"],
+            "assignment_id": assignment_id,
+            "student_id": sub["student_id"],
+            "student_name": sub.get("student_name", ""),
+            "graded_by": teacher["id"],
+            "criteria_scores": criteria_scores,
+            "total_score": total,
+            "overall_comment": "",
+            "graded_at": now,
+            "published_at": None,
+            "status": "graded",
+        }
+        grading_store.set(sub["id"], result)
+        sub["status"] = "graded"
+        submission_store.set(sub["id"], sub)
+        graded_count += 1
+
+    return {"message": f"Đã chấm xong {graded_count} bài", "graded_count": graded_count}
+
+
+# ---- BATCH PUBLISH ALL GRADED ----
+
+@router.post("/assignments/{assignment_id}/grade/publish-all")
+def publish_grade_all(assignment_id: str, teacher: dict = Depends(require_teacher)):
+    """Publish grades for all 'graded' submissions of an assignment."""
+    assignment = assignment_store.get(assignment_id)
+    if not assignment or assignment["teacher_id"] != teacher["id"]:
+        raise HTTPException(403, "Không có quyền")
+
+    subs = [
+        s for s in submission_store.values()
+        if s["assignment_id"] == assignment_id and s["status"] == "graded"
+    ]
+    published_count = 0
+    now = datetime.now(timezone.utc).isoformat()
+    for sub in subs:
+        grading = grading_store.get(sub["id"])
+        if not grading:
+            continue
+        grading["published_at"] = now
+        grading["status"] = "published"
+        grading_store.set(sub["id"], grading)
+        sub["status"] = "published"
+        submission_store.set(sub["id"], sub)
+        published_count += 1
+
+    return {"message": f"Đã công bố {published_count} kết quả", "published_count": published_count}

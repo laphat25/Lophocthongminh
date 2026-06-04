@@ -1,0 +1,1494 @@
+{
+  "9b4036b6-b43a-4c38-89b0-d02579e522d5": {
+    "id": "9b4036b6-b43a-4c38-89b0-d02579e522d5",
+    "submission_id": "9b4036b6-b43a-4c38-89b0-d02579e522d5",
+    "assignment_id": "27d4467c-24ff-4016-999b-138848f5e179",
+    "student_id": "e66e92f3-9dce-4ab0-95eb-975425c6f603",
+    "student_name": "Trần Thị A",
+    "graded_by": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "criteria_scores": [
+      {
+        "criteria_id": "be044533-5063-4bb5-bab3-113ae932c208",
+        "criteria_name": "Noi dung va kien thuc",
+        "ai_suggested_score": 9.0,
+        "ai_suggested_level": "Trinh bay day du, chinh xac, co vi du",
+        "final_score": 9.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "Lam tot!",
+        "highlighted_text": [
+          "Thuat toan sap xep noi bot (Bubble Sort) la mot thuat toan sap xep don gian",
+          "Do phuc tap thoi gian: O(n2) trong truong hop xau nhat va trung binh, O(n) trong truong hop tot nhat",
+          "Do phuc tap khong gian: O(1) vi chi can them mot bien tam de doi cho"
+        ]
+      },
+      {
+        "criteria_id": "a1a17d0b-141e-4d1d-937c-afecf07d6967",
+        "criteria_name": "Cau truc va trinh bay",
+        "ai_suggested_score": 8.0,
+        "ai_suggested_level": "Cau truc ro rang, trinh bay mach lac",
+        "final_score": 8.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "Lam tot!",
+        "highlighted_text": []
+      }
+    ],
+    "total_score": 85.0,
+    "overall_comment": "Bai lam kha tot",
+    "graded_at": "2026-06-03T13:53:09.402399+00:00",
+    "published_at": "2026-06-03T13:53:09.418504+00:00",
+    "status": "published"
+  },
+  "6f26fb7e-2487-469d-8c45-c551c443eefd": {
+    "id": "6f26fb7e-2487-469d-8c45-c551c443eefd",
+    "submission_id": "6f26fb7e-2487-469d-8c45-c551c443eefd",
+    "assignment_id": "27d4467c-24ff-4016-999b-138848f5e179",
+    "student_id": "05f3df4e-a317-4444-b71b-304a09852c0b",
+    "student_name": "Lê Văn B",
+    "graded_by": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "criteria_scores": [
+      {
+        "criteria_id": "be044533-5063-4bb5-bab3-113ae932c208",
+        "criteria_name": "Noi dung va kien thuc",
+        "ai_suggested_score": 9.0,
+        "ai_suggested_level": "Trinh bay day du, chinh xac, co vi du",
+        "final_score": 9.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "",
+        "highlighted_text": [
+          "Bubble Sort la thuat toan sap xep don gian dua tren so sanh",
+          "Thuat toan hoat dong bang cach lap di lap lai qua danh sach, so sanh cac phan tu lien ke va hoan doi chung neu chung khong dung thu tu",
+          "Do phuc tap: O(n2) thoi gian, O(1) khong gian"
+        ]
+      },
+      {
+        "criteria_id": "a1a17d0b-141e-4d1d-937c-afecf07d6967",
+        "criteria_name": "Cau truc va trinh bay",
+        "ai_suggested_score": 8.0,
+        "ai_suggested_level": "Cau truc ro rang, trinh bay mach lac",
+        "final_score": 8.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "",
+        "highlighted_text": []
+      }
+    ],
+    "total_score": 85.0,
+    "overall_comment": "",
+    "graded_at": "2026-06-03T13:53:08.365693+00:00",
+    "published_at": "2026-06-03T13:53:09.438214+00:00",
+    "status": "published"
+  },
+  "410c0429-d07c-474f-8094-a04d7ff08297": {
+    "id": "410c0429-d07c-474f-8094-a04d7ff08297",
+    "submission_id": "410c0429-d07c-474f-8094-a04d7ff08297",
+    "assignment_id": "b3f3a9a5-b9f4-4a4f-be13-949fd12a36fb",
+    "student_id": "e66e92f3-9dce-4ab0-95eb-975425c6f603",
+    "student_name": "Trần Thị A",
+    "graded_by": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "criteria_scores": [
+      {
+        "criteria_id": "7cf94b3d-304e-46e7-9921-596db1d3ce8d",
+        "criteria_name": "Noi dung va kien thuc",
+        "ai_suggested_score": 9.0,
+        "ai_suggested_level": "Trinh bay day du, chinh xac, co vi du",
+        "final_score": 9.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "Lam tot!",
+        "highlighted_text": [
+          "Thuat toan sap xep noi bot (Bubble Sort) la mot thuat toan sap xep don gian",
+          "Do phuc tap thoi gian: O(n2) trong truong hop xau nhat va trung binh, O(n) trong truong hop tot nhat",
+          "Do phuc tap khong gian: O(1) vi chi can them mot bien tam de doi cho"
+        ]
+      },
+      {
+        "criteria_id": "1450cdc3-48f8-49c8-9757-d71ad2c1017f",
+        "criteria_name": "Cau truc va trinh bay",
+        "ai_suggested_score": 8.0,
+        "ai_suggested_level": "Cau truc ro rang, trinh bay mach lac",
+        "final_score": 8.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "Lam tot!",
+        "highlighted_text": []
+      }
+    ],
+    "total_score": 85.0,
+    "overall_comment": "Bai lam kha tot",
+    "graded_at": "2026-06-03T13:57:52.984295+00:00",
+    "published_at": "2026-06-03T13:57:52.992474+00:00",
+    "status": "published"
+  },
+  "0714ca17-d3c8-4669-aa93-49176fac12f5": {
+    "id": "0714ca17-d3c8-4669-aa93-49176fac12f5",
+    "submission_id": "0714ca17-d3c8-4669-aa93-49176fac12f5",
+    "assignment_id": "b3f3a9a5-b9f4-4a4f-be13-949fd12a36fb",
+    "student_id": "05f3df4e-a317-4444-b71b-304a09852c0b",
+    "student_name": "Lê Văn B",
+    "graded_by": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "criteria_scores": [
+      {
+        "criteria_id": "7cf94b3d-304e-46e7-9921-596db1d3ce8d",
+        "criteria_name": "Noi dung va kien thuc",
+        "ai_suggested_score": 9.0,
+        "ai_suggested_level": "Trinh bay day du, chinh xac, co vi du",
+        "final_score": 9.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "",
+        "highlighted_text": [
+          "Bubble Sort la thuat toan sap xep don gian dua tren so sanh",
+          "Thuat toan hoat dong bang cach lap di lap lai qua danh sach, so sanh cac phan tu lien ke va hoan doi chung neu chung khong dung thu tu",
+          "Do phuc tap: O(n2) thoi gian, O(1) khong gian"
+        ]
+      },
+      {
+        "criteria_id": "1450cdc3-48f8-49c8-9757-d71ad2c1017f",
+        "criteria_name": "Cau truc va trinh bay",
+        "ai_suggested_score": 8.0,
+        "ai_suggested_level": "Cau truc ro rang, trinh bay mach lac",
+        "final_score": 8.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "",
+        "highlighted_text": []
+      }
+    ],
+    "total_score": 85.0,
+    "overall_comment": "",
+    "graded_at": "2026-06-03T13:57:52.280984+00:00",
+    "published_at": "2026-06-03T13:57:53.002206+00:00",
+    "status": "published"
+  },
+  "cf30145f-18e3-4ac8-a0e9-0e1680bd5aa2": {
+    "id": "cf30145f-18e3-4ac8-a0e9-0e1680bd5aa2",
+    "submission_id": "cf30145f-18e3-4ac8-a0e9-0e1680bd5aa2",
+    "assignment_id": "52c725b0-0fda-4b4f-a863-06bd6690598d",
+    "student_id": "e66e92f3-9dce-4ab0-95eb-975425c6f603",
+    "student_name": "Trần Thị A",
+    "graded_by": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "criteria_scores": [
+      {
+        "criteria_id": "9214f422-56dc-489b-8d1b-24ab69383fe5",
+        "criteria_name": "Noi dung va kien thuc",
+        "ai_suggested_score": 9.0,
+        "ai_suggested_level": "Trinh bay day du, chinh xac, co vi du",
+        "final_score": 9.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "Lam tot!",
+        "highlighted_text": [
+          "Thuat toan sap xep noi bot (Bubble Sort) la mot thuat toan sap xep don gian",
+          "Do phuc tap thoi gian: O(n2) trong truong hop xau nhat va trung binh, O(n) trong truong hop tot nhat",
+          "Do phuc tap khong gian: O(1) vi chi can them mot bien tam de doi cho"
+        ]
+      },
+      {
+        "criteria_id": "7ce5b1ad-a330-4949-9302-0d48f8d6af4e",
+        "criteria_name": "Cau truc va trinh bay",
+        "ai_suggested_score": 8.0,
+        "ai_suggested_level": "Cau truc ro rang, trinh bay mach lac",
+        "final_score": 8.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "Lam tot!",
+        "highlighted_text": []
+      }
+    ],
+    "total_score": 85.0,
+    "overall_comment": "Bai lam kha tot",
+    "graded_at": "2026-06-03T13:59:18.120384+00:00",
+    "published_at": "2026-06-03T13:59:18.131803+00:00",
+    "status": "published"
+  },
+  "c2991d97-c3a8-4203-9757-0d97c70d0d77": {
+    "id": "c2991d97-c3a8-4203-9757-0d97c70d0d77",
+    "submission_id": "c2991d97-c3a8-4203-9757-0d97c70d0d77",
+    "assignment_id": "52c725b0-0fda-4b4f-a863-06bd6690598d",
+    "student_id": "05f3df4e-a317-4444-b71b-304a09852c0b",
+    "student_name": "Lê Văn B",
+    "graded_by": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "criteria_scores": [
+      {
+        "criteria_id": "9214f422-56dc-489b-8d1b-24ab69383fe5",
+        "criteria_name": "Noi dung va kien thuc",
+        "ai_suggested_score": 9.0,
+        "ai_suggested_level": "Trinh bay day du, chinh xac, co vi du",
+        "final_score": 9.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "",
+        "highlighted_text": [
+          "Bubble Sort la thuat toan sap xep don gian dua tren so sanh",
+          "Thuat toan hoat dong bang cach lap di lap lai qua danh sach, so sanh cac phan tu lien ke va hoan doi chung neu chung khong dung thu tu",
+          "Do phuc tap: O(n2) thoi gian, O(1) khong gian"
+        ]
+      },
+      {
+        "criteria_id": "7ce5b1ad-a330-4949-9302-0d48f8d6af4e",
+        "criteria_name": "Cau truc va trinh bay",
+        "ai_suggested_score": 8.0,
+        "ai_suggested_level": "Cau truc ro rang, trinh bay mach lac",
+        "final_score": 8.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "",
+        "highlighted_text": []
+      }
+    ],
+    "total_score": 85.0,
+    "overall_comment": "",
+    "graded_at": "2026-06-03T13:59:17.313449+00:00",
+    "published_at": "2026-06-03T13:59:18.144122+00:00",
+    "status": "published"
+  },
+  "18b9d554-93ef-41be-9994-b6447ea36500": {
+    "id": "18b9d554-93ef-41be-9994-b6447ea36500",
+    "submission_id": "18b9d554-93ef-41be-9994-b6447ea36500",
+    "assignment_id": "4c95f740-f669-4e5e-9b11-9efe203a8f6b",
+    "student_id": "e66e92f3-9dce-4ab0-95eb-975425c6f603",
+    "student_name": "Trần Thị A",
+    "graded_by": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "criteria_scores": [
+      {
+        "criteria_id": "d8c0b67b-b2e4-4841-856e-a37ae5742624",
+        "criteria_name": "Noi dung va kien thuc",
+        "ai_suggested_score": 9.0,
+        "ai_suggested_level": "Trinh bay day du, chinh xac, co vi du",
+        "final_score": 9.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "Lam tot!",
+        "highlighted_text": [
+          "Thuat toan sap xep noi bot (Bubble Sort) la mot thuat toan sap xep don gian",
+          "Do phuc tap thoi gian: O(n2) trong truong hop xau nhat va trung binh, O(n) trong truong hop tot nhat",
+          "Do phuc tap khong gian: O(1) vi chi can them mot bien tam de doi cho"
+        ]
+      },
+      {
+        "criteria_id": "612af52a-fce6-4bd8-a18f-6a5cb0905e02",
+        "criteria_name": "Cau truc va trinh bay",
+        "ai_suggested_score": 8.0,
+        "ai_suggested_level": "Cau truc ro rang, trinh bay mach lac",
+        "final_score": 8.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "Lam tot!",
+        "highlighted_text": []
+      }
+    ],
+    "total_score": 85.0,
+    "overall_comment": "Bai lam kha tot",
+    "graded_at": "2026-06-03T14:02:25.046399+00:00",
+    "published_at": "2026-06-03T14:02:25.066017+00:00",
+    "status": "published"
+  },
+  "d4d117b3-a874-4933-b2a2-bbcb9d2cf0b1": {
+    "id": "d4d117b3-a874-4933-b2a2-bbcb9d2cf0b1",
+    "submission_id": "d4d117b3-a874-4933-b2a2-bbcb9d2cf0b1",
+    "assignment_id": "4c95f740-f669-4e5e-9b11-9efe203a8f6b",
+    "student_id": "05f3df4e-a317-4444-b71b-304a09852c0b",
+    "student_name": "Lê Văn B",
+    "graded_by": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "criteria_scores": [
+      {
+        "criteria_id": "d8c0b67b-b2e4-4841-856e-a37ae5742624",
+        "criteria_name": "Noi dung va kien thuc",
+        "ai_suggested_score": 9.0,
+        "ai_suggested_level": "Trinh bay day du, chinh xac, co vi du",
+        "final_score": 9.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "",
+        "highlighted_text": [
+          "Bubble Sort la thuat toan sap xep don gian dua tren so sanh",
+          "Thuat toan hoat dong bang cach lap di lap lai qua danh sach, so sanh cac phan tu lien ke va hoan doi chung neu chung khong dung thu tu",
+          "Do phuc tap: O(n2) thoi gian, O(1) khong gian"
+        ]
+      },
+      {
+        "criteria_id": "612af52a-fce6-4bd8-a18f-6a5cb0905e02",
+        "criteria_name": "Cau truc va trinh bay",
+        "ai_suggested_score": 8.0,
+        "ai_suggested_level": "Cau truc ro rang, trinh bay mach lac",
+        "final_score": 8.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "",
+        "highlighted_text": []
+      }
+    ],
+    "total_score": 85.0,
+    "overall_comment": "",
+    "graded_at": "2026-06-03T14:02:23.453405+00:00",
+    "published_at": "2026-06-03T14:02:25.090880+00:00",
+    "status": "published"
+  },
+  "dd6e0ee2-b971-4332-b442-c6f364ce82bc": {
+    "id": "dd6e0ee2-b971-4332-b442-c6f364ce82bc",
+    "submission_id": "dd6e0ee2-b971-4332-b442-c6f364ce82bc",
+    "assignment_id": "c64e6562-5f34-4ed1-8714-f8a4c30c16d5",
+    "student_id": "e66e92f3-9dce-4ab0-95eb-975425c6f603",
+    "student_name": "Trần Thị A",
+    "graded_by": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "criteria_scores": [
+      {
+        "criteria_id": "0c632a91-0e7d-4e80-8ad9-508e7d4b7f02",
+        "criteria_name": "Noi dung va kien thuc",
+        "ai_suggested_score": 9.0,
+        "ai_suggested_level": "Trinh bay day du, chinh xac, co vi du",
+        "final_score": 9.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "Lam tot!",
+        "highlighted_text": [
+          "Thuat toan sap xep noi bot (Bubble Sort) la mot thuat toan sap xep don gian",
+          "Do phuc tap thoi gian: O(n2) trong truong hop xau nhat va trung binh, O(n) trong truong hop tot nhat",
+          "Do phuc tap khong gian: O(1) vi chi can them mot bien tam de doi cho"
+        ]
+      },
+      {
+        "criteria_id": "bd36beeb-0c5c-445b-ae37-c1ed36549e22",
+        "criteria_name": "Cau truc va trinh bay",
+        "ai_suggested_score": 8.0,
+        "ai_suggested_level": "Cau truc ro rang, trinh bay mach lac",
+        "final_score": 8.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "Lam tot!",
+        "highlighted_text": []
+      }
+    ],
+    "total_score": 85.0,
+    "overall_comment": "Bai lam kha tot",
+    "graded_at": "2026-06-03T14:32:05.349888+00:00",
+    "published_at": "2026-06-03T14:32:05.363444+00:00",
+    "status": "published"
+  },
+  "90571ee7-0218-4771-af8f-4ce40395695e": {
+    "id": "90571ee7-0218-4771-af8f-4ce40395695e",
+    "submission_id": "90571ee7-0218-4771-af8f-4ce40395695e",
+    "assignment_id": "c64e6562-5f34-4ed1-8714-f8a4c30c16d5",
+    "student_id": "05f3df4e-a317-4444-b71b-304a09852c0b",
+    "student_name": "Lê Văn B",
+    "graded_by": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "criteria_scores": [
+      {
+        "criteria_id": "0c632a91-0e7d-4e80-8ad9-508e7d4b7f02",
+        "criteria_name": "Noi dung va kien thuc",
+        "ai_suggested_score": 9.0,
+        "ai_suggested_level": "Trinh bay day du, chinh xac, co vi du",
+        "final_score": 9.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "",
+        "highlighted_text": [
+          "Bubble Sort la thuat toan sap xep don gian dua tren so sanh",
+          "Thuat toan hoat dong bang cach lap di lap lai qua danh sach, so sanh cac phan tu lien ke va hoan doi chung neu chung khong dung thu tu",
+          "Do phuc tap: O(n2) thoi gian, O(1) khong gian"
+        ]
+      },
+      {
+        "criteria_id": "bd36beeb-0c5c-445b-ae37-c1ed36549e22",
+        "criteria_name": "Cau truc va trinh bay",
+        "ai_suggested_score": 8.0,
+        "ai_suggested_level": "Cau truc ro rang, trinh bay mach lac",
+        "final_score": 8.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "",
+        "highlighted_text": []
+      }
+    ],
+    "total_score": 85.0,
+    "overall_comment": "",
+    "graded_at": "2026-06-03T14:32:04.534520+00:00",
+    "published_at": "2026-06-03T14:32:05.374674+00:00",
+    "status": "published"
+  },
+  "687976ba-0fb5-4425-b911-ab8676c3ec9c": {
+    "id": "687976ba-0fb5-4425-b911-ab8676c3ec9c",
+    "submission_id": "687976ba-0fb5-4425-b911-ab8676c3ec9c",
+    "assignment_id": "9124077a-a15e-4dd9-ae40-f44f8929c87e",
+    "student_id": "e66e92f3-9dce-4ab0-95eb-975425c6f603",
+    "student_name": "Trần Thị A",
+    "graded_by": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "criteria_scores": [
+      {
+        "criteria_id": "b0ac2446-2b33-4d26-95cc-87b3904bfee7",
+        "criteria_name": "Noi dung va kien thuc",
+        "ai_suggested_score": 9.0,
+        "ai_suggested_level": "Trinh bay day du, chinh xac, co vi du",
+        "final_score": 9.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "Lam tot!",
+        "highlighted_text": [
+          "Thuat toan sap xep noi bot (Bubble Sort) la mot thuat toan sap xep don gian",
+          "Do phuc tap thoi gian: O(n2) trong truong hop xau nhat va trung binh, O(n) trong truong hop tot nhat",
+          "Do phuc tap khong gian: O(1) vi chi can them mot bien tam de doi cho"
+        ]
+      },
+      {
+        "criteria_id": "b8ef7f9c-d77f-440c-ac04-dc94f1f8a5da",
+        "criteria_name": "Cau truc va trinh bay",
+        "ai_suggested_score": 8.0,
+        "ai_suggested_level": "Cau truc ro rang, trinh bay mach lac",
+        "final_score": 8.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "Lam tot!",
+        "highlighted_text": []
+      }
+    ],
+    "total_score": 85.0,
+    "overall_comment": "Bai lam kha tot",
+    "graded_at": "2026-06-03T14:33:19.981805+00:00",
+    "published_at": "2026-06-03T14:33:19.993736+00:00",
+    "status": "published"
+  },
+  "aa71c5d9-1f4f-4ac8-a25f-bba350e6ce2c": {
+    "id": "aa71c5d9-1f4f-4ac8-a25f-bba350e6ce2c",
+    "submission_id": "aa71c5d9-1f4f-4ac8-a25f-bba350e6ce2c",
+    "assignment_id": "9124077a-a15e-4dd9-ae40-f44f8929c87e",
+    "student_id": "05f3df4e-a317-4444-b71b-304a09852c0b",
+    "student_name": "Lê Văn B",
+    "graded_by": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "criteria_scores": [
+      {
+        "criteria_id": "b0ac2446-2b33-4d26-95cc-87b3904bfee7",
+        "criteria_name": "Noi dung va kien thuc",
+        "ai_suggested_score": 9.0,
+        "ai_suggested_level": "Trinh bay day du, chinh xac, co vi du",
+        "final_score": 9.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "",
+        "highlighted_text": [
+          "Bubble Sort la thuat toan sap xep don gian dua tren so sanh",
+          "Thuat toan hoat dong bang cach lap di lap lai qua danh sach, so sanh cac phan tu lien ke va hoan doi chung neu chung khong dung thu tu",
+          "Do phuc tap: O(n2) thoi gian, O(1) khong gian"
+        ]
+      },
+      {
+        "criteria_id": "b8ef7f9c-d77f-440c-ac04-dc94f1f8a5da",
+        "criteria_name": "Cau truc va trinh bay",
+        "ai_suggested_score": 8.0,
+        "ai_suggested_level": "Cau truc ro rang, trinh bay mach lac",
+        "final_score": 8.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "",
+        "highlighted_text": []
+      }
+    ],
+    "total_score": 85.0,
+    "overall_comment": "",
+    "graded_at": "2026-06-03T14:33:19.278150+00:00",
+    "published_at": "2026-06-03T14:33:20.005388+00:00",
+    "status": "published"
+  },
+  "0c02270d-2bb0-4812-9f4b-f38332be9491": {
+    "id": "0c02270d-2bb0-4812-9f4b-f38332be9491",
+    "submission_id": "0c02270d-2bb0-4812-9f4b-f38332be9491",
+    "assignment_id": "b698014e-bb41-416b-84ee-d9e89ab7141b",
+    "student_id": "05f3df4e-a317-4444-b71b-304a09852c0b",
+    "student_name": "Lê Văn B",
+    "graded_by": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "criteria_scores": [
+      {
+        "criteria_id": "76742cde-385c-4d01-91bf-33a2a987e3e4",
+        "criteria_name": "MỤC TIÊU BÀI HỌC (Kiến thức, Kỹ năng, Thái độ/NL)",
+        "ai_suggested_score": 2.0,
+        "ai_suggested_level": "Trình bày đầy đủ cả 3 mặt (KT-KN-TĐ). Dùng động từ hành động đo lường được. Mục tiêu cụ thể, phù hợp trình độ HS lớp 5. Có mục tiêu về NL và PC theo CT 2018 (1.8 – 2.0 điểm)",
+        "final_score": 2.0,
+        "max_score": 2.0,
+        "weight": 20.0,
+        "teacher_comment": "",
+        "highlighted_text": [
+          "MỤC TIÊU",
+          "Kiến thức:",
+          "Kỹ năng:"
+        ]
+      },
+      {
+        "criteria_id": "c4cb5afe-f6a6-4d3e-bd20-e93c90afdca1",
+        "criteria_name": "CHUẨN BỊ DẠY - HỌC (Đồ dùng, phương tiện)",
+        "ai_suggested_score": 0.5,
+        "ai_suggested_level": "Liệt kê đầy đủ, chi tiết đồ dùng GV và HS. Đồ dùng sáng tạo, hỗ trợ tốt mục tiêu. Có phương tiện kỹ thuật phù hợp (0.45 – 0.5 điểm)",
+        "final_score": 0.5,
+        "max_score": 0.5,
+        "weight": 5.0,
+        "teacher_comment": "",
+        "highlighted_text": [
+          "SGK: Toán 5 - Cánh Diều",
+          "- Học sinh hứng thú với môn học, cẩn thận khi tính toán",
+          "CHUẨN BỊ"
+        ]
+      },
+      {
+        "criteria_id": "0f8e7db8-fe4a-4839-a2db-65b125cb3830",
+        "criteria_name": "TIẾN TRÌNH DẠY HỌC (Số lượng và chất lượng HĐ)",
+        "ai_suggested_score": 2.0,
+        "ai_suggested_level": "≥ 4 hoạt động rõ ràng theo chu trình. Mỗi HĐ đủ: mục tiêu, nội dung, PP, TG. Phân bổ thời gian hợp lý, logic. Có chuyển tiếp giữa các HĐ tự nhiên (1.8 – 2.0 điểm)",
+        "final_score": 2.0,
+        "max_score": 2.0,
+        "weight": 20.0,
+        "teacher_comment": "",
+        "highlighted_text": [
+          "Thời gian: 45 phút",
+          "TIẾN TRÌNH DẠY HỌC"
+        ]
+      },
+      {
+        "criteria_id": "01de7949-4e34-4e97-bc8a-c690071874d0",
+        "criteria_name": "PHƯƠNG PHÁP DẠY HỌC TÍCH CỰC (Loại PP và mức độ phù hợp)",
+        "ai_suggested_score": 1.5,
+        "ai_suggested_level": "Sử dụng ≥ 2 PPDH tích cực (TLN, dự án, khám phá, PBL…). Giải thích rõ lý do chọn PP. PP phù hợp với mục tiêu và đối tượng HS. Kỹ thuật DH cụ thể (Think-Pair-Share, KWL…) (1.35 – 1.5 điểm)",
+        "final_score": 1.5,
+        "max_score": 1.5,
+        "weight": 15.0,
+        "teacher_comment": "",
+        "highlighted_text": []
+      },
+      {
+        "criteria_id": "2a926d0b-0f1a-4579-87a3-435efd323d95",
+        "criteria_name": "SỬ DỤNG CÂU HỎI (Chất lượng câu hỏi trong HĐ)",
+        "ai_suggested_score": 0.4,
+        "ai_suggested_level": "Hầu hết là câu hỏi đóng 'có/không'. Không có câu hỏi kích thích tư duy (< 0.5 điểm)",
+        "final_score": 0.4,
+        "max_score": 1.0,
+        "weight": 10.0,
+        "teacher_comment": "",
+        "highlighted_text": []
+      },
+      {
+        "criteria_id": "055e9fea-3918-41d4-914d-f7eb6382c384",
+        "criteria_name": "KẾ HOẠCH ĐÁNH GIÁ HS (Đánh giá QT và KQ)",
+        "ai_suggested_score": 1.5,
+        "ai_suggested_level": "Đánh giá quá trình + kết quả đầy đủ. Đa dạng hình thức: vấn đáp, phiếu học tập, sản phẩm, tự đánh giá. Có tiêu chí đánh giá cụ thể. Phù hợp với mục tiêu đề ra (1.35 – 1.5 điểm)",
+        "final_score": 1.5,
+        "max_score": 1.5,
+        "weight": 15.0,
+        "teacher_comment": "",
+        "highlighted_text": []
+      },
+      {
+        "criteria_id": "10c03c4e-8715-4c01-8473-1d394574ccb2",
+        "criteria_name": "TÌNH HUỐNG SƯ PHẠM (Dự kiến và xử lý)",
+        "ai_suggested_score": 0.5,
+        "ai_suggested_level": "≥ 2 tình huống dự kiến. Tình huống thực tế, có khả năng xảy ra. Cách xử lý sư phạm, phù hợp tâm lý HS (0.45 – 0.5 điểm)",
+        "final_score": 0.5,
+        "max_score": 0.5,
+        "weight": 5.0,
+        "teacher_comment": "",
+        "highlighted_text": [
+          "TRƯỜNG ĐẠI HỌC SƯ PHẠM TP"
+        ]
+      },
+      {
+        "criteria_id": "bd8b5aeb-6f30-412e-92d0-3faf0f4de8ee",
+        "criteria_name": "TRÌNH BÀY VÀ TÀI LIỆU (Form + TLTK)",
+        "ai_suggested_score": 1.0,
+        "ai_suggested_level": "Đúng quy định định dạng. Trang bìa đầy đủ, chuyên nghiệp. ≥ 3 TLTK đúng chuẩn APA hoặc Việt Nam. Không lỗi chính tả, ngữ pháp (0.9 – 1.0 điểm)",
+        "final_score": 1.0,
+        "max_score": 1.0,
+        "weight": 10.0,
+        "teacher_comment": "",
+        "highlighted_text": [
+          "TÀI LIỆU THAM KHẢO"
+        ]
+      }
+    ],
+    "total_score": 94.0,
+    "overall_comment": "",
+    "graded_at": "2026-06-03T14:35:45.493079+00:00",
+    "published_at": "2026-06-03T14:42:35.565609+00:00",
+    "status": "published"
+  },
+  "275704a7-4efa-4d6c-a640-8b35eaff62a8": {
+    "id": "275704a7-4efa-4d6c-a640-8b35eaff62a8",
+    "submission_id": "275704a7-4efa-4d6c-a640-8b35eaff62a8",
+    "assignment_id": "b698014e-bb41-416b-84ee-d9e89ab7141b",
+    "student_id": "e66e92f3-9dce-4ab0-95eb-975425c6f603",
+    "student_name": "Trần Thị A",
+    "graded_by": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "criteria_scores": [
+      {
+        "criteria_id": "76742cde-385c-4d01-91bf-33a2a987e3e4",
+        "criteria_name": "MỤC TIÊU BÀI HỌC (Kiến thức, Kỹ năng, Thái độ/NL)",
+        "ai_suggested_score": 2.0,
+        "ai_suggested_level": "Trình bày đầy đủ cả 3 mặt (KT-KN-TĐ). Dùng động từ hành động đo lường được. Mục tiêu cụ thể, phù hợp trình độ HS lớp 5. Có mục tiêu về NL và PC theo CT 2018 (1.8 – 2.0 điểm)",
+        "final_score": 2.0,
+        "max_score": 2.0,
+        "weight": 20.0,
+        "teacher_comment": "",
+        "highlighted_text": []
+      },
+      {
+        "criteria_id": "c4cb5afe-f6a6-4d3e-bd20-e93c90afdca1",
+        "criteria_name": "CHUẨN BỊ DẠY - HỌC (Đồ dùng, phương tiện)",
+        "ai_suggested_score": 0.5,
+        "ai_suggested_level": "Liệt kê đầy đủ, chi tiết đồ dùng GV và HS. Đồ dùng sáng tạo, hỗ trợ tốt mục tiêu. Có phương tiện kỹ thuật phù hợp (0.45 – 0.5 điểm)",
+        "final_score": 0.5,
+        "max_score": 0.5,
+        "weight": 5.0,
+        "teacher_comment": "",
+        "highlighted_text": []
+      },
+      {
+        "criteria_id": "0f8e7db8-fe4a-4839-a2db-65b125cb3830",
+        "criteria_name": "TIẾN TRÌNH DẠY HỌC (Số lượng và chất lượng HĐ)",
+        "ai_suggested_score": 2.0,
+        "ai_suggested_level": "≥ 4 hoạt động rõ ràng theo chu trình. Mỗi HĐ đủ: mục tiêu, nội dung, PP, TG. Phân bổ thời gian hợp lý, logic. Có chuyển tiếp giữa các HĐ tự nhiên (1.8 – 2.0 điểm)",
+        "final_score": 2.0,
+        "max_score": 2.0,
+        "weight": 20.0,
+        "teacher_comment": "",
+        "highlighted_text": []
+      },
+      {
+        "criteria_id": "01de7949-4e34-4e97-bc8a-c690071874d0",
+        "criteria_name": "PHƯƠNG PHÁP DẠY HỌC TÍCH CỰC (Loại PP và mức độ phù hợp)",
+        "ai_suggested_score": 1.5,
+        "ai_suggested_level": "Sử dụng ≥ 2 PPDH tích cực (TLN, dự án, khám phá, PBL…). Giải thích rõ lý do chọn PP. PP phù hợp với mục tiêu và đối tượng HS. Kỹ thuật DH cụ thể (Think-Pair-Share, KWL…) (1.35 – 1.5 điểm)",
+        "final_score": 1.5,
+        "max_score": 1.5,
+        "weight": 15.0,
+        "teacher_comment": "",
+        "highlighted_text": []
+      },
+      {
+        "criteria_id": "2a926d0b-0f1a-4579-87a3-435efd323d95",
+        "criteria_name": "SỬ DỤNG CÂU HỎI (Chất lượng câu hỏi trong HĐ)",
+        "ai_suggested_score": 1.0,
+        "ai_suggested_level": "Câu hỏi đa dạng: nhớ, hiểu, vận dụng, phân tích (Bloom). Câu hỏi mở, kích thích tư duy. Phân bố đều trong các HĐ (0.9 – 1.0 điểm)",
+        "final_score": 1.0,
+        "max_score": 1.0,
+        "weight": 10.0,
+        "teacher_comment": "",
+        "highlighted_text": []
+      },
+      {
+        "criteria_id": "055e9fea-3918-41d4-914d-f7eb6382c384",
+        "criteria_name": "KẾ HOẠCH ĐÁNH GIÁ HS (Đánh giá QT và KQ)",
+        "ai_suggested_score": 1.5,
+        "ai_suggested_level": "Đánh giá quá trình + kết quả đầy đủ. Đa dạng hình thức: vấn đáp, phiếu học tập, sản phẩm, tự đánh giá. Có tiêu chí đánh giá cụ thể. Phù hợp với mục tiêu đề ra (1.35 – 1.5 điểm)",
+        "final_score": 1.5,
+        "max_score": 1.5,
+        "weight": 15.0,
+        "teacher_comment": "",
+        "highlighted_text": []
+      },
+      {
+        "criteria_id": "10c03c4e-8715-4c01-8473-1d394574ccb2",
+        "criteria_name": "TÌNH HUỐNG SƯ PHẠM (Dự kiến và xử lý)",
+        "ai_suggested_score": 0.5,
+        "ai_suggested_level": "≥ 2 tình huống dự kiến. Tình huống thực tế, có khả năng xảy ra. Cách xử lý sư phạm, phù hợp tâm lý HS (0.45 – 0.5 điểm)",
+        "final_score": 0.5,
+        "max_score": 0.5,
+        "weight": 5.0,
+        "teacher_comment": "",
+        "highlighted_text": []
+      },
+      {
+        "criteria_id": "bd8b5aeb-6f30-412e-92d0-3faf0f4de8ee",
+        "criteria_name": "TRÌNH BÀY VÀ TÀI LIỆU (Form + TLTK)",
+        "ai_suggested_score": 1.0,
+        "ai_suggested_level": "Đúng quy định định dạng. Trang bìa đầy đủ, chuyên nghiệp. ≥ 3 TLTK đúng chuẩn APA hoặc Việt Nam. Không lỗi chính tả, ngữ pháp (0.9 – 1.0 điểm)",
+        "final_score": 1.0,
+        "max_score": 1.0,
+        "weight": 10.0,
+        "teacher_comment": "",
+        "highlighted_text": []
+      }
+    ],
+    "total_score": 100.0,
+    "overall_comment": "",
+    "graded_at": "2026-06-03T14:35:48.023206+00:00",
+    "published_at": "2026-06-03T14:42:35.565609+00:00",
+    "status": "published"
+  },
+  "33c5f8d3-bc84-4aa8-8264-bcc6495a1f67": {
+    "id": "33c5f8d3-bc84-4aa8-8264-bcc6495a1f67",
+    "submission_id": "33c5f8d3-bc84-4aa8-8264-bcc6495a1f67",
+    "assignment_id": "6c48d14d-291e-4dd2-8ed4-8942632d8773",
+    "student_id": "e66e92f3-9dce-4ab0-95eb-975425c6f603",
+    "student_name": "Trần Thị A",
+    "graded_by": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "criteria_scores": [
+      {
+        "criteria_id": "3ccac785-9b1e-430c-8593-c623f45c68fa",
+        "criteria_name": "Noi dung va kien thuc",
+        "ai_suggested_score": 9.0,
+        "ai_suggested_level": "Trinh bay day du, chinh xac, co vi du",
+        "final_score": 9.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "Lam tot!",
+        "highlighted_text": [
+          "Thuat toan sap xep noi bot (Bubble Sort) la mot thuat toan sap xep don gian",
+          "Do phuc tap thoi gian: O(n2) trong truong hop xau nhat va trung binh, O(n) trong truong hop tot nhat",
+          "Do phuc tap khong gian: O(1) vi chi can them mot bien tam de doi cho"
+        ]
+      },
+      {
+        "criteria_id": "996837ac-654e-4509-8a03-1111fcd79f5c",
+        "criteria_name": "Cau truc va trinh bay",
+        "ai_suggested_score": 8.0,
+        "ai_suggested_level": "Cau truc ro rang, trinh bay mach lac",
+        "final_score": 8.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "Lam tot!",
+        "highlighted_text": []
+      }
+    ],
+    "total_score": 85.0,
+    "overall_comment": "Bai lam kha tot",
+    "graded_at": "2026-06-03T14:39:43.286117+00:00",
+    "published_at": "2026-06-03T14:39:43.298018+00:00",
+    "status": "published"
+  },
+  "3e54ced5-fd94-49c8-b065-4424d28cee11": {
+    "id": "3e54ced5-fd94-49c8-b065-4424d28cee11",
+    "submission_id": "3e54ced5-fd94-49c8-b065-4424d28cee11",
+    "assignment_id": "6c48d14d-291e-4dd2-8ed4-8942632d8773",
+    "student_id": "05f3df4e-a317-4444-b71b-304a09852c0b",
+    "student_name": "Lê Văn B",
+    "graded_by": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "criteria_scores": [
+      {
+        "criteria_id": "3ccac785-9b1e-430c-8593-c623f45c68fa",
+        "criteria_name": "Noi dung va kien thuc",
+        "ai_suggested_score": 9.0,
+        "ai_suggested_level": "Trinh bay day du, chinh xac, co vi du",
+        "final_score": 9.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "",
+        "highlighted_text": [
+          "Bubble Sort la thuat toan sap xep don gian dua tren so sanh",
+          "Thuat toan hoat dong bang cach lap di lap lai qua danh sach, so sanh cac phan tu lien ke va hoan doi chung neu chung khong dung thu tu",
+          "Do phuc tap: O(n2) thoi gian, O(1) khong gian"
+        ]
+      },
+      {
+        "criteria_id": "996837ac-654e-4509-8a03-1111fcd79f5c",
+        "criteria_name": "Cau truc va trinh bay",
+        "ai_suggested_score": 8.0,
+        "ai_suggested_level": "Cau truc ro rang, trinh bay mach lac",
+        "final_score": 8.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "",
+        "highlighted_text": []
+      }
+    ],
+    "total_score": 85.0,
+    "overall_comment": "",
+    "graded_at": "2026-06-03T14:39:42.389940+00:00",
+    "published_at": "2026-06-03T14:39:43.310115+00:00",
+    "status": "published"
+  },
+  "c0455e39-6f0e-4036-9d18-699963ce7228": {
+    "id": "c0455e39-6f0e-4036-9d18-699963ce7228",
+    "submission_id": "c0455e39-6f0e-4036-9d18-699963ce7228",
+    "assignment_id": "b698014e-bb41-416b-84ee-d9e89ab7141b",
+    "student_id": "c7d12f3e-8bc3-4d22-bf4f-12c8a98f12a3",
+    "student_name": "Phạm Văn C",
+    "graded_by": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "criteria_scores": [
+      {
+        "criteria_id": "76742cde-385c-4d01-91bf-33a2a987e3e4",
+        "criteria_name": "MỤC TIÊU BÀI HỌC (Kiến thức, Kỹ năng, Thái độ/NL)",
+        "ai_suggested_score": 1.0,
+        "ai_suggested_level": "Chỉ có 1-2 mặt. Một số động từ còn chung chung. Chưa phân biệt rõ các mặt (1.0 – 1.3 điểm)",
+        "final_score": 1.0,
+        "max_score": 2.0,
+        "weight": 20.0,
+        "teacher_comment": "",
+        "highlighted_text": [
+          "Mục tiêu:"
+        ]
+      },
+      {
+        "criteria_id": "c4cb5afe-f6a6-4d3e-bd20-e93c90afdca1",
+        "criteria_name": "CHUẨN BỊ DẠY - HỌC (Đồ dùng, phương tiện)",
+        "ai_suggested_score": 0.5,
+        "ai_suggested_level": "Liệt kê đầy đủ, chi tiết đồ dùng GV và HS. Đồ dùng sáng tạo, hỗ trợ tốt mục tiêu. Có phương tiện kỹ thuật phù hợp (0.45 – 0.5 điểm)",
+        "final_score": 0.5,
+        "max_score": 0.5,
+        "weight": 5.0,
+        "teacher_comment": "",
+        "highlighted_text": [
+          "Giáo viên: Phạm Minh Đức",
+          "Học sinh biết hình thang",
+          "Chuẩn bị:"
+        ]
+      },
+      {
+        "criteria_id": "0f8e7db8-fe4a-4839-a2db-65b125cb3830",
+        "criteria_name": "TIẾN TRÌNH DẠY HỌC (Số lượng và chất lượng HĐ)",
+        "ai_suggested_score": 1.0,
+        "ai_suggested_level": "3 hoạt động, thiếu chi tiết 1 số HĐ. TG chưa hợp lý ở một số HĐ (1.0 – 1.3 điểm)",
+        "final_score": 1.0,
+        "max_score": 2.0,
+        "weight": 20.0,
+        "teacher_comment": "",
+        "highlighted_text": []
+      },
+      {
+        "criteria_id": "01de7949-4e34-4e97-bc8a-c690071874d0",
+        "criteria_name": "PHƯƠNG PHÁP DẠY HỌC TÍCH CỰC (Loại PP và mức độ phù hợp)",
+        "ai_suggested_score": 0.9,
+        "ai_suggested_level": "1 PPDH tích cực + DH truyền thống. Chưa giải thích rõ (0.75 – 1.04 điểm)",
+        "final_score": 0.9,
+        "max_score": 1.5,
+        "weight": 15.0,
+        "teacher_comment": "",
+        "highlighted_text": []
+      },
+      {
+        "criteria_id": "2a926d0b-0f1a-4579-87a3-435efd323d95",
+        "criteria_name": "SỬ DỤNG CÂU HỎI (Chất lượng câu hỏi trong HĐ)",
+        "ai_suggested_score": 1.0,
+        "ai_suggested_level": "Câu hỏi đa dạng: nhớ, hiểu, vận dụng, phân tích (Bloom). Câu hỏi mở, kích thích tư duy. Phân bố đều trong các HĐ (0.9 – 1.0 điểm)",
+        "final_score": 1.0,
+        "max_score": 1.0,
+        "weight": 10.0,
+        "teacher_comment": "",
+        "highlighted_text": []
+      },
+      {
+        "criteria_id": "055e9fea-3918-41d4-914d-f7eb6382c384",
+        "criteria_name": "KẾ HOẠCH ĐÁNH GIÁ HS (Đánh giá QT và KQ)",
+        "ai_suggested_score": 1.5,
+        "ai_suggested_level": "Đánh giá quá trình + kết quả đầy đủ. Đa dạng hình thức: vấn đáp, phiếu học tập, sản phẩm, tự đánh giá. Có tiêu chí đánh giá cụ thể. Phù hợp với mục tiêu đề ra (1.35 – 1.5 điểm)",
+        "final_score": 1.5,
+        "max_score": 1.5,
+        "weight": 15.0,
+        "teacher_comment": "",
+        "highlighted_text": []
+      },
+      {
+        "criteria_id": "10c03c4e-8715-4c01-8473-1d394574ccb2",
+        "criteria_name": "TÌNH HUỐNG SƯ PHẠM (Dự kiến và xử lý)",
+        "ai_suggested_score": 0.4,
+        "ai_suggested_level": "2 tình huống, xử lý tương đối hợp lý (0.35 – 0.44 điểm)",
+        "final_score": 0.4,
+        "max_score": 0.5,
+        "weight": 5.0,
+        "teacher_comment": "",
+        "highlighted_text": []
+      },
+      {
+        "criteria_id": "bd8b5aeb-6f30-412e-92d0-3faf0f4de8ee",
+        "criteria_name": "TRÌNH BÀY VÀ TÀI LIỆU (Form + TLTK)",
+        "ai_suggested_score": 1.0,
+        "ai_suggested_level": "Đúng quy định định dạng. Trang bìa đầy đủ, chuyên nghiệp. ≥ 3 TLTK đúng chuẩn APA hoặc Việt Nam. Không lỗi chính tả, ngữ pháp (0.9 – 1.0 điểm)",
+        "final_score": 1.0,
+        "max_score": 1.0,
+        "weight": 10.0,
+        "teacher_comment": "",
+        "highlighted_text": [
+          "(Không có phần đánh giá, không có tài liệu tham khảo)"
+        ]
+      }
+    ],
+    "total_score": 73.0,
+    "overall_comment": "",
+    "graded_at": "2026-06-03T15:05:35.709104+00:00",
+    "published_at": null,
+    "status": "graded"
+  },
+  "007ad000-cda6-4cb8-9e89-88e62890fd4c": {
+    "id": "007ad000-cda6-4cb8-9e89-88e62890fd4c",
+    "submission_id": "007ad000-cda6-4cb8-9e89-88e62890fd4c",
+    "assignment_id": "a594e453-ef8c-4b08-8346-b7cea7d1da77",
+    "student_id": "e66e92f3-9dce-4ab0-95eb-975425c6f603",
+    "student_name": "Trần Thị A",
+    "graded_by": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "criteria_scores": [
+      {
+        "criteria_id": "b614bc23-7c98-432d-83d8-ce314501286a",
+        "criteria_name": "Noi dung va kien thuc",
+        "ai_suggested_score": 9.0,
+        "ai_suggested_level": "Trinh bay day du, chinh xac, co vi du",
+        "final_score": 9.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "Lam tot!",
+        "highlighted_text": [
+          "Thuat toan sap xep noi bot (Bubble Sort) la mot thuat toan sap xep don gian",
+          "Do phuc tap thoi gian: O(n2) trong truong hop xau nhat va trung binh, O(n) trong truong hop tot nhat",
+          "Do phuc tap khong gian: O(1) vi chi can them mot bien tam de doi cho"
+        ]
+      },
+      {
+        "criteria_id": "c65a1779-3fdd-4d78-a383-40420c7be0dc",
+        "criteria_name": "Cau truc va trinh bay",
+        "ai_suggested_score": 8.0,
+        "ai_suggested_level": "Cau truc ro rang, trinh bay mach lac",
+        "final_score": 8.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "Lam tot!",
+        "highlighted_text": []
+      }
+    ],
+    "total_score": 85.0,
+    "overall_comment": "Bai lam kha tot",
+    "graded_at": "2026-06-03T14:42:45.657812+00:00",
+    "published_at": "2026-06-03T14:42:45.675090+00:00",
+    "status": "published"
+  },
+  "40388fa6-8739-4194-9d56-f984338fe2ce": {
+    "id": "40388fa6-8739-4194-9d56-f984338fe2ce",
+    "submission_id": "40388fa6-8739-4194-9d56-f984338fe2ce",
+    "assignment_id": "a594e453-ef8c-4b08-8346-b7cea7d1da77",
+    "student_id": "05f3df4e-a317-4444-b71b-304a09852c0b",
+    "student_name": "Lê Văn B",
+    "graded_by": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "criteria_scores": [
+      {
+        "criteria_id": "b614bc23-7c98-432d-83d8-ce314501286a",
+        "criteria_name": "Noi dung va kien thuc",
+        "ai_suggested_score": 9.0,
+        "ai_suggested_level": "Trinh bay day du, chinh xac, co vi du",
+        "final_score": 9.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "",
+        "highlighted_text": [
+          "Bubble Sort la thuat toan sap xep don gian dua tren so sanh",
+          "Thuat toan hoat dong bang cach lap di lap lai qua danh sach, so sanh cac phan tu lien ke va hoan doi chung neu chung khong dung thu tu",
+          "Do phuc tap: O(n2) thoi gian, O(1) khong gian"
+        ]
+      },
+      {
+        "criteria_id": "c65a1779-3fdd-4d78-a383-40420c7be0dc",
+        "criteria_name": "Cau truc va trinh bay",
+        "ai_suggested_score": 8.0,
+        "ai_suggested_level": "Cau truc ro rang, trinh bay mach lac",
+        "final_score": 8.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "",
+        "highlighted_text": []
+      }
+    ],
+    "total_score": 85.0,
+    "overall_comment": "",
+    "graded_at": "2026-06-03T14:42:44.797937+00:00",
+    "published_at": "2026-06-03T14:42:45.689464+00:00",
+    "status": "published"
+  },
+  "6d4bf537-51ea-4426-803f-bac94f24e927": {
+    "id": "6d4bf537-51ea-4426-803f-bac94f24e927",
+    "submission_id": "6d4bf537-51ea-4426-803f-bac94f24e927",
+    "assignment_id": "d8458097-e0aa-4788-8b81-3c0c0ee8101b",
+    "student_id": "e66e92f3-9dce-4ab0-95eb-975425c6f603",
+    "student_name": "Trần Thị A",
+    "graded_by": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "criteria_scores": [
+      {
+        "criteria_id": "f0957faf-e495-42e3-85dc-423a224e327c",
+        "criteria_name": "Noi dung va kien thuc",
+        "ai_suggested_score": 9.0,
+        "ai_suggested_level": "Trinh bay day du, chinh xac, co vi du",
+        "final_score": 9.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "Lam tot!",
+        "highlighted_text": [
+          "Thuat toan sap xep noi bot (Bubble Sort) la mot thuat toan sap xep don gian",
+          "Do phuc tap thoi gian: O(n2) trong truong hop xau nhat va trung binh, O(n) trong truong hop tot nhat",
+          "Do phuc tap khong gian: O(1) vi chi can them mot bien tam de doi cho"
+        ]
+      },
+      {
+        "criteria_id": "5b541ad5-231f-496e-b27b-f91bbcd8c358",
+        "criteria_name": "Cau truc va trinh bay",
+        "ai_suggested_score": 8.0,
+        "ai_suggested_level": "Cau truc ro rang, trinh bay mach lac",
+        "final_score": 8.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "Lam tot!",
+        "highlighted_text": []
+      }
+    ],
+    "total_score": 85.0,
+    "overall_comment": "Bai lam kha tot",
+    "graded_at": "2026-06-03T14:44:34.712524+00:00",
+    "published_at": "2026-06-03T14:44:34.732294+00:00",
+    "status": "published"
+  },
+  "b450498a-f9da-4006-86d2-defa64f86fb1": {
+    "id": "b450498a-f9da-4006-86d2-defa64f86fb1",
+    "submission_id": "b450498a-f9da-4006-86d2-defa64f86fb1",
+    "assignment_id": "d8458097-e0aa-4788-8b81-3c0c0ee8101b",
+    "student_id": "05f3df4e-a317-4444-b71b-304a09852c0b",
+    "student_name": "Lê Văn B",
+    "graded_by": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "criteria_scores": [
+      {
+        "criteria_id": "f0957faf-e495-42e3-85dc-423a224e327c",
+        "criteria_name": "Noi dung va kien thuc",
+        "ai_suggested_score": 9.0,
+        "ai_suggested_level": "Trinh bay day du, chinh xac, co vi du",
+        "final_score": 9.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "",
+        "highlighted_text": [
+          "Bubble Sort la thuat toan sap xep don gian dua tren so sanh",
+          "Thuat toan hoat dong bang cach lap di lap lai qua danh sach, so sanh cac phan tu lien ke va hoan doi chung neu chung khong dung thu tu",
+          "Do phuc tap: O(n2) thoi gian, O(1) khong gian"
+        ]
+      },
+      {
+        "criteria_id": "5b541ad5-231f-496e-b27b-f91bbcd8c358",
+        "criteria_name": "Cau truc va trinh bay",
+        "ai_suggested_score": 8.0,
+        "ai_suggested_level": "Cau truc ro rang, trinh bay mach lac",
+        "final_score": 8.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "",
+        "highlighted_text": []
+      }
+    ],
+    "total_score": 85.0,
+    "overall_comment": "",
+    "graded_at": "2026-06-03T14:44:33.667219+00:00",
+    "published_at": "2026-06-03T14:44:34.753115+00:00",
+    "status": "published"
+  },
+  "7c25f1db-4bcf-4bc4-a330-56cbe555c018": {
+    "id": "7c25f1db-4bcf-4bc4-a330-56cbe555c018",
+    "submission_id": "7c25f1db-4bcf-4bc4-a330-56cbe555c018",
+    "assignment_id": "f07ff2e0-16e4-4864-a78d-f3864428f2e1",
+    "student_id": "e66e92f3-9dce-4ab0-95eb-975425c6f603",
+    "student_name": "Trần Thị A",
+    "graded_by": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "criteria_scores": [
+      {
+        "criteria_id": "da5b1d17-da1e-45c8-894c-39d6ed15e6e5",
+        "criteria_name": "Noi dung va kien thuc",
+        "ai_suggested_score": 6.0,
+        "ai_suggested_level": "Trinh bay du y, con thieu mot so chi tiet",
+        "final_score": 6.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "Bai lam da trinh bay duoc nguyen ly hoat dong va do phuc tap cua thuat toan Bubble Sort, nhung con thieu vi du minh hoa cu the de lam ro hon noi dung.",
+        "highlighted_text": [
+          "Thuat toan sap xep noi bot (Bubble Sort) la mot thuat toan sap xep don gian",
+          "Do phuc tap thoi gian: O(n2) trong truong hop xau nhat va trung binh, O(n) trong truong hop tot nhat",
+          "Do phuc tap khong gian: O(1) vi chi can them mot bien tam de doi cho"
+        ]
+      },
+      {
+        "criteria_id": "03342b52-9852-47c8-8122-9b0b6f1b0478",
+        "criteria_name": "Cau truc va trinh bay",
+        "ai_suggested_score": 8.0,
+        "ai_suggested_level": "Cau truc ro rang, trinh bay mach lac",
+        "final_score": 8.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "Bai viet co cau truc ro rang, cac y duoc trinh bay mach lac va de theo doi.",
+        "highlighted_text": []
+      }
+    ],
+    "total_score": 70.0,
+    "overall_comment": "",
+    "graded_at": "2026-06-03T14:52:05.039830+00:00",
+    "published_at": null,
+    "status": "graded"
+  },
+  "3f143d4f-2cb3-4180-be09-4364528cccf2": {
+    "id": "3f143d4f-2cb3-4180-be09-4364528cccf2",
+    "submission_id": "3f143d4f-2cb3-4180-be09-4364528cccf2",
+    "assignment_id": "291c0450-e8dd-4c63-84f5-55ee388e3176",
+    "student_id": "e66e92f3-9dce-4ab0-95eb-975425c6f603",
+    "student_name": "Trần Thị A",
+    "graded_by": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "criteria_scores": [
+      {
+        "criteria_id": "61d48868-8589-405a-bdc5-76eb68563439",
+        "criteria_name": "Noi dung va kien thuc",
+        "ai_suggested_score": 9.0,
+        "ai_suggested_level": "Trinh bay day du, chinh xac, co vi du",
+        "final_score": 9.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "",
+        "highlighted_text": [
+          "Thuat toan sap xep noi bot (Bubble Sort) la mot thuat toan sap xep don gian",
+          "Do phuc tap thoi gian: O(n2) trong truong hop xau nhat va trung binh, O(n) trong truong hop tot nhat",
+          "Do phuc tap khong gian: O(1) vi chi can them mot bien tam de doi cho"
+        ]
+      },
+      {
+        "criteria_id": "20a10c20-cb3d-494c-acd8-07fc146c925a",
+        "criteria_name": "Cau truc va trinh bay",
+        "ai_suggested_score": 8.0,
+        "ai_suggested_level": "Cau truc ro rang, trinh bay mach lac",
+        "final_score": 8.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "",
+        "highlighted_text": []
+      }
+    ],
+    "total_score": 85.0,
+    "overall_comment": "",
+    "graded_at": "2026-06-03T14:55:24.483563+00:00",
+    "published_at": null,
+    "status": "graded"
+  },
+  "2588113e-a173-4224-a94e-39ccfd5d0581": {
+    "id": "2588113e-a173-4224-a94e-39ccfd5d0581",
+    "submission_id": "2588113e-a173-4224-a94e-39ccfd5d0581",
+    "assignment_id": "8ee41ff0-b62d-4614-98ba-6d1907e8f1ce",
+    "student_id": "e66e92f3-9dce-4ab0-95eb-975425c6f603",
+    "student_name": "Trần Thị A",
+    "graded_by": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "criteria_scores": [
+      {
+        "criteria_id": "9d8ffe7c-d289-41d0-a53e-c928f1083e58",
+        "criteria_name": "Noi dung va kien thuc",
+        "ai_suggested_score": 6,
+        "ai_suggested_level": "Trinh bay du y, con thieu mot so chi tiet",
+        "final_score": 6,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "Bai lam da trinh bay duoc cac y chinh nhu dinh nghia, nguyen ly hoat dong va do phuc tap thoi gian/khong gian cua thuat toan Bubble Sort. Tuy nhien, bai lam con thieu vi du minh hoa cu the de dat duoc muc diem cao nhat.",
+        "highlighted_text": [
+          "Thuat toan sap xep noi bot (Bubble Sort) la mot thuat toan sap xep don gian",
+          "Do phuc tap thoi gian: O(n2) trong truong hop xau nhat va trung binh, O(n) trong truong hop tot nhat",
+          "Do phuc tap khong gian: O(1) vi chi can them mot bien tam de doi cho"
+        ]
+      },
+      {
+        "criteria_id": "c28fbbe2-d36a-4754-95d1-3cf3b7cd879d",
+        "criteria_name": "Cau truc va trinh bay",
+        "ai_suggested_score": 8,
+        "ai_suggested_level": "Cau truc ro rang, trinh bay mach lac",
+        "final_score": 8,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "Bai viet co cau truc ro rang, cac thong tin duoc sap xep logic va trinh bay mach lac, giup nguoi doc de dang theo doi va tiep thu kien thuc.",
+        "highlighted_text": []
+      }
+    ],
+    "total_score": 70.0,
+    "overall_comment": "",
+    "graded_at": "2026-06-03T14:56:42.510595+00:00",
+    "published_at": null,
+    "status": "graded"
+  },
+  "0eaa00cf-9fab-4553-b81b-07b5fc01c9e9": {
+    "id": "0eaa00cf-9fab-4553-b81b-07b5fc01c9e9",
+    "submission_id": "0eaa00cf-9fab-4553-b81b-07b5fc01c9e9",
+    "assignment_id": "9007027e-248f-4952-bada-f3d8908e09f8",
+    "student_id": "e66e92f3-9dce-4ab0-95eb-975425c6f603",
+    "student_name": "Trần Thị A",
+    "graded_by": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "criteria_scores": [
+      {
+        "criteria_id": "1d6a93aa-1e8c-4131-89b4-0dda793eb8bf",
+        "criteria_name": "Noi dung va kien thuc",
+        "ai_suggested_score": 6,
+        "ai_suggested_level": "Trinh bay du y, con thieu mot so chi tiet",
+        "final_score": 6.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "Lam tot!",
+        "highlighted_text": [
+          "Thuat toan sap xep noi bot (Bubble Sort) la mot thuat toan sap xep don gian",
+          "Do phuc tap thoi gian: O(n2) trong truong hop xau nhat va trung binh, O(n) trong truong hop tot nhat",
+          "Do phuc tap khong gian: O(1) vi chi can them mot bien tam de doi cho"
+        ]
+      },
+      {
+        "criteria_id": "bd1690a8-4a0c-479f-83f6-b2c1adadccb7",
+        "criteria_name": "Cau truc va trinh bay",
+        "ai_suggested_score": 8,
+        "ai_suggested_level": "Cau truc ro rang, trinh bay mach lac",
+        "final_score": 8.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "Lam tot!",
+        "highlighted_text": []
+      }
+    ],
+    "total_score": 70.0,
+    "overall_comment": "Bai lam kha tot",
+    "graded_at": "2026-06-03T14:57:37.029746+00:00",
+    "published_at": "2026-06-03T14:57:37.049125+00:00",
+    "status": "published"
+  },
+  "2325ea63-f82a-4e32-b41c-4385eab9b326": {
+    "id": "2325ea63-f82a-4e32-b41c-4385eab9b326",
+    "submission_id": "2325ea63-f82a-4e32-b41c-4385eab9b326",
+    "assignment_id": "9007027e-248f-4952-bada-f3d8908e09f8",
+    "student_id": "05f3df4e-a317-4444-b71b-304a09852c0b",
+    "student_name": "Lê Văn B",
+    "graded_by": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "criteria_scores": [
+      {
+        "criteria_id": "1d6a93aa-1e8c-4131-89b4-0dda793eb8bf",
+        "criteria_name": "Noi dung va kien thuc",
+        "ai_suggested_score": 6,
+        "ai_suggested_level": "Trinh bay du y, con thieu mot so chi tiet",
+        "final_score": 6,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "Bài làm đã trình bày được định nghĩa, nguyên lý hoạt động và độ phức tạp của thuật toán Bubble Sort. Tuy nhiên, bài viết chưa có ví dụ minh họa cụ thể để đạt mức điểm cao nhất.",
+        "highlighted_text": [
+          "Bubble Sort la thuat toan sap xep don gian dua tren so sanh",
+          "Thuat toan hoat dong bang cach lap di lap lai qua danh sach, so sanh cac phan tu lien ke va hoan doi chung neu chung khong dung thu tu",
+          "Do phuc tap: O(n2) thoi gian, O(1) khong gian"
+        ]
+      },
+      {
+        "criteria_id": "bd1690a8-4a0c-479f-83f6-b2c1adadccb7",
+        "criteria_name": "Cau truc va trinh bay",
+        "ai_suggested_score": 8,
+        "ai_suggested_level": "Cau truc ro rang, trinh bay mach lac",
+        "final_score": 8,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "Bài viết có cấu trúc rõ ràng, diễn đạt mạch lạc, dễ hiểu và các ý được sắp xếp một cách logic.",
+        "highlighted_text": []
+      }
+    ],
+    "total_score": 70.0,
+    "overall_comment": "",
+    "graded_at": "2026-06-03T14:56:48.051296+00:00",
+    "published_at": "2026-06-03T14:57:37.066050+00:00",
+    "status": "published"
+  },
+  "0c3cb612-422c-416b-bd39-c053e67bfbd7": {
+    "id": "0c3cb612-422c-416b-bd39-c053e67bfbd7",
+    "submission_id": "0c3cb612-422c-416b-bd39-c053e67bfbd7",
+    "assignment_id": "f07ff2e0-16e4-4864-a78d-f3864428f2e1",
+    "student_id": "05f3df4e-a317-4444-b71b-304a09852c0b",
+    "student_name": "Lê Văn B",
+    "graded_by": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "criteria_scores": [
+      {
+        "criteria_id": "da5b1d17-da1e-45c8-894c-39d6ed15e6e5",
+        "criteria_name": "Noi dung va kien thuc",
+        "ai_suggested_score": 6,
+        "ai_suggested_level": "Trinh bay du y, con thieu mot so chi tiet",
+        "final_score": 6,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "Bài làm đã trình bày được định nghĩa, nguyên lý hoạt động và độ phức tạp của thuật toán Bubble Sort. Tuy nhiên, bài viết còn thiếu ví dụ minh họa cụ thể để đạt được mức điểm tối đa.",
+        "highlighted_text": [
+          "Bubble Sort la thuat toan sap xep don gian dua tren so sanh",
+          "Thuat toan hoat dong bang cach lap di lap lai qua danh sach, so sanh cac phan tu lien ke va hoan doi chung neu chung khong dung thu tu",
+          "Do phuc tap: O(n2) thoi gian, O(1) khong gian"
+        ]
+      },
+      {
+        "criteria_id": "03342b52-9852-47c8-8122-9b0b6f1b0478",
+        "criteria_name": "Cau truc va trinh bay",
+        "ai_suggested_score": 8,
+        "ai_suggested_level": "Cau truc ro rang, trinh bay mach lac",
+        "final_score": 8,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "Cấu trúc bài viết rõ ràng, các ý được trình bày mạch lạc và dễ hiểu. Tuy nhiên, việc viết không dấu có thể làm giảm tính chuyên nghiệp của bài nộp.",
+        "highlighted_text": []
+      }
+    ],
+    "total_score": 70.0,
+    "overall_comment": "",
+    "graded_at": "2026-06-04T05:39:44.928126+00:00",
+    "published_at": null,
+    "status": "graded"
+  },
+  "a22df8b6-a028-4f2e-927e-053126d82d2e": {
+    "id": "a22df8b6-a028-4f2e-927e-053126d82d2e",
+    "submission_id": "a22df8b6-a028-4f2e-927e-053126d82d2e",
+    "assignment_id": "291c0450-e8dd-4c63-84f5-55ee388e3176",
+    "student_id": "05f3df4e-a317-4444-b71b-304a09852c0b",
+    "student_name": "Lê Văn B",
+    "graded_by": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "criteria_scores": [
+      {
+        "criteria_id": "61d48868-8589-405a-bdc5-76eb68563439",
+        "criteria_name": "Noi dung va kien thuc",
+        "ai_suggested_score": 6.0,
+        "ai_suggested_level": "Trinh bay du y, con thieu mot so chi tiet",
+        "final_score": 6.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "Bài làm đã trình bày được định nghĩa, cách hoạt động và độ phức tạp của thuật toán Bubble Sort một cách chính xác. Tuy nhiên, bài viết chưa có ví dụ minh họa cụ thể để đạt mức điểm cao hơn.",
+        "highlighted_text": [
+          "Bubble Sort la thuat toan sap xep don gian dua tren so sanh",
+          "Thuat toan hoat dong bang cach lap di lap lai qua danh sach, so sanh cac phan tu lien ke va hoan doi chung neu chung khong dung thu tu",
+          "Do phuc tap: O(n2) thoi gian, O(1) khong gian"
+        ]
+      },
+      {
+        "criteria_id": "20a10c20-cb3d-494c-acd8-07fc146c925a",
+        "criteria_name": "Cau truc va trinh bay",
+        "ai_suggested_score": 8.0,
+        "ai_suggested_level": "Cau truc ro rang, trinh bay mach lac",
+        "final_score": 8.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "Bài viết có cấu trúc rõ ràng, diễn đạt mạch lạc, ngắn gọn và dễ theo dõi.",
+        "highlighted_text": []
+      }
+    ],
+    "total_score": 70.0,
+    "overall_comment": "",
+    "graded_at": "2026-06-04T06:41:22.596379+00:00",
+    "published_at": null,
+    "status": "graded"
+  },
+  "623ef0a9-5ec2-4e7e-bfb0-5f9c568c5b1d": {
+    "id": "623ef0a9-5ec2-4e7e-bfb0-5f9c568c5b1d",
+    "submission_id": "623ef0a9-5ec2-4e7e-bfb0-5f9c568c5b1d",
+    "assignment_id": "b698014e-bb41-416b-84ee-d9e89ab7141b",
+    "student_id": "9bceefb0-456c-4865-9f93-8a9ce917ea6a",
+    "student_name": "Đoàn Văn Phú",
+    "graded_by": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "criteria_scores": [
+      {
+        "criteria_id": "76742cde-385c-4d01-91bf-33a2a987e3e4",
+        "criteria_name": "MỤC TIÊU BÀI HỌC (Kiến thức, Kỹ năng, Thái độ/NL)",
+        "ai_suggested_score": 2,
+        "ai_suggested_level": "Trình bày đầy đủ cả 3 mặt (KT-KN-TĐ). Dùng động từ hành động đo lường được. Mục tiêu cụ thể, phù hợp trình độ HS lớp 5. Có mục tiêu về NL và PC theo CT 2018 (1.8 – 2.0 điểm)",
+        "final_score": 2,
+        "max_score": 2.0,
+        "weight": 20.0,
+        "teacher_comment": "Mục tiêu bài học được xây dựng rất chi tiết, đầy đủ cả 3 mặt (Kiến thức, Kỹ năng, Thái độ/Phẩm chất, Năng lực) theo định hướng Chương trình GDPT 2018. Các động từ hành động rõ ràng, đo lường được và có bảng phân loại theo thang Bloom rất khoa học.",
+        "highlighted_text": [
+          "Mạch nội dung: Hình học và Đo lường",
+          "Mạch nội dung: Hình học và Đo lường",
+          "PHẦN II: MỤC TIÊU BÀI HỌC (THANG BLOOM)"
+        ]
+      },
+      {
+        "criteria_id": "c4cb5afe-f6a6-4d3e-bd20-e93c90afdca1",
+        "criteria_name": "CHUẨN BỊ DẠY - HỌC (Đồ dùng, phương tiện)",
+        "ai_suggested_score": 0.5,
+        "ai_suggested_level": "Liệt kê đầy đủ, chi tiết đồ dùng GV và HS. Đồ dùng sáng tạo, hỗ trợ tốt mục tiêu. Có phương tiện kỹ thuật phù hợp (0.45 – 0.5 điểm)",
+        "final_score": 0.5,
+        "max_score": 0.5,
+        "weight": 5.0,
+        "teacher_comment": "Phần chuẩn bị thiết bị, đồ dùng dạy học của giáo viên và học sinh rất đầy đủ, chi tiết, có tính thực tiễn cao (mô hình bìa cứng, kéo, keo dán phục vụ hoạt động cắt ghép) và tích hợp phương tiện công nghệ phù hợp.",
+        "highlighted_text": [
+          "•Học sinh nhận biết được hình thang, biết tên gọi các yếu tố của hình thang: đáy",
+          "•Học sinh ghi nhớ và phát biểu được công thức tính diện tích hình thang: S = (a",
+          "•Học sinh giải thích được cơ sở hình học dẫn đến công thức tính diện tích hình"
+        ]
+      },
+      {
+        "criteria_id": "0f8e7db8-fe4a-4839-a2db-65b125cb3830",
+        "criteria_name": "TIẾN TRÌNH DẠY HỌC (Số lượng và chất lượng HĐ)",
+        "ai_suggested_score": 2,
+        "ai_suggested_level": "≥ 4 hoạt động rõ ràng theo chu trình. Mỗi HĐ đủ: mục tiêu, nội dung, PP, TG. Phân bổ thời gian hợp lý, logic. Có chuyển tiếp giữa các HĐ tự nhiên (1.8 – 2.0 điểm)",
+        "final_score": 2,
+        "max_score": 2.0,
+        "weight": 20.0,
+        "teacher_comment": "Tiến trình dạy học gồm 5 hoạt động rõ ràng, tuân thủ chặt chẽ chu trình học tập trải nghiệm và khám phá. Mỗi hoạt động đều xác định rõ mục tiêu, phương pháp, đồ dùng, các bước triển khai chi tiết và cách thức đánh giá cụ thể.",
+        "highlighted_text": [
+          "•Vận dụng kiến thức vào giải các bài toán thực tiễn liên quan đến diện tích hình",
+          "•Phẩm chất: Chăm chỉ, tích cực tham gia hoạt động học; Trung thực, tự giác",
+          "•Năng lực tư duy toán học: Tư duy logic, phân tích, tổng hợp khi khám phá công"
+        ]
+      },
+      {
+        "criteria_id": "01de7949-4e34-4e97-bc8a-c690071874d0",
+        "criteria_name": "PHƯƠNG PHÁP DẠY HỌC TÍCH CỰC (Loại PP và mức độ phù hợp)",
+        "ai_suggested_score": 1.5,
+        "ai_suggested_level": "Sử dụng ≥ 2 PPDH tích cực (TLN, dự án, khám phá, PBL…). Giải thích rõ lý do chọn PP. PP phù hợp với mục tiêu và đối tượng HS. Kỹ thuật DH cụ thể (Think-Pair-Share, KWL…) (1.35 – 1.5 điểm)",
+        "final_score": 1.5,
+        "max_score": 1.5,
+        "weight": 15.0,
+        "teacher_comment": "Giáo án sử dụng xuất sắc các phương pháp và kỹ thuật dạy học tích cực như Kiến tạo/Khám phá thực hành, Trạm học tập, và Think-Pair-Share. Sinh viên có phần giải thích lý do lựa chọn phương pháp dựa trên đặc điểm tâm lý học sinh lớp 5 rất thuyết phục.",
+        "highlighted_text": [
+          "•Phẩm chất: Chăm chỉ, tích cực tham gia hoạt động học; Trung thực, tự giác",
+          "•Năng lực tư duy toán học: Tư duy logic, phân tích, tổng hợp khi khám phá công",
+          "THoạt động Thời gianPhương pháp chính"
+        ]
+      },
+      {
+        "criteria_id": "2a926d0b-0f1a-4579-87a3-435efd323d95",
+        "criteria_name": "SỬ DỤNG CÂU HỎI (Chất lượng câu hỏi trong HĐ)",
+        "ai_suggested_score": 1,
+        "ai_suggested_level": "Câu hỏi đa dạng: nhớ, hiểu, vận dụng, phân tích (Bloom). Câu hỏi mở, kích thích tư duy. Phân bố đều trong các HĐ (0.9 – 1.0 điểm)",
+        "final_score": 1,
+        "max_score": 1.0,
+        "weight": 10.0,
+        "teacher_comment": "Hệ thống câu hỏi đa dạng, trải đều từ cấp độ nhận biết đến phân tích, đánh giá. Nhiều câu hỏi mở mang tính gợi mở, kích thích tư duy phản biện và giúp học sinh tự kiến tạo kiến thức (như câu hỏi 'Tại sao phải chia 2?').",
+        "highlighted_text": [
+          "PHẦN II: MỤC TIÊU BÀI HỌC (THANG BLOOM)",
+          "•Học sinh ghi nhớ và phát biểu được công thức tính diện tích hình thang: S = (a",
+          "•Biết phân tích và xác định đúng đáy lớn, đáy nhỏ, chiều cao trong các dạng"
+        ]
+      },
+      {
+        "criteria_id": "055e9fea-3918-41d4-914d-f7eb6382c384",
+        "criteria_name": "KẾ HOẠCH ĐÁNH GIÁ HS (Đánh giá QT và KQ)",
+        "ai_suggested_score": 1.5,
+        "ai_suggested_level": "Đánh giá quá trình + kết quả đầy đủ. Đa dạng hình thức: vấn đáp, phiếu học tập, sản phẩm, tự đánh giá. Có tiêu chí đánh giá cụ thể. Phù hợp với mục tiêu đề ra (1.35 – 1.5 điểm)",
+        "final_score": 1.5,
+        "max_score": 1.5,
+        "weight": 15.0,
+        "teacher_comment": "Kế hoạch đánh giá cực kỳ hoàn chỉnh, kết hợp chặt chẽ giữa đánh giá quá trình (quan sát, hỏi đáp, phiếu học tập, thẻ exit ticket 3-2-1) và đánh giá kết quả. Có xây dựng rubric chấm điểm cụ thể, rõ ràng cho phiếu bài tập.",
+        "highlighted_text": [
+          "•Phiếu học tập có hình thang in sẵn kèm số đo (cho hoạt động nhóm)",
+          "Cách đánh giá Chấm điểm phiếu bài tập (đúng quy trình + kết quả)",
+          "HS tính lại và so sánh kết quả"
+        ]
+      },
+      {
+        "criteria_id": "10c03c4e-8715-4c01-8473-1d394574ccb2",
+        "criteria_name": "TÌNH HUỐNG SƯ PHẠM (Dự kiến và xử lý)",
+        "ai_suggested_score": 0.5,
+        "ai_suggested_level": "≥ 2 tình huống dự kiến. Tình huống thực tế, có khả năng xảy ra. Cách xử lý sư phạm, phù hợp tâm lý HS (0.45 – 0.5 điểm)",
+        "final_score": 0.5,
+        "max_score": 0.5,
+        "weight": 5.0,
+        "teacher_comment": "Dự kiến được 3 tình huống sư phạm rất thực tế và phổ biến khi dạy bài Diện tích hình thang. Cách xử lý và biện pháp phòng ngừa thể hiện năng lực sư phạm vững vàng, tôn trọng tiến trình nhận thức của học sinh.",
+        "highlighted_text": [
+          "•Năng lực giải quyết vấn đề: Vận dụng kiến thức toán học vào tình huống thực",
+          "Mức độ Mô tả / Động từ hành vi dự kiến",
+          "Sáng tạo Học sinh đề xuất bài toán thực tế có thể giải bằng công thức diện"
+        ]
+      },
+      {
+        "criteria_id": "bd8b5aeb-6f30-412e-92d0-3faf0f4de8ee",
+        "criteria_name": "TRÌNH BÀY VÀ TÀI LIỆU (Form + TLTK)",
+        "ai_suggested_score": 1,
+        "ai_suggested_level": "Đúng quy định định dạng. Trang bìa đầy đủ, chuyên nghiệp. ≥ 3 TLTK đúng chuẩn APA hoặc Việt Nam. Không lỗi chính tả, ngữ pháp (0.9 – 1.0 điểm)",
+        "final_score": 1,
+        "max_score": 1.0,
+        "weight": 10.0,
+        "teacher_comment": "Giáo án trình bày sạch sẽ, khoa học, chuyên nghiệp. Danh mục tài liệu tham khảo gồm 7 nguồn chất lượng, được trích dẫn chuẩn xác theo định dạng APA 7th edition. Không có lỗi chính tả hay lỗi định dạng đáng tiếc.",
+        "highlighted_text": [
+          "•Rèn luyện kỹ năng trình bày lời giải toán khoa học, rõ ràng, đầy đủ",
+          "thảo luận với bạn trước khi trình bày trước lớp, giảm lo lắng, tăng tự tin",
+          "Bước 4 (2 phút): Đại diện 1–2 nhóm trình bày suy luận"
+        ]
+      }
+    ],
+    "total_score": 100.0,
+    "overall_comment": "",
+    "graded_at": "2026-06-04T07:12:28.176800+00:00",
+    "published_at": "2026-06-04T07:33:35.647187+00:00",
+    "status": "published"
+  }
+}

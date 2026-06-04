@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+PyPDF2
+google-genai
+rank-bm25
+python-dotenv
+python-multipart
+python-jose[cryptography]
+passlib[bcrypt]
+python-docx
+openpyxl

@@ -1,0 +1,275 @@
+{
+  "CUSTOM_b8648efabd7b41c2b3c67e085b45ec39": {
+    "id": "CUSTOM_b8648efabd7b41c2b3c67e085b45ec39",
+    "name": "Rubric chấm điểm Giáo án dạy Toán lớp 5",
+    "description": "Bảng rubric chấm điểm giáo án môn Toán lớp 5 - Mạch hình học & đo lường",
+    "criteria": [
+      {
+        "criteria_name": "MỤC TIÊU BÀI HỌC (Kiến thức, Kỹ năng, Thái độ/NL)",
+        "max_score": 2.0,
+        "weight": 20.0,
+        "keywords": [
+          "mục tiêu",
+          "kiến thức",
+          "kỹ năng",
+          "thái độ",
+          "năng lực",
+          "phẩm chất",
+          "đo lường",
+          "bloom"
+        ],
+        "levels": [
+          {
+            "score": 2.0,
+            "description": "Trình bày đầy đủ cả 3 mặt (KT-KN-TĐ). Dùng động từ hành động đo lường được. Mục tiêu cụ thể, phù hợp trình độ HS lớp 5. Có mục tiêu về NL và PC theo CT 2018 (1.8 – 2.0 điểm)"
+          },
+          {
+            "score": 1.5,
+            "description": "Đủ 3 mặt nhưng một mặt chưa cụ thể. Hầu hết động từ đo lường được. Phù hợp HS lớp 5 (1.4 – 1.7 điểm)"
+          },
+          {
+            "score": 1.0,
+            "description": "Chỉ có 1-2 mặt. Một số động từ còn chung chung. Chưa phân biệt rõ các mặt (1.0 – 1.3 điểm)"
+          },
+          {
+            "score": 0.5,
+            "description": "Thiếu mục tiêu hoặc quá chung. Không dùng động từ đo lường. Không phù hợp trình độ (< 1.0 điểm)"
+          }
+        ]
+      },
+      {
+        "criteria_name": "CHUẨN BỊ DẠY - HỌC (Đồ dùng, phương tiện)",
+        "max_score": 0.5,
+        "weight": 5.0,
+        "keywords": [
+          "chuẩn bị",
+          "đồ dùng",
+          "phương tiện",
+          "giáo viên",
+          "học sinh",
+          "thiết bị",
+          "sgk",
+          "bảng"
+        ],
+        "levels": [
+          {
+            "score": 0.5,
+            "description": "Liệt kê đầy đủ, chi tiết đồ dùng GV và HS. Đồ dùng sáng tạo, hỗ trợ tốt mục tiêu. Có phương tiện kỹ thuật phù hợp (0.45 – 0.5 điểm)"
+          },
+          {
+            "score": 0.4,
+            "description": "Đủ đồ dùng GV và HS. Phù hợp với bài học (0.35 – 0.44 điểm)"
+          },
+          {
+            "score": 0.3,
+            "description": "Chỉ liệt kê đồ dùng cơ bản. Thiếu chi tiết (0.25 – 0.34 điểm)"
+          },
+          {
+            "score": 0.15,
+            "description": "Liệt kê quá sơ sài (chỉ 'SGK, bảng'). Không phù hợp bài học (< 0.25 điểm)"
+          }
+        ]
+      },
+      {
+        "criteria_name": "TIẾN TRÌNH DẠY HỌC (Số lượng và chất lượng HĐ)",
+        "max_score": 2.0,
+        "weight": 20.0,
+        "keywords": [
+          "tiến trình",
+          "hoạt động",
+          "khởi động",
+          "khám phá",
+          "thực hành",
+          "vận dụng",
+          "chu trình",
+          "thời gian",
+          "phân bổ"
+        ],
+        "levels": [
+          {
+            "score": 2.0,
+            "description": "≥ 4 hoạt động rõ ràng theo chu trình. Mỗi HĐ đủ: mục tiêu, nội dung, PP, TG. Phân bổ thời gian hợp lý, logic. Có chuyển tiếp giữa các HĐ tự nhiên (1.8 – 2.0 điểm)"
+          },
+          {
+            "score": 1.5,
+            "description": "4 hoạt động, phần lớn đủ chi tiết. Phân bổ TG tương đối hợp lý (1.4 – 1.7 điểm)"
+          },
+          {
+            "score": 1.0,
+            "description": "3 hoạt động, thiếu chi tiết 1 số HĐ. TG chưa hợp lý ở một số HĐ (1.0 – 1.3 điểm)"
+          },
+          {
+            "score": 0.5,
+            "description": "< 3 hoạt động. Thiếu chi tiết, không rõ ràng. Không có phân bổ TG (< 1.0 điểm)"
+          }
+        ]
+      },
+      {
+        "criteria_name": "PHƯƠNG PHÁP DẠY HỌC TÍCH CỰC (Loại PP và mức độ phù hợp)",
+        "max_score": 1.5,
+        "weight": 15.0,
+        "keywords": [
+          "phương pháp",
+          "tích cực",
+          "thảo luận nhóm",
+          "dự án",
+          "khám phá",
+          "pbl",
+          "kỹ thuật",
+          "think-pair-share",
+          "kwl"
+        ],
+        "levels": [
+          {
+            "score": 1.5,
+            "description": "Sử dụng ≥ 2 PPDH tích cực (TLN, dự án, khám phá, PBL…). Giải thích rõ lý do chọn PP. PP phù hợp với mục tiêu và đối tượng HS. Kỹ thuật DH cụ thể (Think-Pair-Share, KWL…) (1.35 – 1.5 điểm)"
+          },
+          {
+            "score": 1.2,
+            "description": "2 PPDH tích cực, giải thích sơ lược. Phù hợp với bài học (1.05 – 1.34 điểm)"
+          },
+          {
+            "score": 0.9,
+            "description": "1 PPDH tích cực + DH truyền thống. Chưa giải thích rõ (0.75 – 1.04 điểm)"
+          },
+          {
+            "score": 0.5,
+            "description": "Chỉ dùng PP thuyết trình, hỏi đáp đơn thuần. Không có PPDH tích cực (< 0.75 điểm)"
+          }
+        ]
+      },
+      {
+        "criteria_name": "SỬ DỤNG CÂU HỎI (Chất lượng câu hỏi trong HĐ)",
+        "max_score": 1.0,
+        "weight": 10.0,
+        "keywords": [
+          "câu hỏi",
+          "bloom",
+          "nhớ",
+          "hiểu",
+          "vận dụng",
+          "phân tích",
+          "câu hỏi mở",
+          "kích thích tư duy"
+        ],
+        "levels": [
+          {
+            "score": 1.0,
+            "description": "Câu hỏi đa dạng: nhớ, hiểu, vận dụng, phân tích (Bloom). Câu hỏi mở, kích thích tư duy. Phân bố đều trong các HĐ (0.9 – 1.0 điểm)"
+          },
+          {
+            "score": 0.8,
+            "description": "Câu hỏi có ở các cấp độ nhớ-hiểu-VD. Một số câu hỏi mở (0.7 – 0.89 điểm)"
+          },
+          {
+            "score": 0.6,
+            "description": "Chủ yếu câu hỏi đóng, cấp độ thấp. Ít câu hỏi kích thích tư duy (0.5 – 0.69 điểm)"
+          },
+          {
+            "score": 0.4,
+            "description": "Hầu hết là câu hỏi đóng 'có/không'. Không có câu hỏi kích thích tư duy (< 0.5 điểm)"
+          }
+        ]
+      },
+      {
+        "criteria_name": "KẾ HOẠCH ĐÁNH GIÁ HS (Đánh giá QT và KQ)",
+        "max_score": 1.5,
+        "weight": 15.0,
+        "keywords": [
+          "kế hoạch đánh giá",
+          "đánh giá quá trình",
+          "kết quả",
+          "vấn đáp",
+          "phiếu học tập",
+          "sản phẩm",
+          "tự đánh giá",
+          "tiêu chí"
+        ],
+        "levels": [
+          {
+            "score": 1.5,
+            "description": "Đánh giá quá trình + kết quả đầy đủ. Đa dạng hình thức: vấn đáp, phiếu học tập, sản phẩm, tự đánh giá. Có tiêu chí đánh giá cụ thể. Phù hợp với mục tiêu đề ra (1.35 – 1.5 điểm)"
+          },
+          {
+            "score": 1.2,
+            "description": "Có đánh giá QT và KQ. 2-3 hình thức đánh giá. Tiêu chí tương đối rõ (1.05 – 1.34 điểm)"
+          },
+          {
+            "score": 0.9,
+            "description": "Chỉ đánh giá kết quả. 1-2 hình thức. Tiêu chí chung chung (0.75 – 1.04 điểm)"
+          },
+          {
+            "score": 0.5,
+            "description": "Không có kế hoạch đánh giá. Hoặc chỉ ghi 'chấm bài' (< 0.75 điểm)"
+          }
+        ]
+      },
+      {
+        "criteria_name": "TÌNH HUỐNG SƯ PHẠM (Dự kiến và xử lý)",
+        "max_score": 0.5,
+        "weight": 5.0,
+        "keywords": [
+          "tình huống",
+          "sư phạm",
+          "dự kiến",
+          "xử lý",
+          "thực tế",
+          "tâm lý học sinh"
+        ],
+        "levels": [
+          {
+            "score": 0.5,
+            "description": "≥ 2 tình huống dự kiến. Tình huống thực tế, có khả năng xảy ra. Cách xử lý sư phạm, phù hợp tâm lý HS (0.45 – 0.5 điểm)"
+          },
+          {
+            "score": 0.4,
+            "description": "2 tình huống, xử lý tương đối hợp lý (0.35 – 0.44 điểm)"
+          },
+          {
+            "score": 0.3,
+            "description": "1 tình huống, xử lý đơn giản (0.25 – 0.34 điểm)"
+          },
+          {
+            "score": 0.15,
+            "description": "Không có tình huống sư phạm (< 0.25 điểm)"
+          }
+        ]
+      },
+      {
+        "criteria_name": "TRÌNH BÀY VÀ TÀI LIỆU (Form + TLTK)",
+        "max_score": 1.0,
+        "weight": 10.0,
+        "keywords": [
+          "trình bày",
+          "tài liệu",
+          "định dạng",
+          "trang bìa",
+          "tài liệu tham khảo",
+          "tltk",
+          "apa",
+          "chính tả",
+          "ngữ pháp"
+        ],
+        "levels": [
+          {
+            "score": 1.0,
+            "description": "Đúng quy định định dạng. Trang bìa đầy đủ, chuyên nghiệp. ≥ 3 TLTK đúng chuẩn APA hoặc Việt Nam. Không lỗi chính tả, ngữ pháp (0.9 – 1.0 điểm)"
+          },
+          {
+            "score": 0.8,
+            "description": "Đúng quy định cơ bản. ≥ 3 TLTK. Ít lỗi chính tả (0.7 – 0.89 điểm)"
+          },
+          {
+            "score": 0.6,
+            "description": "Một số lỗi định dạng. 2 TLTK hoặc chưa đúng chuẩn. Có lỗi chính tả (0.5 – 0.69 điểm)"
+          },
+          {
+            "score": 0.4,
+            "description": "Sai nhiều quy định định dạng. < 2 TLTK hoặc không có. Nhiều lỗi chính tả (< 0.5 điểm)"
+          }
+        ]
+      }
+    ],
+    "created_by": "31b0977d-b73a-4a15-9811-dd30021f6b7e"
+  }
+}
