@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate, useParams, Link } from "react-r
 import { AuthProvider, useAuth } from "./context/AuthContext";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import TeacherDashboard from "./pages/TeacherDashboard";
 import ClassPage from "./pages/ClassPage";
 import AssignmentPage from "./pages/AssignmentPage";
@@ -14,6 +15,7 @@ import StudentDashboard from "./pages/StudentDashboard";
 import StudentAssignmentPage from "./pages/StudentAssignmentPage";
 import EditAssignmentPage from "./pages/EditAssignmentPage";
 import { getPlagiarismPair } from "./api/client";
+import type { PlagiarismPairDetail } from "./types";
 import Navbar from "./components/Navbar";
 import { QuestionBankPage, RubricsLibraryPage, GuidePage } from "./pages/ExtraPages";
 
@@ -38,6 +40,7 @@ function AppRoutes() {
       {/* Public */}
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
+      <Route path="/forgot-password" element={<ForgotPasswordPage />} />
       <Route path="/" element={<RootRedirect />} />
 
       {/* Teacher */}
@@ -69,7 +72,7 @@ function AppRoutes() {
 
 function PlagiarismPairPage() {
   const { assignmentId, subAId, subBId } = useParams<{ assignmentId: string; subAId: string; subBId: string }>();
-  const [data, setData] = useState<any>(null);
+  const [data, setData] = useState<PlagiarismPairDetail | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

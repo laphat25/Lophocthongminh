@@ -97,7 +97,12 @@ def create_assignment(req: CreateAssignmentRequest, teacher: dict = Depends(requ
 
 
 @router.get("")
-def list_assignments(class_id: Optional[str] = None, user: dict = Depends(get_current_user)):
+def list_assignments(
+    class_id: Optional[str] = None,
+    skip: int = 0,
+    limit: int = 50,
+    user: dict = Depends(get_current_user)
+):
     all_assignments = assignment_store.values()
     role = user["role"]
 
@@ -117,7 +122,9 @@ def list_assignments(class_id: Optional[str] = None, user: dict = Depends(get_cu
             if a["class_id"] in enrolled_class_ids and a["status"] == "published"
         ]
 
-    return {"assignments": result, "total": len(result)}
+    total = len(result)
+    paginated = result[skip:skip + limit]
+    return {"assignments": paginated, "total": total, "skip": skip, "limit": limit}
 
 
 @router.get("/{assignment_id}")

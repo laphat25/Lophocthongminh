@@ -95,7 +95,7 @@ async def upload_rubric_template(
         raise HTTPException(400, "Không thể trích xuất đủ văn bản từ file hoặc định dạng không hỗ trợ (yêu cầu PDF, DOCX, TXT).")
 
     # Gọi AI để parse
-    parsed_data = parse_rubric_with_gemini(text)
+    parsed_data = parse_rubric_with_gemini(text, api_key=teacher.get("gemini_api_key"))
     if not parsed_data:
         raise HTTPException(500, "Không thể phân tích dữ liệu Rubric từ nội dung file. Vui lòng kiểm tra lại cấu trúc file.")
     

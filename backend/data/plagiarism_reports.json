@@ -355,5 +355,173 @@
       "severe_pairs": 0,
       "max_similarity_pct": 0.0
     }
+  },
+  "bb35354a-3b09-4c96-8c3d-fc80fc9ac46b": {
+    "id": "bb35354a-3b09-4c96-8c3d-fc80fc9ac46b",
+    "assignment_id": "bb35354a-3b09-4c96-8c3d-fc80fc9ac46b",
+    "generated_at": "2026-06-20T14:43:25.063451+00:00",
+    "status": "completed",
+    "pairs": [
+      {
+        "submission_a": "7920984f-0dd5-40c8-b661-77cd4e4b083b",
+        "student_a_name": "Trần Thị A",
+        "submission_b": "51134710-ed6f-4b3d-b85c-5b82d621c0ed",
+        "student_b_name": "Lê Văn B",
+        "similarity_score": 0.6739,
+        "similarity_pct": 67.39,
+        "flag": "warning"
+      }
+    ],
+    "summary": {
+      "total_submissions": 2,
+      "total_pairs": 1,
+      "flagged_pairs": 1,
+      "severe_pairs": 0,
+      "max_similarity_pct": 67.39
+    }
+  },
+  "975a7d7b-224b-4fd7-8a23-d61ed8914632": {
+    "id": "975a7d7b-224b-4fd7-8a23-d61ed8914632",
+    "assignment_id": "975a7d7b-224b-4fd7-8a23-d61ed8914632",
+    "generated_at": "2026-06-20T14:47:19.698493+00:00",
+    "status": "completed",
+    "pairs": [
+      {
+        "submission_a": "bc9ecd0d-8c8c-4440-9f60-b46c014e3627",
+        "student_a_name": "Trần Thị A",
+        "submission_b": "09f54641-f652-4dc7-a274-47f8aa6e564b",
+        "student_b_name": "Lê Văn B",
+        "similarity_score": 0.6739,
+        "similarity_pct": 67.39,
+        "flag": "warning"
+      }
+    ],
+    "summary": {
+      "total_submissions": 2,
+      "total_pairs": 1,
+      "flagged_pairs": 1,
+      "severe_pairs": 0,
+      "max_similarity_pct": 67.39
+    }
+  },
+  "e1cd096f-73d9-482e-a69a-76a98d13d244": {
+    "id": "e1cd096f-73d9-482e-a69a-76a98d13d244",
+    "assignment_id": "e1cd096f-73d9-482e-a69a-76a98d13d244",
+    "generated_at": "2026-06-20T15:01:28.877445+00:00",
+    "status": "completed",
+    "pairs": [
+      {
+        "submission_a": "1014b3fb-8824-45da-8579-0420ae5c95fd",
+        "student_a_name": "Trần Thị A",
+        "submission_b": "e6c8909c-4e56-4a9c-bc73-66462b625048",
+        "student_b_name": "Lê Văn B",
+        "similarity_score": 0.6739,
+        "similarity_pct": 67.39,
+        "flag": "warning"
+      }
+    ],
+    "summary": {
+      "total_submissions": 2,
+      "total_pairs": 1,
+      "flagged_pairs": 1,
+      "severe_pairs": 0,
+      "max_similarity_pct": 67.39
+    }
+  },
+  "7a4c4f91-8bcf-48ec-a567-a30024ccdcf2": {
+    "id": "7a4c4f91-8bcf-48ec-a567-a30024ccdcf2",
+    "assignment_id": "7a4c4f91-8bcf-48ec-a567-a30024ccdcf2",
+    "generated_at": "2026-06-20T15:02:11.002741+00:00",
+    "status": "completed",
+    "pairs": [
+      {
+        "submission_a": "f112befd-9f35-403a-ab36-69fd5f7819c6",
+        "student_a_name": "Trần Thị A",
+        "submission_b": "6dff474e-69de-481f-8aef-98fa4165f853",
+        "student_b_name": "Lê Văn B",
+        "similarity_score": 0.6739,
+        "similarity_pct": 67.39,
+        "flag": "warning"
+      }
+    ],
+    "summary": {
+      "total_submissions": 2,
+      "total_pairs": 1,
+      "flagged_pairs": 1,
+      "severe_pairs": 0,
+      "max_similarity_pct": 67.39
+    }
+  },
+  "7bc1fef0-1e54-4e11-b12d-8cbc8c7582ab": {
+    "id": "7bc1fef0-1e54-4e11-b12d-8cbc8c7582ab",
+    "assignment_id": "7bc1fef0-1e54-4e11-b12d-8cbc8c7582ab",
+    "generated_at": "2026-06-20T15:07:00.073496+00:00",
+    "status": "completed",
+    "pairs": [
+      {
+        "submission_a": "12d70260-252a-4634-987c-15a9dbf7a7d4",
+        "student_a_name": "Trần Thị A",
+        "submission_b": "d92d13e8-1bb7-4b16-b9c8-6c3ecd1159fb",
+        "student_b_name": "Lê Văn B",
+        "similarity_score": 0.6739,
+        "similarity_pct": 67.39,
+        "flag": "warning"
+      }
+    ],
+    "summary": {
+      "total_submissions": 2,
+      "total_pairs": 1,
+      "flagged_pairs": 1,
+      "severe_pairs": 0,
+      "max_similarity_pct": 67.39
+    }
+  },
+  "6bd12c52-b821-4435-b1c5-8eaad3b8a511": {
+    "id": "6bd12c52-b821-4435-b1c5-8eaad3b8a511",
+    "assignment_id": "6bd12c52-b821-4435-b1c5-8eaad3b8a511",
+    "generated_at": "2026-06-20T15:09:49.196534+00:00",
+    "status": "completed",
+    "pairs": [
+      {
+        "submission_a": "972edb11-1e80-4335-9570-6da37e71285b",
+        "student_a_name": "Trần Thị A",
+        "submission_b": "24972b99-9656-4468-ad12-91760a349e40",
+        "student_b_name": "Lê Văn B",
+        "similarity_score": 0.6739,
+        "similarity_pct": 67.39,
+        "flag": "warning"
+      }
+    ],
+    "summary": {
+      "total_submissions": 2,
+      "total_pairs": 1,
+      "flagged_pairs": 1,
+      "severe_pairs": 0,
+      "max_similarity_pct": 67.39
+    }
+  },
+  "751be612-e97b-4694-afe0-8f2f2d7379f2": {
+    "id": "751be612-e97b-4694-afe0-8f2f2d7379f2",
+    "assignment_id": "751be612-e97b-4694-afe0-8f2f2d7379f2",
+    "generated_at": "2026-06-20T15:12:21.857043+00:00",
+    "status": "completed",
+    "pairs": [
+      {
+        "submission_a": "d9f2cc0d-386e-473a-9021-a214c956071b",
+        "student_a_name": "Trần Thị A",
+        "submission_b": "1e33c141-3b24-4670-bd25-2368692149fe",
+        "student_b_name": "Lê Văn B",
+        "similarity_score": 0.6739,
+        "similarity_pct": 67.39,
+        "flag": "warning"
+      }
+    ],
+    "summary": {
+      "total_submissions": 2,
+      "total_pairs": 1,
+      "flagged_pairs": 1,
+      "severe_pairs": 0,
+      "max_similarity_pct": 67.39
+    }
   }
 }

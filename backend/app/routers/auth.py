@@ -5,7 +5,8 @@ from fastapi import APIRouter, Depends
 from fastapi import HTTPException
 from pydantic import BaseModel
 from app.storage import user_store
-from app.auth import hash_password, verify_password, create_access_token, get_current_user
+from app.auth import hash_password, verify_password, create_access_token, get_current_user, require_teacher
+from app.config import encrypt_api_key, decrypt_api_key
 
 router = APIRouter(prefix="/auth", tags=["auth"])
 
@@ -27,6 +28,13 @@ class AuthResponse(BaseModel):
     access_token: str
     token_type: str = "bearer"
     user: dict
+
+
+def make_safe_user(user: dict) -> dict:
+    safe = {k: v for k, v in user.items() if k not in ("password_hash", "gemini_api_key")}
+    raw_key = decrypt_api_key(user.get("gemini_api_key", ""))
+    safe["has_gemini_key"] = bool(raw_key.strip() and (raw_key.startswith("AIzaSy") or raw_key.startswith("AQ.")))
+    return safe
 
 
 @router.post("/register", response_model=AuthResponse)
@@ -52,8 +60,7 @@ def register(req: RegisterRequest):
     }
     user_store.set(user_id, user)
     token = create_access_token({"sub": user_id, "role": req.role})
-    safe_user = {k: v for k, v in user.items() if k != "password_hash"}
-    return AuthResponse(access_token=token, user=safe_user)
+    return AuthResponse(access_token=token, user=make_safe_user(user))
 
 
 @router.post("/login", response_model=AuthResponse)
@@ -67,13 +74,12 @@ def login(req: LoginRequest):
         raise HTTPException(401, "Email hoặc mật khẩu không đúng")
 
     token = create_access_token({"sub": user["id"], "role": user["role"]})
-    safe_user = {k: v for k, v in user.items() if k != "password_hash"}
-    return AuthResponse(access_token=token, user=safe_user)
+    return AuthResponse(access_token=token, user=make_safe_user(user))
 
 
 @router.get("/me")
 def get_me(user: dict = Depends(get_current_user)):
-    return {k: v for k, v in user.items() if k != "password_hash"}
+    return make_safe_user(user)
 
 
 class UpdateSettingsRequest(BaseModel):
@@ -82,10 +88,33 @@ class UpdateSettingsRequest(BaseModel):
 
 @router.put("/settings")
 def update_settings(req: UpdateSettingsRequest, user: dict = Depends(get_current_user)):
-    user["gemini_api_key"] = req.gemini_api_key.strip()
+    raw_key = req.gemini_api_key.strip()
+    user["gemini_api_key"] = encrypt_api_key(raw_key) if raw_key else ""
     user["updated_at"] = datetime.now(timezone.utc).isoformat()
     user_store.set(user["id"], user)
     return {
         "message": "Cập nhật cài đặt thành công",
-        "user": {k: v for k, v in user.items() if k != "password_hash"},
+        "user": make_safe_user(user),
     }
+
+
+class ResetPasswordRequest(BaseModel):
+    new_password: str
+
+
+@router.post("/users/{user_id}/reset-password")
+def reset_student_password(
+    user_id: str,
+    req: ResetPasswordRequest,
+    teacher: dict = Depends(require_teacher)
+):
+    target_user = user_store.get(user_id)
+    if not target_user:
+        raise HTTPException(404, "Không tìm thấy người dùng")
+    if target_user["role"] != "student":
+        raise HTTPException(403, "Chỉ có thể đặt lại mật khẩu cho sinh viên")
+    
+    target_user["password_hash"] = hash_password(req.new_password)
+    target_user["updated_at"] = datetime.now(timezone.utc).isoformat()
+    user_store.set(user_id, target_user)
+    return {"message": f"Đặt lại mật khẩu thành công cho sinh viên {target_user['full_name']}"}

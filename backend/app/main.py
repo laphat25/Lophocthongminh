@@ -1,8 +1,10 @@
 from contextlib import asynccontextmanager
+import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from app.config import UPLOADS_DIR
+from app.middleware.rate_limit import RateLimitMiddleware
 
 
 
@@ -14,6 +16,9 @@ from app.routers import submissions_v2 as submissions_v2_router
 from app.routers import grading_v2 as grading_v2_router
 from app.routers import plagiarism_router
 from app.routers import rubrics as rubrics_router
+from app.routers import feedbacks as feedbacks_router
+from app.routers import questions as questions_router
+from app.routers import ws as ws_router
 
 
 @asynccontextmanager
@@ -28,16 +33,35 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+# CORS configuration
+CORS_ORIGINS_ENV = os.getenv("CORS_ORIGINS", "http://localhost:5173,http://localhost:3000")
+CORS_ORIGINS = [origin.strip() for origin in CORS_ORIGINS_ENV.split(",") if origin.strip()]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:3000"],
+    allow_origins=CORS_ORIGINS,
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["GET", "POST", "PUT", "PATCH", "DELETE"],
+    allow_headers=["Authorization", "Content-Type"],
 )
+
+# Rate limiting middleware
+app.add_middleware(RateLimitMiddleware)
+
+from app.exceptions import AppError
+from fastapi.responses import JSONResponse
+from app.logger import logger
 
 # Serve uploaded files
 app.mount("/uploads", StaticFiles(directory=str(UPLOADS_DIR)), name="uploads")
+
+@app.exception_handler(AppError)
+async def app_error_handler(request, exc: AppError):
+    logger.error(f"AppError handler: {exc.status_code} - {exc.detail}")
+    return JSONResponse(
+        status_code=exc.status_code,
+        content={"detail": exc.detail}
+    )
 
 
 
@@ -49,6 +73,9 @@ app.include_router(submissions_v2_router.router, prefix="/api")
 app.include_router(grading_v2_router.router, prefix="/api")
 app.include_router(plagiarism_router.router, prefix="/api")
 app.include_router(rubrics_router.router, prefix="/api")
+app.include_router(feedbacks_router.router, prefix="/api")
+app.include_router(questions_router.router, prefix="/api")
+app.include_router(ws_router.router)
 
 
 @app.get("/api/health")

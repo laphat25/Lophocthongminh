@@ -63,6 +63,11 @@ export default function LoginPage() {
               placeholder="••••••••"
               required
             />
+            <div style={{ textAlign: "right", marginTop: "6px" }}>
+              <Link to="/forgot-password" style={{ fontSize: "0.85rem", color: "var(--primary)" }}>
+                Quên mật khẩu?
+              </Link>
+            </div>
           </div>
 
           <button

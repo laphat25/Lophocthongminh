@@ -51,22 +51,28 @@ def check_plagiarism(new_text: str, other_texts: list[str]) -> float:
     new_tokens = _tokenize(new_text)
     if not new_tokens:
         return 0.0
-    corpus_tokens = [_tokenize(t) for t in other_texts]
-    corpus_tokens = [t for t in corpus_tokens if t]
-    if not corpus_tokens:
-        return 0.0
-    bm25 = BM25Okapi(corpus_tokens)
-    scores = bm25.get_scores(new_tokens)
-    max_score = float(max(scores))
-    self_s = _self_score(new_tokens)
-    if self_s == 0:
-        return 0.0
-    return min(100.0, (max_score / self_s) * 100.0)
+    
+    new_set = set(new_tokens)
+    max_sim = 0.0
+    for other in other_texts:
+        other_tokens = _tokenize(other)
+        if not other_tokens:
+            continue
+        other_set = set(other_tokens)
+        intersection = new_set & other_set
+        if not intersection:
+            continue
+        # Containment similarity: percentage of query tokens found in the target
+        sim = (len(intersection) / len(new_set)) * 100.0
+        if sim > max_sim:
+            max_sim = sim
+            
+    return round(min(100.0, max_sim), 2)
 
 
 def compute_similarity_matrix(submissions: list[dict]) -> list[dict]:
     """
-    Compute pairwise BM25 similarity for a list of submissions.
+    Compute pairwise similarity for a list of submissions.
 
     Each submission dict: {id, student_name, content_text}
     Returns list of {submission_a, student_a_name, submission_b, student_b_name,
@@ -79,35 +85,20 @@ def compute_similarity_matrix(submissions: list[dict]) -> list[dict]:
     tokenized = []
     for sub in submissions:
         tokens = _tokenize(sub.get("content_text", ""))
-        tokenized.append(tokens)
-
-    # Pre-compute self-scores
-    self_scores = [_self_score(t) for t in tokenized]
-
-    # Build one BM25 on the full corpus
-    valid_corpus = [t if t else ["__empty__"] for t in tokenized]
-    bm25_full = BM25Okapi(valid_corpus)
+        tokenized.append(set(tokens))
 
     results = []
     for i in range(n):
         for j in range(i + 1, n):
-            tokens_i = tokenized[i] if tokenized[i] else ["__empty__"]
-            tokens_j = tokenized[j] if tokenized[j] else ["__empty__"]
+            set_i = tokenized[i]
+            set_j = tokenized[j]
 
-            score_ij = float(bm25_full.get_scores(tokens_i)[j])
-            score_ji = float(bm25_full.get_scores(tokens_j)[i])
-
-            ss_i = self_scores[i]
-            ss_j = self_scores[j]
-
-            if ss_i > 0 and ss_j > 0:
-                sim = max(score_ij / ss_i, score_ji / ss_j) * 100.0
-            elif ss_i > 0:
-                sim = (score_ij / ss_i) * 100.0
-            elif ss_j > 0:
-                sim = (score_ji / ss_j) * 100.0
-            else:
+            if not set_i or not set_j:
                 sim = 0.0
+            else:
+                intersection = set_i & set_j
+                # Use bidirectional max containment for pairwise similarity
+                sim = max(len(intersection) / len(set_i), len(intersection) / len(set_j)) * 100.0
 
             sim = round(min(100.0, sim), 2)
 

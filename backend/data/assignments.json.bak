@@ -1,0 +1,1929 @@
+{
+  "27d4467c-24ff-4016-999b-138848f5e179": {
+    "id": "27d4467c-24ff-4016-999b-138848f5e179",
+    "class_id": "08679fb0-fba9-4869-b206-646bce12121f",
+    "class_name": "Ky thuat lap trinh",
+    "teacher_id": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "teacher_name": "Phạm Tiến Đạt",
+    "title": "Bai tap 1: Phan tich thuat toan",
+    "description": "Phan tich do phuc tap thuat toan Bubble Sort",
+    "submission_type": "text",
+    "allow_resubmit": false,
+    "open_at": "2026-06-03T13:53:06.955154+00:00",
+    "deadline": "2026-12-31T23:59:00Z",
+    "status": "closed",
+    "pass_threshold": 50.0,
+    "rubric": [
+      {
+        "criteria_id": "be044533-5063-4bb5-bab3-113ae932c208",
+        "criteria_name": "Noi dung va kien thuc",
+        "max_score": 10.0,
+        "weight": 50.0,
+        "keywords": [
+          "thuat toan",
+          "phan tich",
+          "do phuc tap",
+          "bubble sort"
+        ],
+        "levels": [
+          {
+            "score": 9.0,
+            "description": "Trinh bay day du, chinh xac, co vi du"
+          },
+          {
+            "score": 6.0,
+            "description": "Trinh bay du y, con thieu mot so chi tiet"
+          },
+          {
+            "score": 3.0,
+            "description": "Trinh bay so sai, thieu nhieu noi dung"
+          }
+        ]
+      },
+      {
+        "criteria_id": "a1a17d0b-141e-4d1d-937c-afecf07d6967",
+        "criteria_name": "Cau truc va trinh bay",
+        "max_score": 10.0,
+        "weight": 50.0,
+        "keywords": [
+          "cau truc",
+          "ro rang",
+          "mach lac",
+          "trinh bay"
+        ],
+        "levels": [
+          {
+            "score": 8.0,
+            "description": "Cau truc ro rang, trinh bay mach lac"
+          },
+          {
+            "score": 4.0,
+            "description": "Cau truc con roi, kho theo doi"
+          }
+        ]
+      }
+    ],
+    "created_at": "2026-06-03T13:53:06.955154+00:00",
+    "updated_at": "2026-06-03T13:53:11.545636+00:00"
+  },
+  "b3f3a9a5-b9f4-4a4f-be13-949fd12a36fb": {
+    "id": "b3f3a9a5-b9f4-4a4f-be13-949fd12a36fb",
+    "class_id": "b32af419-c813-4fc4-a6e4-470e1a819a6c",
+    "class_name": "Ky thuat lap trinh",
+    "teacher_id": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "teacher_name": "Phạm Tiến Đạt",
+    "title": "Bai tap 1: Phan tich thuat toan",
+    "description": "Phan tich do phuc tap thuat toan Bubble Sort",
+    "submission_type": "text",
+    "allow_resubmit": false,
+    "open_at": "2026-06-03T13:57:51.536389+00:00",
+    "deadline": "2026-12-31T23:59:00Z",
+    "status": "closed",
+    "pass_threshold": 50.0,
+    "rubric": [
+      {
+        "criteria_id": "7cf94b3d-304e-46e7-9921-596db1d3ce8d",
+        "criteria_name": "Noi dung va kien thuc",
+        "max_score": 10.0,
+        "weight": 50.0,
+        "keywords": [
+          "thuat toan",
+          "phan tich",
+          "do phuc tap",
+          "bubble sort"
+        ],
+        "levels": [
+          {
+            "score": 9.0,
+            "description": "Trinh bay day du, chinh xac, co vi du"
+          },
+          {
+            "score": 6.0,
+            "description": "Trinh bay du y, con thieu mot so chi tiet"
+          },
+          {
+            "score": 3.0,
+            "description": "Trinh bay so sai, thieu nhieu noi dung"
+          }
+        ]
+      },
+      {
+        "criteria_id": "1450cdc3-48f8-49c8-9757-d71ad2c1017f",
+        "criteria_name": "Cau truc va trinh bay",
+        "max_score": 10.0,
+        "weight": 50.0,
+        "keywords": [
+          "cau truc",
+          "ro rang",
+          "mach lac",
+          "trinh bay"
+        ],
+        "levels": [
+          {
+            "score": 8.0,
+            "description": "Cau truc ro rang, trinh bay mach lac"
+          },
+          {
+            "score": 4.0,
+            "description": "Cau truc con roi, kho theo doi"
+          }
+        ]
+      }
+    ],
+    "created_at": "2026-06-03T13:57:51.536389+00:00",
+    "updated_at": "2026-06-03T13:57:55.055410+00:00"
+  },
+  "52c725b0-0fda-4b4f-a863-06bd6690598d": {
+    "id": "52c725b0-0fda-4b4f-a863-06bd6690598d",
+    "class_id": "37040926-ea5b-4998-b4bc-e5a4171d8a85",
+    "class_name": "Ky thuat lap trinh",
+    "teacher_id": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "teacher_name": "Phạm Tiến Đạt",
+    "title": "Bai tap 1: Phan tich thuat toan",
+    "description": "Phan tich do phuc tap thuat toan Bubble Sort",
+    "submission_type": "text",
+    "allow_resubmit": false,
+    "open_at": "2026-06-03T13:59:16.371422+00:00",
+    "deadline": "2026-12-31T23:59:00Z",
+    "status": "closed",
+    "pass_threshold": 50.0,
+    "rubric": [
+      {
+        "criteria_id": "9214f422-56dc-489b-8d1b-24ab69383fe5",
+        "criteria_name": "Noi dung va kien thuc",
+        "max_score": 10.0,
+        "weight": 50.0,
+        "keywords": [
+          "thuat toan",
+          "phan tich",
+          "do phuc tap",
+          "bubble sort"
+        ],
+        "levels": [
+          {
+            "score": 9.0,
+            "description": "Trinh bay day du, chinh xac, co vi du"
+          },
+          {
+            "score": 6.0,
+            "description": "Trinh bay du y, con thieu mot so chi tiet"
+          },
+          {
+            "score": 3.0,
+            "description": "Trinh bay so sai, thieu nhieu noi dung"
+          }
+        ]
+      },
+      {
+        "criteria_id": "7ce5b1ad-a330-4949-9302-0d48f8d6af4e",
+        "criteria_name": "Cau truc va trinh bay",
+        "max_score": 10.0,
+        "weight": 50.0,
+        "keywords": [
+          "cau truc",
+          "ro rang",
+          "mach lac",
+          "trinh bay"
+        ],
+        "levels": [
+          {
+            "score": 8.0,
+            "description": "Cau truc ro rang, trinh bay mach lac"
+          },
+          {
+            "score": 4.0,
+            "description": "Cau truc con roi, kho theo doi"
+          }
+        ]
+      }
+    ],
+    "created_at": "2026-06-03T13:59:16.371422+00:00",
+    "updated_at": "2026-06-03T13:59:20.218950+00:00"
+  },
+  "4c95f740-f669-4e5e-9b11-9efe203a8f6b": {
+    "id": "4c95f740-f669-4e5e-9b11-9efe203a8f6b",
+    "class_id": "5dccd9e2-e33c-48d7-b7e4-74be56d8a3d8",
+    "class_name": "Ky thuat lap trinh",
+    "teacher_id": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "teacher_name": "Phạm Tiến Đạt",
+    "title": "Bai tap 1: Phan tich thuat toan",
+    "description": "Phan tich do phuc tap thuat toan Bubble Sort",
+    "submission_type": "text",
+    "allow_resubmit": false,
+    "open_at": "2026-06-03T14:02:22.269593+00:00",
+    "deadline": "2026-12-31T23:59:00Z",
+    "status": "closed",
+    "pass_threshold": 50.0,
+    "rubric": [
+      {
+        "criteria_id": "d8c0b67b-b2e4-4841-856e-a37ae5742624",
+        "criteria_name": "Noi dung va kien thuc",
+        "max_score": 10.0,
+        "weight": 50.0,
+        "keywords": [
+          "thuat toan",
+          "phan tich",
+          "do phuc tap",
+          "bubble sort"
+        ],
+        "levels": [
+          {
+            "score": 9.0,
+            "description": "Trinh bay day du, chinh xac, co vi du"
+          },
+          {
+            "score": 6.0,
+            "description": "Trinh bay du y, con thieu mot so chi tiet"
+          },
+          {
+            "score": 3.0,
+            "description": "Trinh bay so sai, thieu nhieu noi dung"
+          }
+        ]
+      },
+      {
+        "criteria_id": "612af52a-fce6-4bd8-a18f-6a5cb0905e02",
+        "criteria_name": "Cau truc va trinh bay",
+        "max_score": 10.0,
+        "weight": 50.0,
+        "keywords": [
+          "cau truc",
+          "ro rang",
+          "mach lac",
+          "trinh bay"
+        ],
+        "levels": [
+          {
+            "score": 8.0,
+            "description": "Cau truc ro rang, trinh bay mach lac"
+          },
+          {
+            "score": 4.0,
+            "description": "Cau truc con roi, kho theo doi"
+          }
+        ]
+      }
+    ],
+    "created_at": "2026-06-03T14:02:22.269593+00:00",
+    "updated_at": "2026-06-03T14:02:27.197793+00:00"
+  },
+  "b698014e-bb41-416b-84ee-d9e89ab7141b": {
+    "id": "b698014e-bb41-416b-84ee-d9e89ab7141b",
+    "class_id": "7885a249-b4da-49e4-a1fc-acc2bf6bc779",
+    "class_name": "Kỹ năng dạy học - GDTH-K21",
+    "teacher_id": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "teacher_name": "Phạm Tiến Đạt",
+    "title": "Thiết kế giáo án dạy học môn Toán lớp 5",
+    "description": "BỘ GIÁO DỤC VÀ ĐÀO TẠO\nTRƯỜNG ĐẠI HỌC SƯ PHẠM TP. HỒ CHÍ MINH\nKHOA GIÁO DỤC TIỂU HỌC\n\nMôn học: KỸ NĂNG DẠY HỌC\nHọc kỳ: I - Năm học 2025-2026 | Hình thức: Bài tập cá nhân\nSố TC: 3 tín chỉ | Thang điểm: 10 điểm\nGV phụ trách: TS. Trần Văn Bình\n\nNỘI DUNG BÀI TẬP: THIẾT KẾ GIÁO ÁN DẠY HỌC MÔN TOÁN LỚP 5\nChủ đề: HÌNH HỌC VÀ ĐO LƯỜNG\n\nI. YÊU CẦU NHIỆM VỤ:\nSinh viên thiết kế 01 giáo án dạy học hoàn chỉnh cho 01 bài học thuộc mạch nội dung Hình học và Đo lường, môn Toán lớp 5, theo Chương trình GDPT 2018. Giáo án phải đảm bảo các yêu cầu sau:\n1. Chọn 1 bài học cụ thể trong Chương trình Toán lớp 5 thuộc mạch Hình học (ví dụ: Diện tích hình thang, Diện tích hình tròn, Thể tích hình hộp chữ nhật, Diện tích xung quanh và diện tích toàn phần,…)\n2. Xây dựng mục tiêu bài học rõ ràng theo 3 mặt: Kiến thức, Kỹ năng, Thái độ (hoặc theo Năng lực, Phẩm chất theo CTGDPT 2018)\n3. Thiết kế ít nhất 4 hoạt động dạy học trong tiến trình lên lớp, có phân bổ thời gian hợp lý\n4. Mỗi hoạt động cần nêu rõ: Mục tiêu hoạt động, Nội dung, Phương pháp/kỹ thuật dạy học, Đồ dùng/phương tiện, Cách đánh giá\n5. Đề xuất ít nhất 2 phương pháp dạy học tích cực và giải thích lý do chọn\n6. Có kế hoạch đánh giá học sinh rõ ràng (cả quá trình và kết quả)\n7. Dự kiến ít nhất 2 tình huống sư phạm có thể xảy ra và cách xử lý\n8. Có danh mục tài liệu tham khảo (tối thiểu 3 nguồn)\n\nII. CẤU TRÚC GIÁO ÁN ĐƯỢC GỢI Ý:\n- Phần I: Thông tin chung\n- Phần II: Mục tiêu (Bloom)\n- Phần III: Chuẩn bị\n- Phần IV: Tiến trình hoạt động (Khởi động -> Khám phá -> Thực hành -> Vận dụng -> Tổng kết)\n- Phần V: Tình huống sư phạm\n- Phần VI: Đánh giá quá trình và kết quả\n- Phần VII: Tài liệu tham khảo (APA)\n\nIII. QUY ĐỊNH TRÌNH BÀY:\n▪ Font chữ: Times New Roman, cỡ 13, giãn dòng 1.5\n▪ Lề: Trên/Dưới: 2cm, Trái: 3cm, Phải: 2cm\n▪ Giáo án không ít hơn 5 trang A4 (không tính trang bìa)\n▪ Tên file: HoTen_MSSV_GiaoAn.docx (ví dụ: NguyenThiAn_21CDTH001_GiaoAn.docx)\n",
+    "submission_type": "file",
+    "allow_resubmit": true,
+    "open_at": "2026-06-03T14:23:22.533546+00:00",
+    "deadline": "2026-06-15T23:59:59",
+    "status": "published",
+    "pass_threshold": 50.0,
+    "rubric": [
+      {
+        "criteria_id": "76742cde-385c-4d01-91bf-33a2a987e3e4",
+        "criteria_name": "MỤC TIÊU BÀI HỌC (Kiến thức, Kỹ năng, Thái độ/NL)",
+        "max_score": 2.0,
+        "weight": 20.0,
+        "keywords": [
+          "mục tiêu",
+          "kiến thức",
+          "kỹ năng",
+          "thái độ",
+          "năng lực",
+          "phẩm chất",
+          "đo lường",
+          "bloom"
+        ],
+        "levels": [
+          {
+            "score": 2.0,
+            "description": "Trình bày đầy đủ cả 3 mặt (KT-KN-TĐ). Dùng động từ hành động đo lường được. Mục tiêu cụ thể, phù hợp trình độ HS lớp 5. Có mục tiêu về NL và PC theo CT 2018 (1.8 – 2.0 điểm)"
+          },
+          {
+            "score": 1.5,
+            "description": "Đủ 3 mặt nhưng một mặt chưa cụ thể. Hầu hết động từ đo lường được. Phù hợp HS lớp 5 (1.4 – 1.7 điểm)"
+          },
+          {
+            "score": 1.0,
+            "description": "Chỉ có 1-2 mặt. Một số động từ còn chung chung. Chưa phân biệt rõ các mặt (1.0 – 1.3 điểm)"
+          },
+          {
+            "score": 0.5,
+            "description": "Thiếu mục tiêu hoặc quá chung. Không dùng động từ đo lường. Không phù hợp trình độ (< 1.0 điểm)"
+          }
+        ]
+      },
+      {
+        "criteria_id": "c4cb5afe-f6a6-4d3e-bd20-e93c90afdca1",
+        "criteria_name": "CHUẨN BỊ DẠY - HỌC (Đồ dùng, phương tiện)",
+        "max_score": 0.5,
+        "weight": 5.0,
+        "keywords": [
+          "chuẩn bị",
+          "đồ dùng",
+          "phương tiện",
+          "giáo viên",
+          "học sinh",
+          "thiết bị",
+          "sgk",
+          "bảng"
+        ],
+        "levels": [
+          {
+            "score": 0.5,
+            "description": "Liệt kê đầy đủ, chi tiết đồ dùng GV và HS. Đồ dùng sáng tạo, hỗ trợ tốt mục tiêu. Có phương tiện kỹ thuật phù hợp (0.45 – 0.5 điểm)"
+          },
+          {
+            "score": 0.4,
+            "description": "Đủ đồ dùng GV và HS. Phù hợp với bài học (0.35 – 0.44 điểm)"
+          },
+          {
+            "score": 0.3,
+            "description": "Chỉ liệt kê đồ dùng cơ bản. Thiếu chi tiết (0.25 – 0.34 điểm)"
+          },
+          {
+            "score": 0.15,
+            "description": "Liệt kê quá sơ sài (chỉ 'SGK, bảng'). Không phù hợp bài học (< 0.25 điểm)"
+          }
+        ]
+      },
+      {
+        "criteria_id": "0f8e7db8-fe4a-4839-a2db-65b125cb3830",
+        "criteria_name": "TIẾN TRÌNH DẠY HỌC (Số lượng và chất lượng HĐ)",
+        "max_score": 2.0,
+        "weight": 20.0,
+        "keywords": [
+          "tiến trình",
+          "hoạt động",
+          "khởi động",
+          "khám phá",
+          "thực hành",
+          "vận dụng",
+          "chu trình",
+          "thời gian",
+          "phân bổ"
+        ],
+        "levels": [
+          {
+            "score": 2.0,
+            "description": "≥ 4 hoạt động rõ ràng theo chu trình. Mỗi HĐ đủ: mục tiêu, nội dung, PP, TG. Phân bổ thời gian hợp lý, logic. Có chuyển tiếp giữa các HĐ tự nhiên (1.8 – 2.0 điểm)"
+          },
+          {
+            "score": 1.5,
+            "description": "4 hoạt động, phần lớn đủ chi tiết. Phân bổ TG tương đối hợp lý (1.4 – 1.7 điểm)"
+          },
+          {
+            "score": 1.0,
+            "description": "3 hoạt động, thiếu chi tiết 1 số HĐ. TG chưa hợp lý ở một số HĐ (1.0 – 1.3 điểm)"
+          },
+          {
+            "score": 0.5,
+            "description": "< 3 hoạt động. Thiếu chi tiết, không rõ ràng. Không có phân bổ TG (< 1.0 điểm)"
+          }
+        ]
+      },
+      {
+        "criteria_id": "01de7949-4e34-4e97-bc8a-c690071874d0",
+        "criteria_name": "PHƯƠNG PHÁP DẠY HỌC TÍCH CỰC (Loại PP và mức độ phù hợp)",
+        "max_score": 1.5,
+        "weight": 15.0,
+        "keywords": [
+          "phương pháp",
+          "tích cực",
+          "thảo luận nhóm",
+          "dự án",
+          "khám phá",
+          "pbl",
+          "kỹ thuật",
+          "think-pair-share",
+          "kwl"
+        ],
+        "levels": [
+          {
+            "score": 1.5,
+            "description": "Sử dụng ≥ 2 PPDH tích cực (TLN, dự án, khám phá, PBL…). Giải thích rõ lý do chọn PP. PP phù hợp với mục tiêu và đối tượng HS. Kỹ thuật DH cụ thể (Think-Pair-Share, KWL…) (1.35 – 1.5 điểm)"
+          },
+          {
+            "score": 1.2,
+            "description": "2 PPDH tích cực, giải thích sơ lược. Phù hợp với bài học (1.05 – 1.34 điểm)"
+          },
+          {
+            "score": 0.9,
+            "description": "1 PPDH tích cực + DH truyền thống. Chưa giải thích rõ (0.75 – 1.04 điểm)"
+          },
+          {
+            "score": 0.5,
+            "description": "Chỉ dùng PP thuyết trình, hỏi đáp đơn thuần. Không có PPDH tích cực (< 0.75 điểm)"
+          }
+        ]
+      },
+      {
+        "criteria_id": "2a926d0b-0f1a-4579-87a3-435efd323d95",
+        "criteria_name": "SỬ DỤNG CÂU HỎI (Chất lượng câu hỏi trong HĐ)",
+        "max_score": 1.0,
+        "weight": 10.0,
+        "keywords": [
+          "câu hỏi",
+          "bloom",
+          "nhớ",
+          "hiểu",
+          "vận dụng",
+          "phân tích",
+          "câu hỏi mở",
+          "kích thích tư duy"
+        ],
+        "levels": [
+          {
+            "score": 1.0,
+            "description": "Câu hỏi đa dạng: nhớ, hiểu, vận dụng, phân tích (Bloom). Câu hỏi mở, kích thích tư duy. Phân bố đều trong các HĐ (0.9 – 1.0 điểm)"
+          },
+          {
+            "score": 0.8,
+            "description": "Câu hỏi có ở các cấp độ nhớ-hiểu-VD. Một số câu hỏi mở (0.7 – 0.89 điểm)"
+          },
+          {
+            "score": 0.6,
+            "description": "Chủ yếu câu hỏi đóng, cấp độ thấp. Ít câu hỏi kích thích tư duy (0.5 – 0.69 điểm)"
+          },
+          {
+            "score": 0.4,
+            "description": "Hầu hết là câu hỏi đóng 'có/không'. Không có câu hỏi kích thích tư duy (< 0.5 điểm)"
+          }
+        ]
+      },
+      {
+        "criteria_id": "055e9fea-3918-41d4-914d-f7eb6382c384",
+        "criteria_name": "KẾ HOẠCH ĐÁNH GIÁ HS (Đánh giá QT và KQ)",
+        "max_score": 1.5,
+        "weight": 15.0,
+        "keywords": [
+          "kế hoạch đánh giá",
+          "đánh giá quá trình",
+          "kết quả",
+          "vấn đáp",
+          "phiếu học tập",
+          "sản phẩm",
+          "tự đánh giá",
+          "tiêu chí"
+        ],
+        "levels": [
+          {
+            "score": 1.5,
+            "description": "Đánh giá quá trình + kết quả đầy đủ. Đa dạng hình thức: vấn đáp, phiếu học tập, sản phẩm, tự đánh giá. Có tiêu chí đánh giá cụ thể. Phù hợp với mục tiêu đề ra (1.35 – 1.5 điểm)"
+          },
+          {
+            "score": 1.2,
+            "description": "Có đánh giá QT và KQ. 2-3 hình thức đánh giá. Tiêu chí tương đối rõ (1.05 – 1.34 điểm)"
+          },
+          {
+            "score": 0.9,
+            "description": "Chỉ đánh giá kết quả. 1-2 hình thức. Tiêu chí chung chung (0.75 – 1.04 điểm)"
+          },
+          {
+            "score": 0.5,
+            "description": "Không có kế hoạch đánh giá. Hoặc chỉ ghi 'chấm bài' (< 0.75 điểm)"
+          }
+        ]
+      },
+      {
+        "criteria_id": "10c03c4e-8715-4c01-8473-1d394574ccb2",
+        "criteria_name": "TÌNH HUỐNG SƯ PHẠM (Dự kiến và xử lý)",
+        "max_score": 0.5,
+        "weight": 5.0,
+        "keywords": [
+          "tình huống",
+          "sư phạm",
+          "dự kiến",
+          "xử lý",
+          "thực tế",
+          "tâm lý học sinh"
+        ],
+        "levels": [
+          {
+            "score": 0.5,
+            "description": "≥ 2 tình huống dự kiến. Tình huống thực tế, có khả năng xảy ra. Cách xử lý sư phạm, phù hợp tâm lý HS (0.45 – 0.5 điểm)"
+          },
+          {
+            "score": 0.4,
+            "description": "2 tình huống, xử lý tương đối hợp lý (0.35 – 0.44 điểm)"
+          },
+          {
+            "score": 0.3,
+            "description": "1 tình huống, xử lý đơn giản (0.25 – 0.34 điểm)"
+          },
+          {
+            "score": 0.15,
+            "description": "Không có tình huống sư phạm (< 0.25 điểm)"
+          }
+        ]
+      },
+      {
+        "criteria_id": "bd8b5aeb-6f30-412e-92d0-3faf0f4de8ee",
+        "criteria_name": "TRÌNH BÀY VÀ TÀI LIỆU (Form + TLTK)",
+        "max_score": 1.0,
+        "weight": 10.0,
+        "keywords": [
+          "trình bày",
+          "tài liệu",
+          "định dạng",
+          "trang bìa",
+          "tài liệu tham khảo",
+          "tltk",
+          "apa",
+          "chính tả",
+          "ngữ pháp"
+        ],
+        "levels": [
+          {
+            "score": 1.0,
+            "description": "Đúng quy định định dạng. Trang bìa đầy đủ, chuyên nghiệp. ≥ 3 TLTK đúng chuẩn APA hoặc Việt Nam. Không lỗi chính tả, ngữ pháp (0.9 – 1.0 điểm)"
+          },
+          {
+            "score": 0.8,
+            "description": "Đúng quy định cơ bản. ≥ 3 TLTK. Ít lỗi chính tả (0.7 – 0.89 điểm)"
+          },
+          {
+            "score": 0.6,
+            "description": "Một số lỗi định dạng. 2 TLTK hoặc chưa đúng chuẩn. Có lỗi chính tả (0.5 – 0.69 điểm)"
+          },
+          {
+            "score": 0.4,
+            "description": "Sai nhiều quy định định dạng. < 2 TLTK hoặc không có. Nhiều lỗi chính tả (< 0.5 điểm)"
+          }
+        ]
+      }
+    ],
+    "created_at": "2026-06-03T14:23:22.533546+00:00",
+    "updated_at": "2026-06-03T14:23:22.544708+00:00"
+  },
+  "c64e6562-5f34-4ed1-8714-f8a4c30c16d5": {
+    "id": "c64e6562-5f34-4ed1-8714-f8a4c30c16d5",
+    "class_id": "886ae5d9-f017-42a2-adcf-b3b5bf3d7e58",
+    "class_name": "Ky thuat lap trinh",
+    "teacher_id": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "teacher_name": "Phạm Tiến Đạt",
+    "title": "Bai tap 1: Phan tich thuat toan",
+    "description": "Phan tich do phuc tap thuat toan Bubble Sort",
+    "submission_type": "text",
+    "allow_resubmit": false,
+    "open_at": "2026-06-03T14:32:03.223091+00:00",
+    "deadline": "2026-12-31T23:59:00Z",
+    "status": "closed",
+    "pass_threshold": 50.0,
+    "rubric": [
+      {
+        "criteria_id": "0c632a91-0e7d-4e80-8ad9-508e7d4b7f02",
+        "criteria_name": "Noi dung va kien thuc",
+        "max_score": 10.0,
+        "weight": 50.0,
+        "keywords": [
+          "thuat toan",
+          "phan tich",
+          "do phuc tap",
+          "bubble sort"
+        ],
+        "levels": [
+          {
+            "score": 9.0,
+            "description": "Trinh bay day du, chinh xac, co vi du"
+          },
+          {
+            "score": 6.0,
+            "description": "Trinh bay du y, con thieu mot so chi tiet"
+          },
+          {
+            "score": 3.0,
+            "description": "Trinh bay so sai, thieu nhieu noi dung"
+          }
+        ]
+      },
+      {
+        "criteria_id": "bd36beeb-0c5c-445b-ae37-c1ed36549e22",
+        "criteria_name": "Cau truc va trinh bay",
+        "max_score": 10.0,
+        "weight": 50.0,
+        "keywords": [
+          "cau truc",
+          "ro rang",
+          "mach lac",
+          "trinh bay"
+        ],
+        "levels": [
+          {
+            "score": 8.0,
+            "description": "Cau truc ro rang, trinh bay mach lac"
+          },
+          {
+            "score": 4.0,
+            "description": "Cau truc con roi, kho theo doi"
+          }
+        ]
+      }
+    ],
+    "created_at": "2026-06-03T14:32:03.223091+00:00",
+    "updated_at": "2026-06-03T14:32:07.445469+00:00"
+  },
+  "9124077a-a15e-4dd9-ae40-f44f8929c87e": {
+    "id": "9124077a-a15e-4dd9-ae40-f44f8929c87e",
+    "class_id": "f9e54907-a0a4-4835-9f71-b0c37186915a",
+    "class_name": "Ky thuat lap trinh",
+    "teacher_id": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "teacher_name": "Phạm Tiến Đạt",
+    "title": "Bai tap 1: Phan tich thuat toan",
+    "description": "Phan tich do phuc tap thuat toan Bubble Sort",
+    "submission_type": "text",
+    "allow_resubmit": false,
+    "open_at": "2026-06-03T14:33:18.475765+00:00",
+    "deadline": "2026-12-31T23:59:00Z",
+    "status": "closed",
+    "pass_threshold": 50.0,
+    "rubric": [
+      {
+        "criteria_id": "b0ac2446-2b33-4d26-95cc-87b3904bfee7",
+        "criteria_name": "Noi dung va kien thuc",
+        "max_score": 10.0,
+        "weight": 50.0,
+        "keywords": [
+          "thuat toan",
+          "phan tich",
+          "do phuc tap",
+          "bubble sort"
+        ],
+        "levels": [
+          {
+            "score": 9.0,
+            "description": "Trinh bay day du, chinh xac, co vi du"
+          },
+          {
+            "score": 6.0,
+            "description": "Trinh bay du y, con thieu mot so chi tiet"
+          },
+          {
+            "score": 3.0,
+            "description": "Trinh bay so sai, thieu nhieu noi dung"
+          }
+        ]
+      },
+      {
+        "criteria_id": "b8ef7f9c-d77f-440c-ac04-dc94f1f8a5da",
+        "criteria_name": "Cau truc va trinh bay",
+        "max_score": 10.0,
+        "weight": 50.0,
+        "keywords": [
+          "cau truc",
+          "ro rang",
+          "mach lac",
+          "trinh bay"
+        ],
+        "levels": [
+          {
+            "score": 8.0,
+            "description": "Cau truc ro rang, trinh bay mach lac"
+          },
+          {
+            "score": 4.0,
+            "description": "Cau truc con roi, kho theo doi"
+          }
+        ]
+      }
+    ],
+    "created_at": "2026-06-03T14:33:18.475765+00:00",
+    "updated_at": "2026-06-03T14:33:22.083381+00:00"
+  },
+  "6c48d14d-291e-4dd2-8ed4-8942632d8773": {
+    "id": "6c48d14d-291e-4dd2-8ed4-8942632d8773",
+    "class_id": "98588091-341e-416d-81b3-83472c9d8816",
+    "class_name": "Ky thuat lap trinh",
+    "teacher_id": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "teacher_name": "Phạm Tiến Đạt",
+    "title": "Bai tap 1: Phan tich thuat toan",
+    "description": "Phan tich do phuc tap thuat toan Bubble Sort",
+    "submission_type": "text",
+    "allow_resubmit": false,
+    "open_at": "2026-06-03T14:39:40.853024+00:00",
+    "deadline": "2026-12-31T23:59:00Z",
+    "status": "closed",
+    "pass_threshold": 50.0,
+    "rubric": [
+      {
+        "criteria_id": "3ccac785-9b1e-430c-8593-c623f45c68fa",
+        "criteria_name": "Noi dung va kien thuc",
+        "max_score": 10.0,
+        "weight": 50.0,
+        "keywords": [
+          "thuat toan",
+          "phan tich",
+          "do phuc tap",
+          "bubble sort"
+        ],
+        "levels": [
+          {
+            "score": 9.0,
+            "description": "Trinh bay day du, chinh xac, co vi du"
+          },
+          {
+            "score": 6.0,
+            "description": "Trinh bay du y, con thieu mot so chi tiet"
+          },
+          {
+            "score": 3.0,
+            "description": "Trinh bay so sai, thieu nhieu noi dung"
+          }
+        ]
+      },
+      {
+        "criteria_id": "996837ac-654e-4509-8a03-1111fcd79f5c",
+        "criteria_name": "Cau truc va trinh bay",
+        "max_score": 10.0,
+        "weight": 50.0,
+        "keywords": [
+          "cau truc",
+          "ro rang",
+          "mach lac",
+          "trinh bay"
+        ],
+        "levels": [
+          {
+            "score": 8.0,
+            "description": "Cau truc ro rang, trinh bay mach lac"
+          },
+          {
+            "score": 4.0,
+            "description": "Cau truc con roi, kho theo doi"
+          }
+        ]
+      }
+    ],
+    "created_at": "2026-06-03T14:39:40.853024+00:00",
+    "updated_at": "2026-06-03T14:39:45.386041+00:00"
+  },
+  "a594e453-ef8c-4b08-8346-b7cea7d1da77": {
+    "id": "a594e453-ef8c-4b08-8346-b7cea7d1da77",
+    "class_id": "eff8dade-fe5f-42b4-a675-45d636e03170",
+    "class_name": "Ky thuat lap trinh",
+    "teacher_id": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "teacher_name": "Phạm Tiến Đạt",
+    "title": "Bai tap 1: Phan tich thuat toan",
+    "description": "Phan tich do phuc tap thuat toan Bubble Sort",
+    "submission_type": "text",
+    "allow_resubmit": false,
+    "open_at": "2026-06-03T14:42:43.804126+00:00",
+    "deadline": "2026-12-31T23:59:00Z",
+    "status": "closed",
+    "pass_threshold": 50.0,
+    "rubric": [
+      {
+        "criteria_id": "b614bc23-7c98-432d-83d8-ce314501286a",
+        "criteria_name": "Noi dung va kien thuc",
+        "max_score": 10.0,
+        "weight": 50.0,
+        "keywords": [
+          "thuat toan",
+          "phan tich",
+          "do phuc tap",
+          "bubble sort"
+        ],
+        "levels": [
+          {
+            "score": 9.0,
+            "description": "Trinh bay day du, chinh xac, co vi du"
+          },
+          {
+            "score": 6.0,
+            "description": "Trinh bay du y, con thieu mot so chi tiet"
+          },
+          {
+            "score": 3.0,
+            "description": "Trinh bay so sai, thieu nhieu noi dung"
+          }
+        ]
+      },
+      {
+        "criteria_id": "c65a1779-3fdd-4d78-a383-40420c7be0dc",
+        "criteria_name": "Cau truc va trinh bay",
+        "max_score": 10.0,
+        "weight": 50.0,
+        "keywords": [
+          "cau truc",
+          "ro rang",
+          "mach lac",
+          "trinh bay"
+        ],
+        "levels": [
+          {
+            "score": 8.0,
+            "description": "Cau truc ro rang, trinh bay mach lac"
+          },
+          {
+            "score": 4.0,
+            "description": "Cau truc con roi, kho theo doi"
+          }
+        ]
+      }
+    ],
+    "created_at": "2026-06-03T14:42:43.804126+00:00",
+    "updated_at": "2026-06-03T14:42:47.759660+00:00"
+  },
+  "d8458097-e0aa-4788-8b81-3c0c0ee8101b": {
+    "id": "d8458097-e0aa-4788-8b81-3c0c0ee8101b",
+    "class_id": "b9f9a5f4-c2dd-42ae-8f2e-112265461f5c",
+    "class_name": "Ky thuat lap trinh",
+    "teacher_id": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "teacher_name": "Phạm Tiến Đạt",
+    "title": "Bai tap 1: Phan tich thuat toan",
+    "description": "Phan tich do phuc tap thuat toan Bubble Sort",
+    "submission_type": "text",
+    "allow_resubmit": false,
+    "open_at": "2026-06-03T14:44:32.362406+00:00",
+    "deadline": "2026-12-31T23:59:00Z",
+    "status": "closed",
+    "pass_threshold": 50.0,
+    "rubric": [
+      {
+        "criteria_id": "f0957faf-e495-42e3-85dc-423a224e327c",
+        "criteria_name": "Noi dung va kien thuc",
+        "max_score": 10.0,
+        "weight": 50.0,
+        "keywords": [
+          "thuat toan",
+          "phan tich",
+          "do phuc tap",
+          "bubble sort"
+        ],
+        "levels": [
+          {
+            "score": 9.0,
+            "description": "Trinh bay day du, chinh xac, co vi du"
+          },
+          {
+            "score": 6.0,
+            "description": "Trinh bay du y, con thieu mot so chi tiet"
+          },
+          {
+            "score": 3.0,
+            "description": "Trinh bay so sai, thieu nhieu noi dung"
+          }
+        ]
+      },
+      {
+        "criteria_id": "5b541ad5-231f-496e-b27b-f91bbcd8c358",
+        "criteria_name": "Cau truc va trinh bay",
+        "max_score": 10.0,
+        "weight": 50.0,
+        "keywords": [
+          "cau truc",
+          "ro rang",
+          "mach lac",
+          "trinh bay"
+        ],
+        "levels": [
+          {
+            "score": 8.0,
+            "description": "Cau truc ro rang, trinh bay mach lac"
+          },
+          {
+            "score": 4.0,
+            "description": "Cau truc con roi, kho theo doi"
+          }
+        ]
+      }
+    ],
+    "created_at": "2026-06-03T14:44:32.362406+00:00",
+    "updated_at": "2026-06-03T14:44:36.840872+00:00"
+  },
+  "f07ff2e0-16e4-4864-a78d-f3864428f2e1": {
+    "id": "f07ff2e0-16e4-4864-a78d-f3864428f2e1",
+    "class_id": "6e923fe1-6a0d-4330-9966-375499c09d03",
+    "class_name": "Ky thuat lap trinh",
+    "teacher_id": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "teacher_name": "Phạm Tiến Đạt",
+    "title": "Bai tap 1: Phan tich thuat toan",
+    "description": "Phan tich do phuc tap thuat toan Bubble Sort",
+    "submission_type": "text",
+    "allow_resubmit": false,
+    "open_at": "2026-06-03T14:46:58.265984+00:00",
+    "deadline": "2026-12-31T23:59:00Z",
+    "status": "published",
+    "pass_threshold": 50.0,
+    "rubric": [
+      {
+        "criteria_id": "da5b1d17-da1e-45c8-894c-39d6ed15e6e5",
+        "criteria_name": "Noi dung va kien thuc",
+        "max_score": 10.0,
+        "weight": 50.0,
+        "keywords": [
+          "thuat toan",
+          "phan tich",
+          "do phuc tap",
+          "bubble sort"
+        ],
+        "levels": [
+          {
+            "score": 9.0,
+            "description": "Trinh bay day du, chinh xac, co vi du"
+          },
+          {
+            "score": 6.0,
+            "description": "Trinh bay du y, con thieu mot so chi tiet"
+          },
+          {
+            "score": 3.0,
+            "description": "Trinh bay so sai, thieu nhieu noi dung"
+          }
+        ]
+      },
+      {
+        "criteria_id": "03342b52-9852-47c8-8122-9b0b6f1b0478",
+        "criteria_name": "Cau truc va trinh bay",
+        "max_score": 10.0,
+        "weight": 50.0,
+        "keywords": [
+          "cau truc",
+          "ro rang",
+          "mach lac",
+          "trinh bay"
+        ],
+        "levels": [
+          {
+            "score": 8.0,
+            "description": "Cau truc ro rang, trinh bay mach lac"
+          },
+          {
+            "score": 4.0,
+            "description": "Cau truc con roi, kho theo doi"
+          }
+        ]
+      }
+    ],
+    "created_at": "2026-06-03T14:46:58.265984+00:00",
+    "updated_at": "2026-06-03T14:46:58.292801+00:00"
+  },
+  "291c0450-e8dd-4c63-84f5-55ee388e3176": {
+    "id": "291c0450-e8dd-4c63-84f5-55ee388e3176",
+    "class_id": "ab373d71-5ae3-42a2-8a86-bfdb284672c5",
+    "class_name": "Ky thuat lap trinh",
+    "teacher_id": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "teacher_name": "Phạm Tiến Đạt",
+    "title": "Bai tap 1: Phan tich thuat toan",
+    "description": "Phan tich do phuc tap thuat toan Bubble Sort",
+    "submission_type": "text",
+    "allow_resubmit": false,
+    "open_at": "2026-06-03T14:48:36.246516+00:00",
+    "deadline": "2026-12-31T23:59:00Z",
+    "status": "published",
+    "pass_threshold": 50.0,
+    "rubric": [
+      {
+        "criteria_id": "61d48868-8589-405a-bdc5-76eb68563439",
+        "criteria_name": "Noi dung va kien thuc",
+        "max_score": 10.0,
+        "weight": 50.0,
+        "keywords": [
+          "thuat toan",
+          "phan tich",
+          "do phuc tap",
+          "bubble sort"
+        ],
+        "levels": [
+          {
+            "score": 9.0,
+            "description": "Trinh bay day du, chinh xac, co vi du"
+          },
+          {
+            "score": 6.0,
+            "description": "Trinh bay du y, con thieu mot so chi tiet"
+          },
+          {
+            "score": 3.0,
+            "description": "Trinh bay so sai, thieu nhieu noi dung"
+          }
+        ]
+      },
+      {
+        "criteria_id": "20a10c20-cb3d-494c-acd8-07fc146c925a",
+        "criteria_name": "Cau truc va trinh bay",
+        "max_score": 10.0,
+        "weight": 50.0,
+        "keywords": [
+          "cau truc",
+          "ro rang",
+          "mach lac",
+          "trinh bay"
+        ],
+        "levels": [
+          {
+            "score": 8.0,
+            "description": "Cau truc ro rang, trinh bay mach lac"
+          },
+          {
+            "score": 4.0,
+            "description": "Cau truc con roi, kho theo doi"
+          }
+        ]
+      }
+    ],
+    "created_at": "2026-06-03T14:48:36.246516+00:00",
+    "updated_at": "2026-06-03T14:48:36.257522+00:00"
+  },
+  "8ee41ff0-b62d-4614-98ba-6d1907e8f1ce": {
+    "id": "8ee41ff0-b62d-4614-98ba-6d1907e8f1ce",
+    "class_id": "9fb31db1-34e3-4447-8ba7-470fe0bd96e5",
+    "class_name": "Ky thuat lap trinh",
+    "teacher_id": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "teacher_name": "Phạm Tiến Đạt",
+    "title": "Bai tap 1: Phan tich thuat toan",
+    "description": "Phan tich do phuc tap thuat toan Bubble Sort",
+    "submission_type": "text",
+    "allow_resubmit": false,
+    "open_at": "2026-06-03T14:55:29.939090+00:00",
+    "deadline": "2026-12-31T23:59:00Z",
+    "status": "published",
+    "pass_threshold": 50.0,
+    "rubric": [
+      {
+        "criteria_id": "9d8ffe7c-d289-41d0-a53e-c928f1083e58",
+        "criteria_name": "Noi dung va kien thuc",
+        "max_score": 10.0,
+        "weight": 50.0,
+        "keywords": [
+          "thuat toan",
+          "phan tich",
+          "do phuc tap",
+          "bubble sort"
+        ],
+        "levels": [
+          {
+            "score": 9.0,
+            "description": "Trinh bay day du, chinh xac, co vi du"
+          },
+          {
+            "score": 6.0,
+            "description": "Trinh bay du y, con thieu mot so chi tiet"
+          },
+          {
+            "score": 3.0,
+            "description": "Trinh bay so sai, thieu nhieu noi dung"
+          }
+        ]
+      },
+      {
+        "criteria_id": "c28fbbe2-d36a-4754-95d1-3cf3b7cd879d",
+        "criteria_name": "Cau truc va trinh bay",
+        "max_score": 10.0,
+        "weight": 50.0,
+        "keywords": [
+          "cau truc",
+          "ro rang",
+          "mach lac",
+          "trinh bay"
+        ],
+        "levels": [
+          {
+            "score": 8.0,
+            "description": "Cau truc ro rang, trinh bay mach lac"
+          },
+          {
+            "score": 4.0,
+            "description": "Cau truc con roi, kho theo doi"
+          }
+        ]
+      }
+    ],
+    "created_at": "2026-06-03T14:55:29.939090+00:00",
+    "updated_at": "2026-06-03T14:55:29.957765+00:00"
+  },
+  "9007027e-248f-4952-bada-f3d8908e09f8": {
+    "id": "9007027e-248f-4952-bada-f3d8908e09f8",
+    "class_id": "9b608ff8-7f0a-4f35-bf35-b73ef18ffaf9",
+    "class_name": "Ky thuat lap trinh",
+    "teacher_id": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "teacher_name": "Phạm Tiến Đạt",
+    "title": "Bai tap 1: Phan tich thuat toan",
+    "description": "Phan tich do phuc tap thuat toan Bubble Sort",
+    "submission_type": "text",
+    "allow_resubmit": false,
+    "open_at": "2026-06-03T14:56:05.749742+00:00",
+    "deadline": "2026-12-31T23:59:00Z",
+    "status": "closed",
+    "pass_threshold": 50.0,
+    "rubric": [
+      {
+        "criteria_id": "1d6a93aa-1e8c-4131-89b4-0dda793eb8bf",
+        "criteria_name": "Noi dung va kien thuc",
+        "max_score": 10.0,
+        "weight": 50.0,
+        "keywords": [
+          "thuat toan",
+          "phan tich",
+          "do phuc tap",
+          "bubble sort"
+        ],
+        "levels": [
+          {
+            "score": 9.0,
+            "description": "Trinh bay day du, chinh xac, co vi du"
+          },
+          {
+            "score": 6.0,
+            "description": "Trinh bay du y, con thieu mot so chi tiet"
+          },
+          {
+            "score": 3.0,
+            "description": "Trinh bay so sai, thieu nhieu noi dung"
+          }
+        ]
+      },
+      {
+        "criteria_id": "bd1690a8-4a0c-479f-83f6-b2c1adadccb7",
+        "criteria_name": "Cau truc va trinh bay",
+        "max_score": 10.0,
+        "weight": 50.0,
+        "keywords": [
+          "cau truc",
+          "ro rang",
+          "mach lac",
+          "trinh bay"
+        ],
+        "levels": [
+          {
+            "score": 8.0,
+            "description": "Cau truc ro rang, trinh bay mach lac"
+          },
+          {
+            "score": 4.0,
+            "description": "Cau truc con roi, kho theo doi"
+          }
+        ]
+      }
+    ],
+    "created_at": "2026-06-03T14:56:05.749742+00:00",
+    "updated_at": "2026-06-03T14:57:39.143704+00:00"
+  },
+  "27f86f58-fffa-44a3-ba40-44a5408abc1a": {
+    "id": "27f86f58-fffa-44a3-ba40-44a5408abc1a",
+    "class_id": "5c1d733c-a750-45b2-ab44-0e050d0908d0",
+    "class_name": "Quản trị dự án",
+    "teacher_id": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "teacher_name": "Lê Thanh Thảo",
+    "title": "Nộp báo cáo bài tập lớn cuối kỳ",
+    "description": "nộp bài gồm một bản mền định dạng .doc/pdf",
+    "submission_type": "file",
+    "allow_resubmit": true,
+    "open_at": "2026-06-17T09:04:26.873Z",
+    "deadline": null,
+    "status": "published",
+    "pass_threshold": 50.0,
+    "rubric": [
+      {
+        "criteria_id": "216b266a-3ddb-47ee-abe1-81a9386bd679",
+        "criteria_name": "Xác định vấn đề và mục tiêu dự án",
+        "max_score": 10.0,
+        "weight": 10.0,
+        "keywords": [
+          "mục tiêu",
+          "SMART",
+          "vấn đề",
+          "thực tiễn",
+          "giáo dục"
+        ],
+        "levels": [
+          {
+            "score": 10.0,
+            "description": "Vấn đề thực tiễn rõ; mục tiêu SMART; có căn cứ và ý nghĩa giáo dục."
+          },
+          {
+            "score": 8.0,
+            "description": "Vấn đề rõ; mục tiêu phù hợp nhưng chưa lượng hóa đầy đủ."
+          },
+          {
+            "score": 6.0,
+            "description": "Mục tiêu còn chung chung."
+          },
+          {
+            "score": 4.0,
+            "description": "Không xác định rõ vấn đề hoặc mục tiêu."
+          }
+        ]
+      },
+      {
+        "criteria_id": "98119114-89ad-4726-b2b7-c8b5c7c1dab7",
+        "criteria_name": "Phạm vi và yêu cầu dự án",
+        "max_score": 10.0,
+        "weight": 10.0,
+        "keywords": [
+          "phạm vi",
+          "đối tượng",
+          "sản phẩm",
+          "bàn giao",
+          "tiêu chí"
+        ],
+        "levels": [
+          {
+            "score": 10.0,
+            "description": "Xác định đầy đủ phạm vi, đối tượng, sản phẩm bàn giao và tiêu chí thành công."
+          },
+          {
+            "score": 8.0,
+            "description": "Thiếu một vài thành phần."
+          },
+          {
+            "score": 6.0,
+            "description": "Phạm vi chưa rõ ràng."
+          },
+          {
+            "score": 4.0,
+            "description": "Không xác định được phạm vi."
+          }
+        ]
+      },
+      {
+        "criteria_id": "035771fc-9857-45b5-9552-d372e0ca28a7",
+        "criteria_name": "Lập kế hoạch dự án",
+        "max_score": 20.0,
+        "weight": 20.0,
+        "keywords": [
+          "WBS",
+          "Gantt",
+          "kế hoạch",
+          "ngân sách",
+          "nguồn lực"
+        ],
+        "levels": [
+          {
+            "score": 20.0,
+            "description": "Có WBS, Gantt, phân công, ngân sách, nguồn lực đầy đủ và khả thi."
+          },
+          {
+            "score": 16.0,
+            "description": "Kế hoạch tương đối đầy đủ."
+          },
+          {
+            "score": 12.0,
+            "description": "Kế hoạch sơ lược."
+          },
+          {
+            "score": 8.0,
+            "description": "Thiếu hoặc không khả thi."
+          }
+        ]
+      },
+      {
+        "criteria_id": "d4cdc92f-0485-4d71-88b2-98c1092c3c91",
+        "criteria_name": "Quản lý rủi ro và thay đổi",
+        "max_score": 10.0,
+        "weight": 10.0,
+        "keywords": [
+          "rủi ro",
+          "thay đổi",
+          "ứng phó",
+          "nhận diện",
+          "đánh giá"
+        ],
+        "levels": [
+          {
+            "score": 10.0,
+            "description": "Nhận diện, đánh giá và có phương án ứng phó rõ ràng."
+          },
+          {
+            "score": 8.0,
+            "description": "Có phân tích nhưng chưa sâu."
+          },
+          {
+            "score": 6.0,
+            "description": "Chỉ liệt kê rủi ro."
+          },
+          {
+            "score": 4.0,
+            "description": "Không đề cập."
+          }
+        ]
+      },
+      {
+        "criteria_id": "9323d701-6cf4-42d0-8cd4-e27e7b873690",
+        "criteria_name": "Tổ chức thực hiện và làm việc nhóm",
+        "max_score": 10.0,
+        "weight": 10.0,
+        "keywords": [
+          "làm việc nhóm",
+          "quản lý nhóm",
+          "phân công",
+          "minh chứng"
+        ],
+        "levels": [
+          {
+            "score": 10.0,
+            "description": "Quản lý nhóm hiệu quả, minh chứng đầy đủ."
+          },
+          {
+            "score": 8.0,
+            "description": "Phân công hợp lý."
+          },
+          {
+            "score": 6.0,
+            "description": "Phân công còn hình thức."
+          },
+          {
+            "score": 4.0,
+            "description": "Không thể hiện được quản lý nhóm."
+          }
+        ]
+      },
+      {
+        "criteria_id": "af8f4085-c51a-41a7-aa8b-d99080842241",
+        "criteria_name": "Chất lượng sản phẩm",
+        "max_score": 15.0,
+        "weight": 15.0,
+        "keywords": [
+          "sản phẩm",
+          "sáng tạo",
+          "hoàn chỉnh",
+          "chất lượng"
+        ],
+        "levels": [
+          {
+            "score": 15.0,
+            "description": "Hoàn chỉnh, sáng tạo, đáp ứng mục tiêu."
+          },
+          {
+            "score": 12.0,
+            "description": "Đạt yêu cầu, còn lỗi nhỏ."
+          },
+          {
+            "score": 9.0,
+            "description": "Đáp ứng một phần yêu cầu."
+          },
+          {
+            "score": 6.0,
+            "description": "Chưa hoàn thiện."
+          }
+        ]
+      },
+      {
+        "criteria_id": "de2dc42c-71ca-4b96-81ec-0fe81f34b927",
+        "criteria_name": "Đánh giá kết quả và phân tích dữ liệu",
+        "max_score": 15.0,
+        "weight": 15.0,
+        "keywords": [
+          "đánh giá",
+          "phân tích",
+          "dữ liệu",
+          "kết quả",
+          "kết luận"
+        ],
+        "levels": [
+          {
+            "score": 15.0,
+            "description": "Dữ liệu đầy đủ, phân tích sâu, kết luận có căn cứ."
+          },
+          {
+            "score": 12.0,
+            "description": "Có phân tích tương đối tốt."
+          },
+          {
+            "score": 9.0,
+            "description": "Chủ yếu mô tả kết quả."
+          },
+          {
+            "score": 6.0,
+            "description": "Thiếu minh chứng."
+          }
+        ]
+      },
+      {
+        "criteria_id": "fffb8089-f658-4975-8da7-c98c52d3df6c",
+        "criteria_name": "Bài học kinh nghiệm và cải tiến",
+        "max_score": 5.0,
+        "weight": 5.0,
+        "keywords": [
+          "bài học",
+          "kinh nghiệm",
+          "cải tiến",
+          "phản biện"
+        ],
+        "levels": [
+          {
+            "score": 5.0,
+            "description": "Đề xuất cải tiến khả thi, phản biện tốt."
+          },
+          {
+            "score": 4.0,
+            "description": "Có rút kinh nghiệm."
+          },
+          {
+            "score": 3.0,
+            "description": "Chung chung."
+          },
+          {
+            "score": 2.0,
+            "description": "Không có."
+          }
+        ]
+      },
+      {
+        "criteria_id": "2ac7058a-51a7-4c08-bebb-c669012270e3",
+        "criteria_name": "Hình thức báo cáo và học thuật",
+        "max_score": 5.0,
+        "weight": 5.0,
+        "keywords": [
+          "hình thức",
+          "báo cáo",
+          "học thuật",
+          "trình bày",
+          "trích dẫn"
+        ],
+        "levels": [
+          {
+            "score": 5.0,
+            "description": "Trình bày chuyên nghiệp, trích dẫn chuẩn."
+          },
+          {
+            "score": 4.0,
+            "description": "Có lỗi nhỏ."
+          },
+          {
+            "score": 3.0,
+            "description": "Nhiều lỗi trình bày."
+          },
+          {
+            "score": 2.0,
+            "description": "Không đạt chuẩn học thuật."
+          }
+        ]
+      }
+    ],
+    "created_at": "2026-06-17T09:04:26.895733+00:00",
+    "updated_at": "2026-06-17T09:06:46.830937+00:00"
+  },
+  "bb35354a-3b09-4c96-8c3d-fc80fc9ac46b": {
+    "id": "bb35354a-3b09-4c96-8c3d-fc80fc9ac46b",
+    "class_id": "cd03fbb4-0806-4c20-9bfc-ecee26d7c733",
+    "class_name": "Ky thuat lap trinh",
+    "teacher_id": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "teacher_name": "Lê Thanh Thảo",
+    "title": "Bai tap 1: Phan tich thuat toan",
+    "description": "Phan tich do phuc tap thuat toan Bubble Sort",
+    "submission_type": "text",
+    "allow_resubmit": false,
+    "open_at": "2026-06-20T14:42:57.099971+00:00",
+    "deadline": "2026-12-31T23:59:00Z",
+    "status": "closed",
+    "pass_threshold": 50.0,
+    "rubric": [
+      {
+        "criteria_id": "9d5f9117-20d9-4699-bda7-a9b112063f7e",
+        "criteria_name": "Noi dung va kien thuc",
+        "max_score": 10.0,
+        "weight": 50.0,
+        "keywords": [
+          "thuat toan",
+          "phan tich",
+          "do phuc tap",
+          "bubble sort"
+        ],
+        "levels": [
+          {
+            "score": 9.0,
+            "description": "Trinh bay day du, chinh xac, co vi du"
+          },
+          {
+            "score": 6.0,
+            "description": "Trinh bay du y, con thieu mot so chi tiet"
+          },
+          {
+            "score": 3.0,
+            "description": "Trinh bay so sai, thieu nhieu noi dung"
+          }
+        ]
+      },
+      {
+        "criteria_id": "0d8433e0-528f-4774-b558-416a17e6e4b8",
+        "criteria_name": "Cau truc va trinh bay",
+        "max_score": 10.0,
+        "weight": 50.0,
+        "keywords": [
+          "cau truc",
+          "ro rang",
+          "mach lac",
+          "trinh bay"
+        ],
+        "levels": [
+          {
+            "score": 8.0,
+            "description": "Cau truc ro rang, trinh bay mach lac"
+          },
+          {
+            "score": 4.0,
+            "description": "Cau truc con roi, kho theo doi"
+          }
+        ]
+      }
+    ],
+    "created_at": "2026-06-20T14:42:57.099971+00:00",
+    "updated_at": "2026-06-20T14:43:27.335373+00:00"
+  },
+  "975a7d7b-224b-4fd7-8a23-d61ed8914632": {
+    "id": "975a7d7b-224b-4fd7-8a23-d61ed8914632",
+    "class_id": "474c8597-478a-4e76-abc0-c3d698093fef",
+    "class_name": "Ky thuat lap trinh",
+    "teacher_id": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "teacher_name": "Lê Thanh Thảo",
+    "title": "Bai tap 1: Phan tich thuat toan",
+    "description": "Phan tich do phuc tap thuat toan Bubble Sort",
+    "submission_type": "text",
+    "allow_resubmit": false,
+    "open_at": "2026-06-20T14:46:23.928815+00:00",
+    "deadline": "2026-12-31T23:59:00Z",
+    "status": "closed",
+    "pass_threshold": 50.0,
+    "rubric": [
+      {
+        "criteria_id": "743cc702-7169-4587-9600-330587172937",
+        "criteria_name": "Noi dung va kien thuc",
+        "max_score": 10.0,
+        "weight": 50.0,
+        "keywords": [
+          "thuat toan",
+          "phan tich",
+          "do phuc tap",
+          "bubble sort"
+        ],
+        "levels": [
+          {
+            "score": 9.0,
+            "description": "Trinh bay day du, chinh xac, co vi du"
+          },
+          {
+            "score": 6.0,
+            "description": "Trinh bay du y, con thieu mot so chi tiet"
+          },
+          {
+            "score": 3.0,
+            "description": "Trinh bay so sai, thieu nhieu noi dung"
+          }
+        ]
+      },
+      {
+        "criteria_id": "899b91ce-4319-4de7-b01f-c0da469ecdeb",
+        "criteria_name": "Cau truc va trinh bay",
+        "max_score": 10.0,
+        "weight": 50.0,
+        "keywords": [
+          "cau truc",
+          "ro rang",
+          "mach lac",
+          "trinh bay"
+        ],
+        "levels": [
+          {
+            "score": 8.0,
+            "description": "Cau truc ro rang, trinh bay mach lac"
+          },
+          {
+            "score": 4.0,
+            "description": "Cau truc con roi, kho theo doi"
+          }
+        ]
+      }
+    ],
+    "created_at": "2026-06-20T14:46:23.928815+00:00",
+    "updated_at": "2026-06-20T14:47:21.711829+00:00"
+  },
+  "e1cd096f-73d9-482e-a69a-76a98d13d244": {
+    "id": "e1cd096f-73d9-482e-a69a-76a98d13d244",
+    "class_id": "ecbc3831-0c72-4439-8266-5930004f3ad3",
+    "class_name": "Ky thuat lap trinh",
+    "teacher_id": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "teacher_name": "Lê Thanh Thảo",
+    "title": "Bai tap 1: Phan tich thuat toan",
+    "description": "Phan tich do phuc tap thuat toan Bubble Sort",
+    "submission_type": "text",
+    "allow_resubmit": false,
+    "open_at": "2026-06-20T15:01:26.801161+00:00",
+    "deadline": "2026-12-31T23:59:00Z",
+    "status": "closed",
+    "pass_threshold": 50.0,
+    "rubric": [
+      {
+        "criteria_id": "1fc62960-dc3c-41e4-8052-10bc68f340ab",
+        "criteria_name": "Noi dung va kien thuc",
+        "max_score": 10.0,
+        "weight": 50.0,
+        "keywords": [
+          "thuat toan",
+          "phan tich",
+          "do phuc tap",
+          "bubble sort"
+        ],
+        "levels": [
+          {
+            "score": 9.0,
+            "description": "Trinh bay day du, chinh xac, co vi du"
+          },
+          {
+            "score": 6.0,
+            "description": "Trinh bay du y, con thieu mot so chi tiet"
+          },
+          {
+            "score": 3.0,
+            "description": "Trinh bay so sai, thieu nhieu noi dung"
+          }
+        ]
+      },
+      {
+        "criteria_id": "c82b74d6-d9c3-4223-84fa-b7502c29dc44",
+        "criteria_name": "Cau truc va trinh bay",
+        "max_score": 10.0,
+        "weight": 50.0,
+        "keywords": [
+          "cau truc",
+          "ro rang",
+          "mach lac",
+          "trinh bay"
+        ],
+        "levels": [
+          {
+            "score": 8.0,
+            "description": "Cau truc ro rang, trinh bay mach lac"
+          },
+          {
+            "score": 4.0,
+            "description": "Cau truc con roi, kho theo doi"
+          }
+        ]
+      }
+    ],
+    "created_at": "2026-06-20T15:01:26.801161+00:00",
+    "updated_at": "2026-06-20T15:01:30.893806+00:00"
+  },
+  "7a4c4f91-8bcf-48ec-a567-a30024ccdcf2": {
+    "id": "7a4c4f91-8bcf-48ec-a567-a30024ccdcf2",
+    "class_id": "d944542c-200c-4263-854f-799dd6c3c464",
+    "class_name": "Ky thuat lap trinh",
+    "teacher_id": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "teacher_name": "Lê Thanh Thảo",
+    "title": "Bai tap 1: Phan tich thuat toan",
+    "description": "Phan tich do phuc tap thuat toan Bubble Sort",
+    "submission_type": "text",
+    "allow_resubmit": false,
+    "open_at": "2026-06-20T15:02:08.604884+00:00",
+    "deadline": "2026-12-31T23:59:00Z",
+    "status": "closed",
+    "pass_threshold": 50.0,
+    "rubric": [
+      {
+        "criteria_id": "ac76b74e-4790-4484-a2df-7383983b6bb6",
+        "criteria_name": "Noi dung va kien thuc",
+        "max_score": 10.0,
+        "weight": 50.0,
+        "keywords": [
+          "thuat toan",
+          "phan tich",
+          "do phuc tap",
+          "bubble sort"
+        ],
+        "levels": [
+          {
+            "score": 9.0,
+            "description": "Trinh bay day du, chinh xac, co vi du"
+          },
+          {
+            "score": 6.0,
+            "description": "Trinh bay du y, con thieu mot so chi tiet"
+          },
+          {
+            "score": 3.0,
+            "description": "Trinh bay so sai, thieu nhieu noi dung"
+          }
+        ]
+      },
+      {
+        "criteria_id": "b25ee6ca-60b2-480f-8864-3664faea2944",
+        "criteria_name": "Cau truc va trinh bay",
+        "max_score": 10.0,
+        "weight": 50.0,
+        "keywords": [
+          "cau truc",
+          "ro rang",
+          "mach lac",
+          "trinh bay"
+        ],
+        "levels": [
+          {
+            "score": 8.0,
+            "description": "Cau truc ro rang, trinh bay mach lac"
+          },
+          {
+            "score": 4.0,
+            "description": "Cau truc con roi, kho theo doi"
+          }
+        ]
+      }
+    ],
+    "created_at": "2026-06-20T15:02:08.604884+00:00",
+    "updated_at": "2026-06-20T15:02:13.070446+00:00"
+  },
+  "7bc1fef0-1e54-4e11-b12d-8cbc8c7582ab": {
+    "id": "7bc1fef0-1e54-4e11-b12d-8cbc8c7582ab",
+    "class_id": "da5bc37d-6877-4e14-a279-335dc33192f9",
+    "class_name": "Ky thuat lap trinh",
+    "teacher_id": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "teacher_name": "Lê Thanh Thảo",
+    "title": "Bai tap 1: Phan tich thuat toan",
+    "description": "Phan tich do phuc tap thuat toan Bubble Sort",
+    "submission_type": "text",
+    "allow_resubmit": false,
+    "open_at": "2026-06-20T15:06:57.991780+00:00",
+    "deadline": "2026-12-31T23:59:00Z",
+    "status": "closed",
+    "pass_threshold": 50.0,
+    "rubric": [
+      {
+        "criteria_id": "be4c2331-9c11-4559-bfc7-522e326a965a",
+        "criteria_name": "Noi dung va kien thuc",
+        "max_score": 10.0,
+        "weight": 50.0,
+        "keywords": [
+          "thuat toan",
+          "phan tich",
+          "do phuc tap",
+          "bubble sort"
+        ],
+        "levels": [
+          {
+            "score": 9.0,
+            "description": "Trinh bay day du, chinh xac, co vi du"
+          },
+          {
+            "score": 6.0,
+            "description": "Trinh bay du y, con thieu mot so chi tiet"
+          },
+          {
+            "score": 3.0,
+            "description": "Trinh bay so sai, thieu nhieu noi dung"
+          }
+        ]
+      },
+      {
+        "criteria_id": "d7d6031f-28b0-41f9-8567-8979636a060b",
+        "criteria_name": "Cau truc va trinh bay",
+        "max_score": 10.0,
+        "weight": 50.0,
+        "keywords": [
+          "cau truc",
+          "ro rang",
+          "mach lac",
+          "trinh bay"
+        ],
+        "levels": [
+          {
+            "score": 8.0,
+            "description": "Cau truc ro rang, trinh bay mach lac"
+          },
+          {
+            "score": 4.0,
+            "description": "Cau truc con roi, kho theo doi"
+          }
+        ]
+      }
+    ],
+    "created_at": "2026-06-20T15:06:57.991780+00:00",
+    "updated_at": "2026-06-20T15:07:02.092638+00:00"
+  },
+  "6bd12c52-b821-4435-b1c5-8eaad3b8a511": {
+    "id": "6bd12c52-b821-4435-b1c5-8eaad3b8a511",
+    "class_id": "d5bbe175-b3ac-4b7d-8fbe-cd76a32791bb",
+    "class_name": "Ky thuat lap trinh",
+    "teacher_id": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "teacher_name": "Lê Thanh Thảo",
+    "title": "Bai tap 1: Phan tich thuat toan",
+    "description": "Phan tich do phuc tap thuat toan Bubble Sort",
+    "submission_type": "text",
+    "allow_resubmit": false,
+    "open_at": "2026-06-20T15:09:47.083474+00:00",
+    "deadline": "2026-12-31T23:59:00Z",
+    "status": "closed",
+    "pass_threshold": 50.0,
+    "rubric": [
+      {
+        "criteria_id": "6eea0e79-9940-41c6-a7d6-efe7b20b01c6",
+        "criteria_name": "Noi dung va kien thuc",
+        "max_score": 10.0,
+        "weight": 50.0,
+        "keywords": [
+          "thuat toan",
+          "phan tich",
+          "do phuc tap",
+          "bubble sort"
+        ],
+        "levels": [
+          {
+            "score": 9.0,
+            "description": "Trinh bay day du, chinh xac, co vi du"
+          },
+          {
+            "score": 6.0,
+            "description": "Trinh bay du y, con thieu mot so chi tiet"
+          },
+          {
+            "score": 3.0,
+            "description": "Trinh bay so sai, thieu nhieu noi dung"
+          }
+        ]
+      },
+      {
+        "criteria_id": "8fbc2fd5-07b8-431b-b4ca-86348153f1a7",
+        "criteria_name": "Cau truc va trinh bay",
+        "max_score": 10.0,
+        "weight": 50.0,
+        "keywords": [
+          "cau truc",
+          "ro rang",
+          "mach lac",
+          "trinh bay"
+        ],
+        "levels": [
+          {
+            "score": 8.0,
+            "description": "Cau truc ro rang, trinh bay mach lac"
+          },
+          {
+            "score": 4.0,
+            "description": "Cau truc con roi, kho theo doi"
+          }
+        ]
+      }
+    ],
+    "created_at": "2026-06-20T15:09:47.083474+00:00",
+    "updated_at": "2026-06-20T15:09:51.222559+00:00"
+  },
+  "751be612-e97b-4694-afe0-8f2f2d7379f2": {
+    "id": "751be612-e97b-4694-afe0-8f2f2d7379f2",
+    "class_id": "4865f4e4-6ccc-46fe-982e-0a0fb1112668",
+    "class_name": "Ky thuat lap trinh",
+    "teacher_id": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "teacher_name": "Lê Thanh Thảo",
+    "title": "Bai tap 1: Phan tich thuat toan",
+    "description": "Phan tich do phuc tap thuat toan Bubble Sort",
+    "submission_type": "text",
+    "allow_resubmit": false,
+    "open_at": "2026-06-20T15:11:52.535721+00:00",
+    "deadline": "2026-12-31T23:59:00Z",
+    "status": "published",
+    "pass_threshold": 50.0,
+    "rubric": [
+      {
+        "criteria_id": "0161d0db-8e24-4180-af2d-bb3da5b30113",
+        "criteria_name": "Noi dung va kien thuc",
+        "max_score": 10.0,
+        "weight": 50.0,
+        "keywords": [
+          "thuat toan",
+          "phan tich",
+          "do phuc tap",
+          "bubble sort"
+        ],
+        "levels": [
+          {
+            "score": 9.0,
+            "description": "Trinh bay day du, chinh xac, co vi du"
+          },
+          {
+            "score": 6.0,
+            "description": "Trinh bay du y, con thieu mot so chi tiet"
+          },
+          {
+            "score": 3.0,
+            "description": "Trinh bay so sai, thieu nhieu noi dung"
+          }
+        ]
+      },
+      {
+        "criteria_id": "d469da8a-085b-40d8-bd5e-15ca03b7e5db",
+        "criteria_name": "Cau truc va trinh bay",
+        "max_score": 10.0,
+        "weight": 50.0,
+        "keywords": [
+          "cau truc",
+          "ro rang",
+          "mach lac",
+          "trinh bay"
+        ],
+        "levels": [
+          {
+            "score": 8.0,
+            "description": "Cau truc ro rang, trinh bay mach lac"
+          },
+          {
+            "score": 4.0,
+            "description": "Cau truc con roi, kho theo doi"
+          }
+        ]
+      }
+    ],
+    "created_at": "2026-06-20T15:11:52.535721+00:00",
+    "updated_at": "2026-06-20T15:11:52.544138+00:00"
+  }
+}

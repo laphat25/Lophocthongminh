@@ -9,3 +9,10 @@ python-jose[cryptography]
 passlib[bcrypt]
 python-docx
 openpyxl
+cryptography
+slowapi
+python-magic
+pytest
+httpx
+pytest-asyncio
+

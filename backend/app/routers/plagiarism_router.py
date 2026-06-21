@@ -9,8 +9,12 @@ from app.services.plagiarism import compute_similarity_matrix
 router = APIRouter(tags=["plagiarism"])
 
 
-def _run_check(assignment_id: str, teacher_id: str):
-    """Background task: compute similarity matrix."""
+async def _run_check(assignment_id: str, teacher_id: str, task_id: str):
+    """Background task: compute similarity matrix with WebSocket progress updates."""
+    from app.routers.ws import update_task_progress
+    
+    await update_task_progress(task_id, "running", 20.0, "Đang lấy danh sách bài nộp...")
+    
     subs = [
         s for s in submission_store.values()
         if s["assignment_id"] == assignment_id and s.get("content_text")
@@ -18,8 +22,10 @@ def _run_check(assignment_id: str, teacher_id: str):
     if len(subs) < 2:
         pairs = []
     else:
+        await update_task_progress(task_id, "running", 50.0, "Đang so sánh đối chiếu giữa các bài nộp...")
         pairs = compute_similarity_matrix(subs)
 
+    await update_task_progress(task_id, "running", 80.0, "Đang hoàn thiện báo cáo phân tích...")
     flagged = [p for p in pairs if p["flag"] != "ok"]
     max_sim = max((p["similarity_pct"] for p in pairs), default=0.0)
 
@@ -38,10 +44,11 @@ def _run_check(assignment_id: str, teacher_id: str):
         },
     }
     plagiarism_store.set(assignment_id, report)
+    await update_task_progress(task_id, "completed", 100.0, "Kiểm tra đạo văn hoàn tất", result=report)
 
 
 @router.post("/assignments/{assignment_id}/plagiarism/check")
-def trigger_plagiarism_check(
+async def trigger_plagiarism_check(
     assignment_id: str,
     background_tasks: BackgroundTasks,
     teacher: dict = Depends(require_teacher),
@@ -54,7 +61,11 @@ def trigger_plagiarism_check(
     if subs_count < 2:
         raise HTTPException(400, "Cần ít nhất 2 bài nộp để kiểm tra đạo văn")
 
-    # Mark as pending immediately
+    task_id = f"plagiarism_{assignment_id}"
+    from app.routers.ws import update_task_progress
+    await update_task_progress(task_id, "pending", 0.0, "Đang khởi tạo tác vụ kiểm tra đạo văn...")
+
+    # Mark as pending immediately in DB for polling fallback
     pending = plagiarism_store.get(assignment_id) or {}
     pending.update({
         "id": assignment_id,
@@ -64,8 +75,8 @@ def trigger_plagiarism_check(
     })
     plagiarism_store.set(assignment_id, pending)
 
-    background_tasks.add_task(_run_check, assignment_id, teacher["id"])
-    return {"message": "Đang kiểm tra đạo văn...", "status": "pending"}
+    background_tasks.add_task(_run_check, assignment_id, teacher["id"], task_id)
+    return {"message": "Đang kiểm tra đạo văn...", "status": "pending", "task_id": task_id}
 
 
 @router.get("/assignments/{assignment_id}/plagiarism/report")

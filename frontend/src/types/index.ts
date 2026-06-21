@@ -7,7 +7,7 @@ export interface User {
   student_id?: string;
   is_active: boolean;
   created_at: string;
-  gemini_api_key?: string;
+  has_gemini_key?: boolean;
 }
 
 export interface AuthResponse {
@@ -149,6 +149,22 @@ export interface PlagiarismPair {
   flag: "ok" | "warning" | "severe";
 }
 
+export interface PlagiarismPairDetail {
+  pair: PlagiarismPair | null;
+  submission_a: {
+    id: string;
+    student_name: string;
+    content_text: string;
+    submitted_at: string;
+  };
+  submission_b: {
+    id: string;
+    student_name: string;
+    content_text: string;
+    submitted_at: string;
+  };
+}
+
 export interface PlagiarismReport {
   id: string;
   assignment_id: string;
@@ -164,48 +180,17 @@ export interface PlagiarismReport {
   };
 }
 
-// ─── Old types (backward compat) ─────────────────────────────────────────────
-export interface LegacySubmission {
-  student_id: string;
-  filename: string;
-  uploaded_at: string;
-  score: number | null;
-  draft_feedback: string | null;
-  plagiarism_risk_score: number;
-  plagiarism_flagged: boolean;
-  graded_at: string | null;
+// ─── Questions ────────────────────────────────────────────────────────────────
+export interface Question {
+  id: string;
+  title: string;
+  topic: string;
+  difficulty: "easy" | "medium" | "hard" | string;
+  tags: string[];
+  content: string;
+  created_by: string;
+  created_by_name?: string;
+  created_at: string;
+  updated_at: string;
 }
 
-export interface UploadResponse {
-  student_id: string;
-  filename: string;
-  plagiarism_risk_score: number;
-  plagiarism_flagged: boolean;
-  message: string;
-}
-
-export interface GradeResponse {
-  student_id: string;
-  score: number;
-  draft_feedback: string;
-  graded_at: string;
-}
-
-export interface GradeAllResult {
-  student_id: string;
-  score: number | null;
-  success: boolean;
-  error?: string;
-}
-
-export interface GradeAllResponse {
-  graded_count: number;
-  failed_count: number;
-  results: GradeAllResult[];
-}
-
-export interface SubmissionListResponse {
-  submissions: LegacySubmission[];
-  total: number;
-  ungraded_count: number;
-}

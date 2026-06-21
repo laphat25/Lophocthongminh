@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import {
   getAssignment, getAssignmentSubmissions, autoGrade, gradeAll, publishAll,
   triggerPlagiarismCheck, getPlagiarismReport,
-  publishAssignment, closeAssignment,
+  publishAssignment, closeAssignment, getWebSocketUrl,
 } from "../api/client";
 import type { Assignment, Submission } from "../types";
 import Navbar from "../components/Navbar";
@@ -19,6 +19,11 @@ export default function AssignmentPage() {
   const [plagStatus, setPlagStatus] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [msg, setMsg] = useState<{ text: string; type: "success" | "error" } | null>(null);
+
+  const [batchProgress, setBatchProgress] = useState<number | null>(null);
+  const [batchMsg, setBatchMsg] = useState<string | null>(null);
+  const [plagProgress, setPlagProgress] = useState<number | null>(null);
+  const [plagMsg, setPlagMsg] = useState<string | null>(null);
 
   const fetchData = async () => {
     if (!assignmentId) return;
@@ -53,15 +58,64 @@ export default function AssignmentPage() {
   const handleGradeAll = async () => {
     if (!assignmentId) return;
     setBatchGrading(true);
+    setBatchProgress(0);
+    setBatchMsg("Đang kết nối...");
     setMsg(null);
     try {
       const res = await gradeAll(assignmentId);
-      setMsg({ text: res.message, type: "success" });
-      fetchData();
+      const taskId = res.task_id;
+      if (!taskId) {
+        setMsg({ text: res.message, type: "success" });
+        setBatchGrading(false);
+        setBatchProgress(null);
+        setBatchMsg(null);
+        fetchData();
+        return;
+      }
+
+      const wsUrl = getWebSocketUrl(taskId);
+      const ws = new WebSocket(wsUrl);
+
+      ws.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+        if (data.progress !== undefined) {
+          setBatchProgress(data.progress);
+        }
+        if (data.message) {
+          setBatchMsg(data.message);
+        }
+
+        if (data.status === "completed") {
+          ws.close();
+          setBatchGrading(false);
+          setBatchProgress(null);
+          setBatchMsg(null);
+          setMsg({ text: data.message || "Đã chấm điểm hoàn tất", type: "success" });
+          fetchData();
+        } else if (data.status === "failed") {
+          ws.close();
+          setBatchGrading(false);
+          setBatchProgress(null);
+          setBatchMsg(null);
+          setMsg({ text: data.error || "Có lỗi xảy ra khi chấm bài", type: "error" });
+        }
+      };
+
+      ws.onerror = () => {
+        ws.close();
+        // Fallback: wait a bit and refresh
+        setTimeout(() => {
+          setBatchGrading(false);
+          setBatchProgress(null);
+          setBatchMsg(null);
+          fetchData();
+        }, 5000);
+      };
     } catch (e) {
       setMsg({ text: e instanceof Error ? e.message : "Lỗi chấm tất cả", type: "error" });
-    } finally {
       setBatchGrading(false);
+      setBatchProgress(null);
+      setBatchMsg(null);
     }
   };
 
@@ -83,22 +137,74 @@ export default function AssignmentPage() {
   const handlePlagCheck = async () => {
     if (!assignmentId) return;
     setPlagStatus("checking");
+    setPlagProgress(0);
+    setPlagMsg("Đang kết nối...");
     try {
-      await triggerPlagiarismCheck(assignmentId);
-      let attempts = 0;
-      const poll = setInterval(async () => {
-        attempts++;
-        try {
-          const report = await getPlagiarismReport(assignmentId);
-          if (report.status === "completed") {
-            clearInterval(poll);
-            setPlagStatus("done");
+      const res = await triggerPlagiarismCheck(assignmentId);
+      const taskId = res.task_id;
+      if (!taskId) {
+        setPlagStatus("done");
+        setPlagProgress(null);
+        setPlagMsg(null);
+        fetchData();
+        return;
+      }
+
+      const wsUrl = getWebSocketUrl(taskId);
+      const ws = new WebSocket(wsUrl);
+
+      ws.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+        if (data.progress !== undefined) {
+          setPlagProgress(data.progress);
+        }
+        if (data.message) {
+          setPlagMsg(data.message);
+        }
+
+        if (data.status === "completed") {
+          ws.close();
+          setPlagStatus("done");
+          setPlagProgress(null);
+          setPlagMsg(null);
+          fetchData();
+        } else if (data.status === "failed") {
+          ws.close();
+          setPlagStatus(null);
+          setPlagProgress(null);
+          setPlagMsg(null);
+          alert(data.error || "Lỗi kiểm tra đạo văn");
+        }
+      };
+
+      ws.onerror = () => {
+        ws.close();
+        // Fallback to standard polling if WebSocket connection fails
+        let attempts = 0;
+        const poll = setInterval(async () => {
+          attempts++;
+          try {
+            const report = await getPlagiarismReport(assignmentId);
+            if (report.status === "completed") {
+              clearInterval(poll);
+              setPlagStatus("done");
+              setPlagProgress(null);
+              setPlagMsg(null);
+              fetchData();
+            }
+          } catch (pollErr) {
+            console.error("Polled plagiarism status error:", pollErr);
           }
-        } catch {}
-        if (attempts > 20) clearInterval(poll);
-      }, 1500);
+          if (attempts > 20) {
+            clearInterval(poll);
+            setPlagStatus(null);
+          }
+        }, 1500);
+      };
     } catch (e) {
       setPlagStatus(null);
+      setPlagProgress(null);
+      setPlagMsg(null);
       alert(e instanceof Error ? e.message : "Lỗi kiểm tra đạo văn");
     }
   };
@@ -318,6 +424,53 @@ export default function AssignmentPage() {
             </button>
           </div>
         </div>
+
+        {/* Task progress indicators */}
+        {(batchProgress !== null || plagProgress !== null) && (
+          <div style={{
+            background: "rgba(var(--primary-rgb), 0.05)",
+            border: "1px solid rgba(var(--primary-rgb), 0.15)",
+            padding: "16px",
+            borderRadius: "12px",
+            marginBottom: "20px",
+            display: "flex",
+            flexDirection: "column",
+            gap: "12px"
+          }}>
+            {batchProgress !== null && (
+              <div>
+                <div style={{ display: "flex", justifyContent: "space-between", fontSize: "14px", fontWeight: "600", marginBottom: "6px" }}>
+                  <span style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                    <svg className="animate-spin" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ display: "inline" }}>
+                      <line x1="12" y1="2" x2="12" y2="6" /><line x1="12" y1="18" x2="12" y2="22" /><line x1="4.93" y1="4.93" x2="7.76" y2="7.76" /><line x1="16.24" y1="16.24" x2="19.07" y2="19.07" /><line x1="2" y1="12" x2="6" y2="12" /><line x1="18" y1="12" x2="22" y2="12" /><line x1="4.93" y1="19.07" x2="7.76" y2="16.24" /><line x1="16.24" y1="7.76" x2="19.07" y2="4.93" />
+                    </svg>
+                    Tiến trình chấm tự động: {batchMsg}
+                  </span>
+                  <span>{batchProgress}%</span>
+                </div>
+                <div style={{ background: "rgba(0,0,0,0.06)", height: "8px", borderRadius: "4px", overflow: "hidden" }}>
+                  <div style={{ background: "var(--primary)", width: `${batchProgress}%`, height: "100%", transition: "width 0.3s ease" }}></div>
+                </div>
+              </div>
+            )}
+            {plagProgress !== null && (
+              <div>
+                <div style={{ display: "flex", justifyContent: "space-between", fontSize: "14px", fontWeight: "600", marginBottom: "6px" }}>
+                  <span style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                    <svg className="animate-spin" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--success)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ display: "inline" }}>
+                      <line x1="12" y1="2" x2="12" y2="6" /><line x1="12" y1="18" x2="12" y2="22" /><line x1="4.93" y1="4.93" x2="7.76" y2="7.76" /><line x1="16.24" y1="16.24" x2="19.07" y2="19.07" /><line x1="2" y1="12" x2="6" y2="12" /><line x1="18" y1="12" x2="22" y2="12" /><line x1="4.93" y1="19.07" x2="7.76" y2="16.24" /><line x1="16.24" y1="7.76" x2="19.07" y2="4.93" />
+                    </svg>
+                    Tiến trình kiểm tra đạo văn: {plagMsg}
+                  </span>
+                  <span>{plagProgress}%</span>
+                </div>
+                <div style={{ background: "rgba(0,0,0,0.06)", height: "8px", borderRadius: "4px", overflow: "hidden" }}>
+                  <div style={{ background: "var(--success)", width: `${plagProgress}%`, height: "100%", transition: "width 0.3s ease" }}></div>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
 
         {/* Submissions table */}
         <div className="table-container">

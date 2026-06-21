@@ -1,9 +1,13 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useParams, Link } from "react-router-dom";
-import { getAssignment, getMySubmissions, submitText, submitFile, getGrade } from "../api/client";
+import { getAssignment, getMySubmissions, submitText, submitFile, getGrade, acceptFix, rejectFix } from "../api/client";
 import type { Assignment, Submission, GradingResult } from "../types";
+import type { FeedbackItem } from "../types/feedback";
 import Navbar from "../components/Navbar";
 import { useAuth } from "../context/AuthContext";
+import HighlightedText from "../components/HighlightedText";
+import FeedbackPanel from "../components/FeedbackPanel";
+import { useAnchorNavigation } from "../hooks/useAnchorNavigation";
 
 export default function StudentAssignmentPage() {
   const { assignmentId } = useParams<{ assignmentId: string }>();
@@ -18,6 +22,32 @@ export default function StudentAssignmentPage() {
   const [msg, setMsg] = useState<{ text: string; type: "success" | "error" } | null>(null);
   const [agree, setAgree] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
+  const [showResubmitForm, setShowResubmitForm] = useState(false);
+
+  const handleAcceptFix = async (id: string) => {
+    try {
+      const updated = await acceptFix(id);
+      setFeedbacks((prev) => prev.map((f) => (f.id === id ? updated : f)));
+    } catch (err) {
+      alert(err instanceof Error ? err.message : "Lỗi khi áp dụng sửa");
+    }
+  };
+
+  const handleRejectFix = async (id: string) => {
+    try {
+      const updated = await rejectFix(id);
+      setFeedbacks((prev) => prev.map((f) => (f.id === id ? updated : f)));
+    } catch (err) {
+      alert(err instanceof Error ? err.message : "Lỗi khi từ chối sửa");
+    }
+  };
+
+  const API_HOST = import.meta.env.VITE_API_HOST || "http://localhost:8000";
+
+  // Feedback anchoring state for student
+  const [feedbacks, setFeedbacks] = useState<FeedbackItem[]>([]);
+  const [activeFeedbackId, setActiveFeedbackId] = useState<string | null>(null);
+  const { submissionRef, scrollToAnchor, scrollToFeedback, registerFeedbackRef } = useAnchorNavigation();
 
   const fetchData = async () => {
     if (!assignmentId) return;
@@ -34,7 +64,12 @@ export default function StudentAssignmentPage() {
         try {
           const g = await getGrade(found.id);
           setGrading(g.grading);
-        } catch {}
+          if (g.feedbacks) {
+            setFeedbacks(g.feedbacks);
+          }
+        } catch (err) {
+          console.warn("Không thể tải chi tiết điểm:", err);
+        }
       }
     } catch (e) {
       console.error(e);
@@ -42,6 +77,18 @@ export default function StudentAssignmentPage() {
       setLoading(false);
     }
   };
+
+  const handleHighlightClick = useCallback((feedbackIds: string[]) => {
+    if (feedbackIds.length > 0) {
+      setActiveFeedbackId(feedbackIds[0]);
+      scrollToFeedback(feedbackIds[0]);
+    }
+  }, [scrollToFeedback]);
+
+  const handleFeedbackClick = useCallback((feedbackId: string) => {
+    setActiveFeedbackId(feedbackId);
+    scrollToAnchor(feedbackId);
+  }, [scrollToAnchor]);
 
   useEffect(() => { fetchData(); }, [assignmentId]);
 
@@ -56,6 +103,7 @@ export default function StudentAssignmentPage() {
       const sub = await submitText(assignmentId, textContent);
       setMySub(sub);
       setMsg({ text: "Nộp bài thành công!", type: "success" });
+      setShowResubmitForm(false);
     } catch (err) {
       setMsg({ text: err instanceof Error ? err.message : "Lỗi nộp bài", type: "error" });
     } finally {
@@ -72,6 +120,7 @@ export default function StudentAssignmentPage() {
       const sub = await submitFile(assignmentId, file);
       setMySub(sub);
       setMsg({ text: `Nộp file "${file.name}" thành công!`, type: "success" });
+      setShowResubmitForm(false);
     } catch (err) {
       setMsg({ text: err instanceof Error ? err.message : "Lỗi nộp file", type: "error" });
     } finally {
@@ -167,8 +216,52 @@ export default function StudentAssignmentPage() {
           </div>
         )}
 
+        {/* Graded Workspace (Submission Highlights + Feedback Panel) */}
+        {grading && grading.status === "published" && feedbacks.length > 0 && (
+          <div className="grading-layout mt-16">
+            {/* Left Column: Submission Highlights */}
+            <div className="grading-submission glass" ref={submissionRef}>
+              <h3 className="panel-title" style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "16px" }}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: "var(--primary)" }}>
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <polyline points="14 2 14 8 20 8" />
+                </svg>
+                Bài làm của bạn
+              </h3>
+              {mySub?.content_text ? (
+                <div className="submission-text-container">
+                  <HighlightedText
+                    text={mySub.content_text}
+                    feedbacks={feedbacks}
+                    activeFeedbackId={activeFeedbackId}
+                    onHighlightClick={handleHighlightClick}
+                    submissionRef={submissionRef}
+                    isTeacher={false}
+                  />
+                </div>
+              ) : (
+                <p className="text-muted">Không tìm thấy nội dung văn bản bài làm.</p>
+              )}
+            </div>
+
+            {/* Right Column: Feedback cards list */}
+            <div className="grading-sidebar">
+              <div className="card" style={{ padding: "16px 20px" }}>
+                <FeedbackPanel
+                  feedbacks={feedbacks}
+                  activeFeedbackId={activeFeedbackId}
+                  onFeedbackClick={handleFeedbackClick}
+                  registerRef={registerFeedbackRef}
+                  onAcceptFix={handleAcceptFix}
+                  onRejectFix={handleRejectFix}
+                />
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Submission form */}
-        {!mySub && !isDeadlinePassed && (
+        {(!mySub || (mySub && assignment?.allow_resubmit && showResubmitForm)) && !isDeadlinePassed && (
           <div className="glass description-box">
             <h3 style={{ display: "flex", alignItems: "center", gap: "8px" }}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: "var(--primary)" }}>
@@ -299,7 +392,7 @@ export default function StudentAssignmentPage() {
             {mySub.file_url && (
               <p className="mt-8">
                 <a
-                  href={`http://localhost:8000${mySub.file_url}`}
+                  href={`${API_HOST}${mySub.file_url}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-accent btn-sm"
@@ -322,6 +415,25 @@ export default function StudentAssignmentPage() {
                 </svg>
                 Điểm đang được xử lý, chưa được công bố.
               </p>
+            )}
+            {assignment?.allow_resubmit && !isDeadlinePassed && (
+              <div style={{ marginTop: "16px", display: "flex", gap: "8px" }}>
+                {!showResubmitForm ? (
+                  <button
+                    onClick={() => setShowResubmitForm(true)}
+                    className="btn-primary btn-sm"
+                  >
+                    Nộp lại bài tập
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => setShowResubmitForm(false)}
+                    className="btn-secondary btn-sm"
+                  >
+                    Hủy nộp lại
+                  </button>
+                )}
+              </div>
             )}
           </div>
         )}

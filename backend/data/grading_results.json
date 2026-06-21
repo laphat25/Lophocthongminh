@@ -1490,5 +1490,735 @@
     "graded_at": "2026-06-04T07:12:28.176800+00:00",
     "published_at": "2026-06-04T07:33:35.647187+00:00",
     "status": "published"
+  },
+  "1a3de3f3-e82f-4209-aaf8-c7a63d47ace5": {
+    "id": "1a3de3f3-e82f-4209-aaf8-c7a63d47ace5",
+    "submission_id": "1a3de3f3-e82f-4209-aaf8-c7a63d47ace5",
+    "assignment_id": "27f86f58-fffa-44a3-ba40-44a5408abc1a",
+    "student_id": "e66e92f3-9dce-4ab0-95eb-975425c6f603",
+    "student_name": "Trần Thị A",
+    "graded_by": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "criteria_scores": [
+      {
+        "criteria_id": "216b266a-3ddb-47ee-abe1-81a9386bd679",
+        "criteria_name": "Xác định vấn đề và mục tiêu dự án",
+        "ai_suggested_score": 8,
+        "ai_suggested_level": "Vấn đề rõ; mục tiêu phù hợp nhưng chưa lượng hóa đầy đủ.",
+        "final_score": 8,
+        "max_score": 10.0,
+        "weight": 10.0,
+        "teacher_comment": "Nhóm đã xác định rõ bối cảnh thực tiễn (học sinh lớp 5 gặp khó khăn với toán học truyền thống) và đưa ra mục tiêu thiết kế trò chơi giáo dục phù hợp. Tuy nhiên, các mục tiêu đề ra (như giúp học sinh hứng thú, nâng cao tính ứng dụng) vẫn mang tính định tính, chưa được lượng hóa cụ thể theo tiêu chí SMART.",
+        "highlighted_text": [
+          "BÁO CÁO CUỐI KÌ HỌC PHẦN: QUẢN TRỊ DỰ ÁN (ED3320) Chủ đề: “Trò chơi giáo dục về mô hình kinh doanh cho trẻ em”   Giảng viên hướng dẫn: PGS",
+          "Mục tiêu của dự án",
+          "“Quản trị dự án” là một môn học hay và bổ ích, cung cấp nhiều kiến thức và kĩ năng quan trọng trong việc thực hiện một dự án, gắn liền với tính thực tiễn"
+        ]
+      },
+      {
+        "criteria_id": "98119114-89ad-4726-b2b7-c8b5c7c1dab7",
+        "criteria_name": "Phạm vi và yêu cầu dự án",
+        "ai_suggested_score": 8,
+        "ai_suggested_level": "Thiếu một vài thành phần.",
+        "final_score": 8,
+        "max_score": 10.0,
+        "weight": 10.0,
+        "teacher_comment": "Dự án xác định rõ đối tượng (học sinh lớp 5 trường Tạ Quang Bửu) và sản phẩm bàn giao (game GDevelop 5). Tuy nhiên, báo cáo thiếu một phần định nghĩa rõ ràng về phạm vi ranh giới dự án (những gì KHÔNG thuộc phạm vi dự án) và các tiêu chí thành công cốt lõi của dự án.",
+        "highlighted_text": [
+          "Báo cáo sản phẩm",
+          "Đánh giá sơ bộ sản phẩm",
+          "Đối tượng khảo sát"
+        ]
+      },
+      {
+        "criteria_id": "035771fc-9857-45b5-9552-d372e0ca28a7",
+        "criteria_name": "Lập kế hoạch dự án",
+        "ai_suggested_score": 16,
+        "ai_suggested_level": "Kế hoạch tương đối đầy đủ.",
+        "final_score": 16,
+        "max_score": 20.0,
+        "weight": 20.0,
+        "teacher_comment": "Nhóm có kế hoạch phân công công việc qua Google Sheets, có ước tính ngân sách và biểu đồ Gantt để theo dõi tiến độ. Tuy nhiên, báo cáo thiếu cấu trúc phân rã công việc (WBS) chi tiết và hình ảnh biểu đồ Gantt thực tế chưa được hiển thị rõ ràng trong văn bản báo cáo.",
+        "highlighted_text": [
+          "7 CHƯƠNG 2: XÂY DỰNG KẾ HOẠCH & THỰC HIỆN DỰ ÁN",
+          "Xây dựng kế hoạch của dự án",
+          "000 VNĐ  • Rủi ro: Khó khăn Cách giải quyết Thiếu thiết bị điện tử trong thực nghiệm Đi mượn và cho học sinh trải nghiệm Thiết kế bảng hỏi Tìm hiểu và lấy ý kiến từ chuyên gia  • Các nguồn lực: - Nguồ"
+        ]
+      },
+      {
+        "criteria_id": "d4cdc92f-0485-4d71-88b2-98c1092c3c91",
+        "criteria_name": "Quản lý rủi ro và thay đổi",
+        "ai_suggested_score": 6,
+        "ai_suggested_level": "Chỉ liệt kê rủi ro.",
+        "final_score": 6,
+        "max_score": 10.0,
+        "weight": 10.0,
+        "teacher_comment": "Phần quản lý rủi ro còn rất sơ sài, chỉ liệt kê 2 rủi ro cơ bản và cách giải quyết đơn giản. Nhóm chưa xây dựng ma trận đánh giá rủi ro (khả năng xảy ra, mức độ ảnh hưởng) và thiếu phương án dự phòng cho các rủi ro kỹ thuật (lỗi lập trình, chậm tiến độ).",
+        "highlighted_text": [
+          "Đánh giá sơ bộ sản phẩm",
+          "18 CHƯƠNG 4: KẾT LUẬN VÀ ĐÁNH GIÁ",
+          "Đánh giá hiệu quả, tiềm năng của sản phẩm"
+        ]
+      },
+      {
+        "criteria_id": "9323d701-6cf4-42d0-8cd4-e27e7b873690",
+        "criteria_name": "Tổ chức thực hiện và làm việc nhóm",
+        "ai_suggested_score": 10,
+        "ai_suggested_level": "Quản lý nhóm hiệu quả, minh chứng đầy đủ.",
+        "final_score": 10,
+        "max_score": 10.0,
+        "weight": 10.0,
+        "teacher_comment": "Nhóm thể hiện sự tổ chức tốt thông qua việc phân chia vai trò rõ ràng giữa K65 (quản lý, thiết kế ý tưởng) và K66 (lập trình). Có bảng đánh giá đồng đẳng chi tiết theo các tiêu chí rõ ràng và minh chứng link quản lý công việc.",
+        "highlighted_text": [
+          "- Phân công nhiệm vụ cho các thành viên trong nhóm",
+          "- Phát triển kỹ năng xã hội: Trò chơi giáo dục thường được thiết kế với các hoạt động được mô phỏng từ các hoạt động ngoài đời thực, như làm việc nhóm, giao tiếp, hợp tác và giải quyết xung đột,… - Hỗ",
+          "- Phân công nhiệm vụ cho các thành viên trong nhóm: + Nhóm chúng em phân công nhiệm vụ bằng công cụ Google Sheets + Link phân công nhiệm vụ: https://docs"
+        ]
+      },
+      {
+        "criteria_id": "af8f4085-c51a-41a7-aa8b-d99080842241",
+        "criteria_name": "Chất lượng sản phẩm",
+        "ai_suggested_score": 12,
+        "ai_suggested_level": "Đạt yêu cầu, còn lỗi nhỏ.",
+        "final_score": 12,
+        "max_score": 15.0,
+        "weight": 15.0,
+        "teacher_comment": "Sản phẩm game giáo dục tích hợp mô hình kinh doanh và toán học lớp 5 có tính sáng tạo cao, đáp ứng tốt mục tiêu giáo dục. Tuy nhiên, nhóm tự đánh giá game vẫn còn một số lỗi kỹ thuật nhỏ và cần cải thiện font chữ, giao diện tương tác.",
+        "highlighted_text": [
+          "Báo cáo sản phẩm",
+          "Đánh giá sơ bộ sản phẩm",
+          "Đánh giá hiệu quả, tiềm năng của sản phẩm"
+        ]
+      },
+      {
+        "criteria_id": "de2dc42c-71ca-4b96-81ec-0fe81f34b927",
+        "criteria_name": "Đánh giá kết quả và phân tích dữ liệu",
+        "ai_suggested_score": 12,
+        "ai_suggested_level": "Có phân tích tương đối tốt.",
+        "final_score": 12,
+        "max_score": 15.0,
+        "weight": 15.0,
+        "teacher_comment": "Nhóm đã thực hiện khảo sát thực nghiệm nghiêm túc với 30 học sinh, thu thập dữ liệu định lượng qua Microsoft Forms và trình bày kết quả khảo sát khá chi tiết. Tuy nhiên, phần phân tích dữ liệu có thể sâu sắc hơn nếu liên hệ trực tiếp với việc cải thiện kết quả học tập toán học của học sinh.",
+        "highlighted_text": [
+          "Đánh giá sơ bộ sản phẩm",
+          "Kết quả khảo sát",
+          "18 CHƯƠNG 4: KẾT LUẬN VÀ ĐÁNH GIÁ"
+        ]
+      },
+      {
+        "criteria_id": "fffb8089-f658-4975-8da7-c98c52d3df6c",
+        "criteria_name": "Bài học kinh nghiệm và cải tiến",
+        "ai_suggested_score": 3,
+        "ai_suggested_level": "Chung chung.",
+        "final_score": 3,
+        "max_score": 5.0,
+        "weight": 5.0,
+        "teacher_comment": "Các đề xuất cải tiến chủ yếu tập trung vào khía cạnh kỹ thuật của sản phẩm game (tương tác, hình ảnh). Nhóm chưa rút ra được các bài học kinh nghiệm sâu sắc về mặt quản trị dự án (như quản lý thời gian, giao tiếp nhóm, quản lý nhà thầu/đối tác lập trình K66).",
+        "highlighted_text": [
+          "Các trò chơi sẽ khiến cho trẻ tiếp thu được những kiến thức, kỹ năng, bài học một cách chủ động và hiệu quả hơn"
+        ]
+      },
+      {
+        "criteria_id": "2ac7058a-51a7-4c08-bebb-c669012270e3",
+        "criteria_name": "Hình thức báo cáo và học thuật",
+        "ai_suggested_score": 4,
+        "ai_suggested_level": "Có lỗi nhỏ.",
+        "final_score": 4,
+        "max_score": 5.0,
+        "weight": 5.0,
+        "teacher_comment": "Báo cáo có cấu trúc rõ ràng, đầy đủ các phần theo chuẩn học thuật, có danh mục tài liệu tham khảo và trích dẫn nguồn. Tuy nhiên, vẫn còn một vài lỗi chính tả nhỏ (ví dụ: 'trờ chơi') và định dạng bảng biểu chưa đồng nhất.",
+        "highlighted_text": [
+          "BÁO CÁO CUỐI KÌ HỌC PHẦN: QUẢN TRỊ DỰ ÁN (ED3320) Chủ đề: “Trò chơi giáo dục về mô hình kinh doanh cho trẻ em”   Giảng viên hướng dẫn: PGS",
+          "Báo cáo sản phẩm",
+          "Việc chỉ học theo hình thức truyền thống đối với nhiều bài toán khó sẽ làm trẻ nhanh có cảm giác chán nản, đôi khi là từ bỏ việc giải toán"
+        ]
+      }
+    ],
+    "total_score": 79.0,
+    "overall_comment": "",
+    "graded_at": "2026-06-20T15:31:06.088730+00:00",
+    "published_at": null,
+    "status": "graded"
+  },
+  "7920984f-0dd5-40c8-b661-77cd4e4b083b": {
+    "id": "7920984f-0dd5-40c8-b661-77cd4e4b083b",
+    "submission_id": "7920984f-0dd5-40c8-b661-77cd4e4b083b",
+    "assignment_id": "bb35354a-3b09-4c96-8c3d-fc80fc9ac46b",
+    "student_id": "e66e92f3-9dce-4ab0-95eb-975425c6f603",
+    "student_name": "Trần Thị A",
+    "graded_by": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "criteria_scores": [
+      {
+        "criteria_id": "9d5f9117-20d9-4699-bda7-a9b112063f7e",
+        "criteria_name": "Noi dung va kien thuc",
+        "ai_suggested_score": 6.0,
+        "ai_suggested_level": "Trinh bay du y, con thieu mot so chi tiet",
+        "final_score": 6.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "Lam tot!",
+        "highlighted_text": [
+          "Thuat toan sap xep noi bot (Bubble Sort) la mot thuat toan sap xep don gian",
+          "Do phuc tap thoi gian: O(n2) trong truong hop xau nhat va trung binh, O(n) trong truong hop tot nhat",
+          "Do phuc tap khong gian: O(1) vi chi can them mot bien tam de doi cho"
+        ]
+      },
+      {
+        "criteria_id": "0d8433e0-528f-4774-b558-416a17e6e4b8",
+        "criteria_name": "Cau truc va trinh bay",
+        "ai_suggested_score": 8.0,
+        "ai_suggested_level": "Cau truc ro rang, trinh bay mach lac",
+        "final_score": 8.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "Lam tot!",
+        "highlighted_text": []
+      }
+    ],
+    "total_score": 70.0,
+    "overall_comment": "Bai lam kha tot",
+    "graded_at": "2026-06-20T14:43:25.005062+00:00",
+    "published_at": "2026-06-20T14:43:25.016420+00:00",
+    "status": "published",
+    "feedbacks": [
+      {
+        "id": "ddb6b9ee-ff14-4705-8cbe-b14f8ad6f563",
+        "review_session_id": "",
+        "submission_id": "7920984f-0dd5-40c8-b661-77cd4e4b083b",
+        "criteria_id": "9d5f9117-20d9-4699-bda7-a9b112063f7e",
+        "anchor": {
+          "id": "3ead6f58-60c3-4e99-9840-d1ccc6d91c4f",
+          "char_offset_start": 0,
+          "char_offset_end": 76,
+          "exact_quote": "Thuat toan sap xep noi bot (Bubble Sort) la mot thuat toan sap xep don gian.",
+          "prefix_context": "",
+          "suffix_context": " Nguyen ly hoat dong: So sanh",
+          "paragraph_index": 0,
+          "sentence_index": 0,
+          "line_number": null,
+          "column_start": null,
+          "column_end": null,
+          "anchor_status": "valid",
+          "confidence": 1.0
+        },
+        "severity": "warning",
+        "category": "completeness",
+        "comment": "Bài viết chưa có ví dụ minh họa cụ thể để làm rõ cách hoạt động của thuật toán trên một mảng dữ liệu thực tế.",
+        "evidence": "Tiêu chí 'Noi dung va kien thuc' yêu cầu phải 'co vi du' để đạt điểm tối đa.",
+        "suggested_fix": {
+          "id": "a86f1ee0-2d47-4b79-aae9-73764940c869",
+          "original_text": "Thuat toan sap xep noi bot (Bubble Sort) la mot thuat toan sap xep don gian.",
+          "replacement_text": "Thuat toan sap xep noi bot (Bubble Sort) la mot thuat toan sap xep don gian. Vi du, voi mang [5, 1, 4, 2], sau luot duyet dau tien, phan tu lon nhat (5) se duoc noi len va dua ve dung vi tri cuoi mang.",
+          "explanation": "Thêm một ví dụ ngắn gọn giúp người đọc dễ hình dung nguyên lý 'nổi bọt' của thuật toán.",
+          "fix_status": "pending"
+        },
+        "source": "ai",
+        "status": "active",
+        "created_at": "2026-06-20T14:43:11.823162+00:00",
+        "updated_at": "2026-06-20T14:43:11.823162+00:00"
+      },
+      {
+        "id": "24390d12-f2f4-4169-9a33-78da9b022ce2",
+        "review_session_id": "",
+        "submission_id": "7920984f-0dd5-40c8-b661-77cd4e4b083b",
+        "criteria_id": "0d8433e0-528f-4774-b558-416a17e6e4b8",
+        "anchor": {
+          "id": "29441ae4-9576-4667-823d-d8b03e3e1ebf",
+          "char_offset_start": 259,
+          "char_offset_end": 264,
+          "exact_quote": "O(n2)",
+          "prefix_context": "Do phuc tap thoi gian: ",
+          "suffix_context": " trong truong hop xau nhat va",
+          "paragraph_index": 0,
+          "sentence_index": 3,
+          "line_number": null,
+          "column_start": null,
+          "column_end": null,
+          "anchor_status": "valid",
+          "confidence": 1.0
+        },
+        "severity": "warning",
+        "category": "style",
+        "comment": "Ký hiệu độ phức tạp thời gian nên sử dụng định dạng số mũ để tránh gây nhầm lẫn thành n nhân 2.",
+        "evidence": "Viết 'O(n2)' có thể bị hiểu nhầm là O(2n) thay vì O(n bình phương).",
+        "suggested_fix": {
+          "id": "064b0046-07a0-4a81-9e43-5572725e153b",
+          "original_text": "O(n2)",
+          "replacement_text": "O(n^2)",
+          "explanation": "Sử dụng ký tự '^' để biểu thị số mũ rõ ràng hơn trong văn bản không định dạng.",
+          "fix_status": "pending"
+        },
+        "source": "ai",
+        "status": "active",
+        "created_at": "2026-06-20T14:43:11.823162+00:00",
+        "updated_at": "2026-06-20T14:43:11.823162+00:00"
+      },
+      {
+        "id": "681fb3bd-f7ec-40b5-87ca-fee094e8e545",
+        "review_session_id": "",
+        "submission_id": "7920984f-0dd5-40c8-b661-77cd4e4b083b",
+        "criteria_id": "9d5f9117-20d9-4699-bda7-a9b112063f7e",
+        "anchor": {
+          "id": "85215771-a4ea-4f52-a8d1-38cef73b9e26",
+          "char_offset_start": 236,
+          "char_offset_end": 407,
+          "exact_quote": "Do phuc tap thoi gian: O(n2) trong truong hop xau nhat va trung binh, O(n) trong truong hop tot nhat. Do phuc tap khong gian: O(1) vi chi can them mot bien tam de doi cho.",
+          "prefix_context": "con phan tu nao can doi cho. ",
+          "suffix_context": "",
+          "paragraph_index": 0,
+          "sentence_index": 3,
+          "line_number": null,
+          "column_start": null,
+          "column_end": null,
+          "anchor_status": "valid",
+          "confidence": 1.0
+        },
+        "severity": "praise",
+        "category": "completeness",
+        "comment": "Phân tích độ phức tạp thời gian (cho cả 3 trường hợp) và độ phức tạp không gian rất chính xác và đầy đủ.",
+        "evidence": "Đã nêu đúng O(n^2) cho worst/average case, O(n) cho best case và O(1) cho space complexity kèm giải thích hợp lý.",
+        "suggested_fix": null,
+        "source": "ai",
+        "status": "active",
+        "created_at": "2026-06-20T14:43:11.823162+00:00",
+        "updated_at": "2026-06-20T14:43:11.823162+00:00"
+      }
+    ]
+  },
+  "51134710-ed6f-4b3d-b85c-5b82d621c0ed": {
+    "id": "51134710-ed6f-4b3d-b85c-5b82d621c0ed",
+    "submission_id": "51134710-ed6f-4b3d-b85c-5b82d621c0ed",
+    "assignment_id": "bb35354a-3b09-4c96-8c3d-fc80fc9ac46b",
+    "student_id": "05f3df4e-a317-4444-b71b-304a09852c0b",
+    "student_name": "Lê Văn B",
+    "graded_by": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "criteria_scores": [
+      {
+        "criteria_id": "9d5f9117-20d9-4699-bda7-a9b112063f7e",
+        "criteria_name": "Noi dung va kien thuc",
+        "ai_suggested_score": 6,
+        "ai_suggested_level": "Trinh bay du y, con thieu mot so chi tiet",
+        "final_score": 6,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "Bài làm đã trình bày đầy đủ các khái niệm cơ bản, nguyên lý hoạt động và độ phức tạp của thuật toán Bubble Sort. Tuy nhiên, bài viết còn thiếu ví dụ minh họa cụ thể để đạt mức điểm tối đa (9.0 điểm).",
+        "highlighted_text": [
+          "Bubble Sort la thuat toan sap xep don gian dua tren so sanh",
+          "Thuat toan hoat dong bang cach lap di lap lai qua danh sach, so sanh cac phan tu lien ke va hoan doi chung neu chung khong dung thu tu",
+          "Do phuc tap: O(n2) thoi gian, O(1) khong gian"
+        ]
+      },
+      {
+        "criteria_id": "0d8433e0-528f-4774-b558-416a17e6e4b8",
+        "criteria_name": "Cau truc va trinh bay",
+        "ai_suggested_score": 8,
+        "ai_suggested_level": "Cau truc ro rang, trinh bay mach lac",
+        "final_score": 8,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "Cấu trúc bài viết rất rõ ràng, mạch lạc, đi từ định nghĩa, nguyên lý hoạt động đến độ phức tạp và đánh giá thuật toán.",
+        "highlighted_text": []
+      }
+    ],
+    "total_score": 70.0,
+    "overall_comment": "",
+    "graded_at": "2026-06-20T14:43:11.865937+00:00",
+    "published_at": "2026-06-20T14:43:25.024369+00:00",
+    "status": "published"
+  },
+  "bc9ecd0d-8c8c-4440-9f60-b46c014e3627": {
+    "id": "bc9ecd0d-8c8c-4440-9f60-b46c014e3627",
+    "submission_id": "bc9ecd0d-8c8c-4440-9f60-b46c014e3627",
+    "assignment_id": "975a7d7b-224b-4fd7-8a23-d61ed8914632",
+    "student_id": "e66e92f3-9dce-4ab0-95eb-975425c6f603",
+    "student_name": "Trần Thị A",
+    "graded_by": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "criteria_scores": [
+      {
+        "criteria_id": "743cc702-7169-4587-9600-330587172937",
+        "criteria_name": "Noi dung va kien thuc",
+        "ai_suggested_score": 6,
+        "ai_suggested_level": "Trinh bay du y, con thieu mot so chi tiet",
+        "final_score": 6.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "Lam tot!",
+        "highlighted_text": [
+          "Thuat toan sap xep noi bot (Bubble Sort) la mot thuat toan sap xep don gian",
+          "Do phuc tap thoi gian: O(n2) trong truong hop xau nhat va trung binh, O(n) trong truong hop tot nhat",
+          "Do phuc tap khong gian: O(1) vi chi can them mot bien tam de doi cho"
+        ]
+      },
+      {
+        "criteria_id": "899b91ce-4319-4de7-b01f-c0da469ecdeb",
+        "criteria_name": "Cau truc va trinh bay",
+        "ai_suggested_score": 8,
+        "ai_suggested_level": "Cau truc ro rang, trinh bay mach lac",
+        "final_score": 8.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "Lam tot!",
+        "highlighted_text": []
+      }
+    ],
+    "total_score": 70.0,
+    "overall_comment": "Bai lam kha tot",
+    "graded_at": "2026-06-20T14:47:19.665510+00:00",
+    "published_at": "2026-06-20T14:47:19.673070+00:00",
+    "status": "published",
+    "feedbacks": [
+      {
+        "id": "eced35ff-a141-4e6d-941e-25d9a46fdb70",
+        "review_session_id": "",
+        "submission_id": "bc9ecd0d-8c8c-4440-9f60-b46c014e3627",
+        "criteria_id": "743cc702-7169-4587-9600-330587172937",
+        "anchor": {
+          "id": "888bd429-da52-4cbd-9bbd-74661cd81161",
+          "char_offset_start": 259,
+          "char_offset_end": 264,
+          "exact_quote": "O(n2)",
+          "prefix_context": "Do phuc tap thoi gian: ",
+          "suffix_context": " trong truong hop xau nhat va",
+          "paragraph_index": 0,
+          "sentence_index": null,
+          "line_number": null,
+          "column_start": null,
+          "column_end": null,
+          "anchor_status": "valid",
+          "confidence": 1.0
+        },
+        "severity": "warning",
+        "category": "style",
+        "comment": "Nen viet do phuc tap thoi gian duoi dang so mu de dung chuan ky hieu toan hoc.",
+        "evidence": "Sinh vien viet 'O(n2)' thay vi 'O(n^2)'.",
+        "suggested_fix": {
+          "id": "652fa198-f430-4b5d-8348-41e07e26f584",
+          "original_text": "O(n2)",
+          "replacement_text": "O(n^2)",
+          "explanation": "Su dung ky tu ^ de bieu thi so mu giup bieu thuc toan hoc ro rang hon.",
+          "fix_status": "pending"
+        },
+        "source": "ai",
+        "status": "active",
+        "created_at": "2026-06-20T14:47:00.123568+00:00",
+        "updated_at": "2026-06-20T14:47:00.123568+00:00"
+      },
+      {
+        "id": "3afe74a7-d673-4b04-a893-4968d34d4a30",
+        "review_session_id": "",
+        "submission_id": "bc9ecd0d-8c8c-4440-9f60-b46c014e3627",
+        "criteria_id": "743cc702-7169-4587-9600-330587172937",
+        "anchor": {
+          "id": "8551b88a-bd93-4320-a68c-39082bf2a06f",
+          "char_offset_start": 0,
+          "char_offset_end": 407,
+          "exact_quote": "Thuat toan sap xep noi bot (Bubble Sort) la mot thuat toan sap xep don gian. Nguyen ly hoat dong: So sanh tung cap phan tu lien ke va doi cho neu chung khong dung thu tu. Qua trinh lap lai cho den khi khong con phan tu nao can doi cho. Do phuc tap thoi gian: O(n2) trong truong hop xau nhat va trung binh, O(n) trong truong hop tot nhat. Do phuc tap khong gian: O(1) vi chi can them mot bien tam de doi cho.",
+          "prefix_context": "",
+          "suffix_context": "",
+          "paragraph_index": 0,
+          "sentence_index": null,
+          "line_number": null,
+          "column_start": null,
+          "column_end": null,
+          "anchor_status": "valid",
+          "confidence": 1.0
+        },
+        "severity": "warning",
+        "category": "completeness",
+        "comment": "Bai lam chua co vi du minh hoa cu the bang so de lam ro nguyen ly hoat dong cua thuat toan nhu yeu cau cua tieu chi.",
+        "evidence": "Toan bo van ban chi co phan ly thuyet va phan tich do phuc tap, thieu phan vi du minh hoa.",
+        "suggested_fix": null,
+        "source": "ai",
+        "status": "active",
+        "created_at": "2026-06-20T14:47:00.123568+00:00",
+        "updated_at": "2026-06-20T14:47:00.123568+00:00"
+      },
+      {
+        "id": "9ccad839-3640-420a-9f10-4a461f4d0d41",
+        "review_session_id": "",
+        "submission_id": "bc9ecd0d-8c8c-4440-9f60-b46c014e3627",
+        "criteria_id": "743cc702-7169-4587-9600-330587172937",
+        "anchor": {
+          "id": "e13548b1-753b-4dea-91cb-303c550bad2f",
+          "char_offset_start": 236,
+          "char_offset_end": 407,
+          "exact_quote": "Do phuc tap thoi gian: O(n2) trong truong hop xau nhat va trung binh, O(n) trong truong hop tot nhat. Do phuc tap khong gian: O(1) vi chi can them mot bien tam de doi cho.",
+          "prefix_context": "khong con phan tu nao can doi cho. ",
+          "suffix_context": "",
+          "paragraph_index": 0,
+          "sentence_index": null,
+          "line_number": null,
+          "column_start": null,
+          "column_end": null,
+          "anchor_status": "valid",
+          "confidence": 1.0
+        },
+        "severity": "praise",
+        "category": "clarity",
+        "comment": "Phan tich rat tot va day du cac truong hop do phuc tap thoi gian (tot nhat, xau nhat, trung binh) va do phuc tap khong gian kem giai thich ngan gon.",
+        "evidence": "Sinh vien da neu dung O(n^2) cho worst/average case, O(n) cho best case va O(1) cho space complexity vi chi dung mot bien tam.",
+        "suggested_fix": null,
+        "source": "ai",
+        "status": "active",
+        "created_at": "2026-06-20T14:47:00.123568+00:00",
+        "updated_at": "2026-06-20T14:47:00.123568+00:00"
+      }
+    ]
+  },
+  "09f54641-f652-4dc7-a274-47f8aa6e564b": {
+    "id": "09f54641-f652-4dc7-a274-47f8aa6e564b",
+    "submission_id": "09f54641-f652-4dc7-a274-47f8aa6e564b",
+    "assignment_id": "975a7d7b-224b-4fd7-8a23-d61ed8914632",
+    "student_id": "05f3df4e-a317-4444-b71b-304a09852c0b",
+    "student_name": "Lê Văn B",
+    "graded_by": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "criteria_scores": [
+      {
+        "criteria_id": "743cc702-7169-4587-9600-330587172937",
+        "criteria_name": "Noi dung va kien thuc",
+        "ai_suggested_score": 6.0,
+        "ai_suggested_level": "Trinh bay du y, con thieu mot so chi tiet",
+        "final_score": 6.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "Bài viết đã nêu được định nghĩa, nguyên lý hoạt động và độ phức tạp của thuật toán Bubble Sort. Tuy nhiên, bài viết còn thiếu ví dụ minh họa cụ thể để đạt mức điểm tối đa.",
+        "highlighted_text": [
+          "Bubble Sort la thuat toan sap xep don gian dua tren so sanh",
+          "Thuat toan hoat dong bang cach lap di lap lai qua danh sach, so sanh cac phan tu lien ke va hoan doi chung neu chung khong dung thu tu",
+          "Do phuc tap: O(n2) thoi gian, O(1) khong gian"
+        ]
+      },
+      {
+        "criteria_id": "899b91ce-4319-4de7-b01f-c0da469ecdeb",
+        "criteria_name": "Cau truc va trinh bay",
+        "ai_suggested_score": 8.0,
+        "ai_suggested_level": "Cau truc ro rang, trinh bay mach lac",
+        "final_score": 8.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "Cấu trúc bài viết mạch lạc, các ý được sắp xếp hợp lý. Tuy nhiên, việc không viết dấu tiếng Việt làm giảm tính chuyên nghiệp của bài viết.",
+        "highlighted_text": []
+      }
+    ],
+    "total_score": 70.0,
+    "overall_comment": "",
+    "graded_at": "2026-06-20T14:47:00.144189+00:00",
+    "published_at": "2026-06-20T14:47:19.680486+00:00",
+    "status": "published"
+  },
+  "d9f2cc0d-386e-473a-9021-a214c956071b": {
+    "id": "d9f2cc0d-386e-473a-9021-a214c956071b",
+    "submission_id": "d9f2cc0d-386e-473a-9021-a214c956071b",
+    "assignment_id": "751be612-e97b-4694-afe0-8f2f2d7379f2",
+    "student_id": "e66e92f3-9dce-4ab0-95eb-975425c6f603",
+    "student_name": "Trần Thị A",
+    "graded_by": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "criteria_scores": [
+      {
+        "criteria_id": "0161d0db-8e24-4180-af2d-bb3da5b30113",
+        "criteria_name": "Noi dung va kien thuc",
+        "ai_suggested_score": 6.0,
+        "ai_suggested_level": "Trinh bay du y, con thieu mot so chi tiet",
+        "final_score": 6.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "Lam tot!",
+        "highlighted_text": [
+          "Thuat toan sap xep noi bot (Bubble Sort) la mot thuat toan sap xep don gian",
+          "Do phuc tap thoi gian: O(n2) trong truong hop xau nhat va trung binh, O(n) trong truong hop tot nhat",
+          "Do phuc tap khong gian: O(1) vi chi can them mot bien tam de doi cho"
+        ]
+      },
+      {
+        "criteria_id": "d469da8a-085b-40d8-bd5e-15ca03b7e5db",
+        "criteria_name": "Cau truc va trinh bay",
+        "ai_suggested_score": 8.0,
+        "ai_suggested_level": "Cau truc ro rang, trinh bay mach lac",
+        "final_score": 8.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "Lam tot!",
+        "highlighted_text": []
+      }
+    ],
+    "total_score": 70.0,
+    "overall_comment": "Bai lam kha tot",
+    "graded_at": "2026-06-20T15:12:21.806670+00:00",
+    "published_at": "2026-06-20T15:12:21.814107+00:00",
+    "status": "published",
+    "feedbacks": [
+      {
+        "id": "c7347b89-bde0-49a4-8e60-24912d160d22",
+        "review_session_id": "",
+        "submission_id": "d9f2cc0d-386e-473a-9021-a214c956071b",
+        "criteria_id": "0161d0db-8e24-4180-af2d-bb3da5b30113",
+        "anchor": {
+          "id": "90ddbb70-850c-445d-ae3b-02ff59b1e72b",
+          "char_offset_start": 259,
+          "char_offset_end": 264,
+          "exact_quote": "O(n2)",
+          "prefix_context": "Do phuc tap thoi gian: ",
+          "suffix_context": " trong truong hop xau nhat va",
+          "paragraph_index": 0,
+          "sentence_index": null,
+          "line_number": null,
+          "column_start": null,
+          "column_end": null,
+          "anchor_status": "valid",
+          "confidence": 1.0
+        },
+        "severity": "warning",
+        "category": "style",
+        "comment": "Nên viết độ phức tạp thời gian dưới dạng ký hiệu số mũ O(n^2) hoặc O(n²) để chuẩn xác hơn về mặt toán học.",
+        "evidence": "Ký hiệu O(n2) dễ gây nhầm lẫn là n nhân 2 thay vì n bình phương.",
+        "suggested_fix": {
+          "id": "44fad983-68c1-4a8c-8106-e90fc98dbb21",
+          "original_text": "O(n2)",
+          "replacement_text": "O(n²)",
+          "explanation": "Sử dụng ký tự mũ 2 để biểu diễn chính xác độ phức tạp thuật toán.",
+          "fix_status": "pending"
+        },
+        "source": "ai",
+        "status": "active",
+        "created_at": "2026-06-20T15:12:08.989546+00:00",
+        "updated_at": "2026-06-20T15:12:08.989546+00:00"
+      },
+      {
+        "id": "5c2c21d7-e624-4f5f-ad91-5ed30c3ce886",
+        "review_session_id": "",
+        "submission_id": "d9f2cc0d-386e-473a-9021-a214c956071b",
+        "criteria_id": "0161d0db-8e24-4180-af2d-bb3da5b30113",
+        "anchor": {
+          "id": "79ae7765-8c61-46ad-9fa8-7f242a5782f8",
+          "char_offset_start": 77,
+          "char_offset_end": 170,
+          "exact_quote": "Nguyen ly hoat dong: So sanh tung cap phan tu lien ke va doi cho neu chung khong dung thu tu.",
+          "prefix_context": "sap xep don gian. ",
+          "suffix_context": " Qua trinh lap lai cho den khi",
+          "paragraph_index": 0,
+          "sentence_index": null,
+          "line_number": null,
+          "column_start": null,
+          "column_end": null,
+          "anchor_status": "valid",
+          "confidence": 1.0
+        },
+        "severity": "praise",
+        "category": "clarity",
+        "comment": "Giải thích nguyên lý hoạt động rất ngắn gọn, chính xác và dễ hiểu.",
+        "evidence": "Định nghĩa đúng cơ chế so sánh và đổi chỗ các cặp phần tử liền kề của Bubble Sort.",
+        "suggested_fix": null,
+        "source": "ai",
+        "status": "active",
+        "created_at": "2026-06-20T15:12:08.989546+00:00",
+        "updated_at": "2026-06-20T15:12:08.989546+00:00"
+      },
+      {
+        "id": "4c32de69-4c1a-4a94-8d9b-75420b0dc7d9",
+        "review_session_id": "",
+        "submission_id": "d9f2cc0d-386e-473a-9021-a214c956071b",
+        "criteria_id": "0161d0db-8e24-4180-af2d-bb3da5b30113",
+        "anchor": {
+          "id": "d9d95078-d4e8-4907-a79e-9c5c73856c37",
+          "char_offset_start": 338,
+          "char_offset_end": 407,
+          "exact_quote": "Do phuc tap khong gian: O(1) vi chi can them mot bien tam de doi cho.",
+          "prefix_context": "hop tot nhat. ",
+          "suffix_context": "",
+          "paragraph_index": 0,
+          "sentence_index": null,
+          "line_number": null,
+          "column_start": null,
+          "column_end": null,
+          "anchor_status": "valid",
+          "confidence": 1.0
+        },
+        "severity": "praise",
+        "category": "completeness",
+        "comment": "Phân tích tốt về độ phức tạp không gian và đưa ra lý do thuyết phục (chỉ dùng một biến tạm).",
+        "evidence": "Giải thích rõ ràng lý do tại sao độ phức tạp không gian là O(1).",
+        "suggested_fix": null,
+        "source": "ai",
+        "status": "active",
+        "created_at": "2026-06-20T15:12:08.989546+00:00",
+        "updated_at": "2026-06-20T15:12:08.989546+00:00"
+      },
+      {
+        "id": "623c72b8-891e-4e50-ad49-f2b10ae7b0ef",
+        "review_session_id": "",
+        "submission_id": "d9f2cc0d-386e-473a-9021-a214c956071b",
+        "criteria_id": "0161d0db-8e24-4180-af2d-bb3da5b30113",
+        "anchor": {
+          "id": "e351bb1a-1621-40a7-afc1-6184b3b08d7f",
+          "char_offset_start": 171,
+          "char_offset_end": 235,
+          "exact_quote": "Qua trinh lap lai cho den khi khong con phan tu nao can doi cho.",
+          "prefix_context": " khong dung thu tu. ",
+          "suffix_context": " Do phuc tap thoi gian:",
+          "paragraph_index": 0,
+          "sentence_index": null,
+          "line_number": null,
+          "column_start": null,
+          "column_end": null,
+          "anchor_status": "valid",
+          "confidence": 1.0
+        },
+        "severity": "warning",
+        "category": "completeness",
+        "comment": "Thiếu ví dụ minh họa cụ thể bằng số để người đọc dễ hình dung quá trình lặp và đổi chỗ này.",
+        "evidence": "Tiêu chí yêu cầu phải có ví dụ minh họa để đạt điểm tối đa.",
+        "suggested_fix": {
+          "id": "830cb720-87dc-47eb-9c2a-36ca91d76fd0",
+          "original_text": "Qua trinh lap lai cho den khi khong con phan tu nao can doi cho.",
+          "replacement_text": "Qua trinh lap lai cho den khi khong con phan tu nao can doi cho. Vi du, voi mang [5, 1, 4, 2], thuat toan se so sanh va doi cho tung cap de dua mang ve dang sap xep [1, 2, 4, 5].",
+          "explanation": "Thêm một ví dụ ngắn gọn giúp làm rõ nguyên lý hoạt động của thuật toán.",
+          "fix_status": "pending"
+        },
+        "source": "ai",
+        "status": "active",
+        "created_at": "2026-06-20T15:12:08.989546+00:00",
+        "updated_at": "2026-06-20T15:12:08.989546+00:00"
+      }
+    ]
+  },
+  "1e33c141-3b24-4670-bd25-2368692149fe": {
+    "id": "1e33c141-3b24-4670-bd25-2368692149fe",
+    "submission_id": "1e33c141-3b24-4670-bd25-2368692149fe",
+    "assignment_id": "751be612-e97b-4694-afe0-8f2f2d7379f2",
+    "student_id": "05f3df4e-a317-4444-b71b-304a09852c0b",
+    "student_name": "Lê Văn B",
+    "graded_by": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "criteria_scores": [
+      {
+        "criteria_id": "0161d0db-8e24-4180-af2d-bb3da5b30113",
+        "criteria_name": "Noi dung va kien thuc",
+        "ai_suggested_score": 6.0,
+        "ai_suggested_level": "Trinh bay du y, con thieu mot so chi tiet",
+        "final_score": 6.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "Bài viết đã trình bày được định nghĩa, nguyên lý hoạt động và độ phức tạp của thuật toán Bubble Sort. Tuy nhiên, bài viết chưa có ví dụ minh họa cụ thể để đạt mức điểm tối đa.",
+        "highlighted_text": [
+          "Bubble Sort la thuat toan sap xep don gian dua tren so sanh",
+          "Thuat toan hoat dong bang cach lap di lap lai qua danh sach, so sanh cac phan tu lien ke va hoan doi chung neu chung khong dung thu tu",
+          "Do phuc tap: O(n2) thoi gian, O(1) khong gian"
+        ]
+      },
+      {
+        "criteria_id": "d469da8a-085b-40d8-bd5e-15ca03b7e5db",
+        "criteria_name": "Cau truc va trinh bay",
+        "ai_suggested_score": 8.0,
+        "ai_suggested_level": "Cau truc ro rang, trinh bay mach lac",
+        "final_score": 8.0,
+        "max_score": 10.0,
+        "weight": 50.0,
+        "teacher_comment": "Cấu trúc bài viết mạch lạc, dễ hiểu, các ý được sắp xếp logic.",
+        "highlighted_text": []
+      }
+    ],
+    "total_score": 70.0,
+    "overall_comment": "",
+    "graded_at": "2026-06-20T15:12:09.011435+00:00",
+    "published_at": "2026-06-20T15:12:21.821370+00:00",
+    "status": "published"
   }
 }

@@ -51,7 +51,7 @@ def create_class(req: CreateClassRequest, teacher: dict = Depends(require_teache
 
 
 @router.get("")
-def list_classes(user: dict = Depends(get_current_user)):
+def list_classes(skip: int = 0, limit: int = 50, user: dict = Depends(get_current_user)):
     role = user["role"]
     if role == "teacher":
         classes = class_store.find(teacher_id=user["id"])
@@ -60,7 +60,10 @@ def list_classes(user: dict = Depends(get_current_user)):
         enrollments = enrollment_store.find(student_id=user["id"], status="active")
         class_ids = {e["class_id"] for e in enrollments}
         classes = [c for c in class_store.values() if c["id"] in class_ids]
-    return {"classes": classes, "total": len(classes)}
+    
+    total = len(classes)
+    paginated = classes[skip:skip + limit]
+    return {"classes": paginated, "total": total, "skip": skip, "limit": limit}
 
 
 @router.get("/{class_id}")

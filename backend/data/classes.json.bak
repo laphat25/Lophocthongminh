@@ -1,0 +1,35 @@
+{
+  "7885a249-b4da-49e4-a1fc-acc2bf6bc779": {
+    "id": "7885a249-b4da-49e4-a1fc-acc2bf6bc779",
+    "class_name": "Kỹ năng dạy học - GDTH-K21",
+    "subject": "Kỹ năng dạy học",
+    "class_code": "A6ZGIA",
+    "teacher_id": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "teacher_name": "Phạm Tiến Đạt",
+    "description": "Lớp học Kỹ năng dạy học dành cho lớp GDTH-K21 (A, B, C) - GV TS. Trần Văn Bình",
+    "is_active": true,
+    "created_at": "2026-06-03T14:23:22.498108+00:00"
+  },
+  "5c1d733c-a750-45b2-ab44-0e050d0908d0": {
+    "id": "5c1d733c-a750-45b2-ab44-0e050d0908d0",
+    "class_name": "Quản trị dự án",
+    "subject": " ED3320",
+    "class_code": "JBRRPA",
+    "teacher_id": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "teacher_name": "Lê Thanh Thảo",
+    "description": "170015 - ED3320 (LT+BT)",
+    "is_active": true,
+    "created_at": "2026-06-17T09:02:59.603642+00:00"
+  },
+  "4865f4e4-6ccc-46fe-982e-0a0fb1112668": {
+    "id": "4865f4e4-6ccc-46fe-982e-0a0fb1112668",
+    "class_name": "Ky thuat lap trinh",
+    "subject": "Lap trinh",
+    "class_code": "E5X09K",
+    "teacher_id": "31b0977d-b73a-4a15-9811-dd30021f6b7e",
+    "teacher_name": "Lê Thanh Thảo",
+    "description": "Lop hoc co ban",
+    "is_active": true,
+    "created_at": "2026-06-20T15:11:52.512914+00:00"
+  }
+}

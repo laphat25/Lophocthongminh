@@ -18,14 +18,22 @@ export default function TeacherDashboard() {
   const [creating, setCreating] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const [geminiKey, setGeminiKey] = useState(user?.gemini_api_key || "");
+  const [geminiKey, setGeminiKey] = useState("");
   const [savingSettings, setSavingSettings] = useState(false);
   const [settingsSuccess, setSettingsSuccess] = useState<string | null>(null);
+  const [settingsError, setSettingsError] = useState<string | null>(null);
+  const [settingsInfo, setSettingsInfo] = useState<string | null>(null);
 
   useEffect(() => {
-    if (user?.gemini_api_key) {
-      setGeminiKey(user.gemini_api_key);
-    }
+    // Clear all alerts when activeTab changes
+    setSettingsSuccess(null);
+    setSettingsError(null);
+    setSettingsInfo(null);
+    setError(null);
+  }, [activeTab]);
+
+  useEffect(() => {
+    // API Key is not pre-filled for security.
   }, [user]);
 
   const fetchData = async () => {
@@ -62,15 +70,43 @@ export default function TeacherDashboard() {
 
   const handleSaveSettings = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSavingSettings(true);
     setSettingsSuccess(null);
+    setSettingsError(null);
+    setSettingsInfo(null);
     setError(null);
+
+    const key = geminiKey.trim();
+
+    // If API Key is not configured yet and user submits empty
+    if (!user?.has_gemini_key && !key) {
+      setSettingsError("Vui lòng nhập Gemini API Key của bạn.");
+      return;
+    }
+
+    // If API Key is configured and user submits empty -> keep unchanged
+    if (user?.has_gemini_key && !key) {
+      setSettingsInfo("Cài đặt không đổi.");
+      return;
+    }
+
+    // Format validation: must start with AIzaSy or AQ.
+    if (!key.startsWith("AIzaSy") && !key.startsWith("AQ.")) {
+      setSettingsError("Gemini API Key không hợp lệ. Khóa API phải bắt đầu bằng 'AIzaSy' hoặc 'AQ.'.");
+      return;
+    }
+    if (key.length < 20) {
+      setSettingsError("Gemini API Key quá ngắn. Vui lòng kiểm tra lại khóa API của bạn.");
+      return;
+    }
+
+    setSavingSettings(true);
     try {
-      const res = await updateUserSettings({ gemini_api_key: geminiKey });
+      const res = await updateUserSettings({ gemini_api_key: key });
       setSettingsSuccess(res.message);
       updateUser(res.user);
+      setGeminiKey("");
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Lỗi lưu cài đặt");
+      setSettingsError(err instanceof Error ? err.message : "Lỗi lưu cài đặt");
     } finally {
       setSavingSettings(false);
     }
@@ -137,16 +173,40 @@ export default function TeacherDashboard() {
               Thiết lập khóa API của riêng bạn để hệ thống tự động chấm điểm bài tập của sinh viên thông qua mô hình trí tuệ nhân tạo Gemini (Miễn phí từ Google AI Studio).
             </p>
 
+            {settingsError && <div className="alert alert-error" style={{ marginBottom: "1.5rem" }}>{settingsError}</div>}
             {settingsSuccess && <div className="alert alert-success" style={{ marginBottom: "1.5rem" }}>{settingsSuccess}</div>}
+            {settingsInfo && <div className="alert alert-info" style={{ marginBottom: "1.5rem" }}>{settingsInfo}</div>}
 
             <form onSubmit={handleSaveSettings}>
+              {user?.has_gemini_key && (
+                <div style={{
+                  marginBottom: "1.2rem",
+                  padding: "10px 12px",
+                  borderRadius: "6px",
+                  background: "rgba(46, 117, 89, 0.1)",
+                  color: "#2E7559",
+                  fontSize: "0.85rem",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "8px",
+                  fontWeight: 500,
+                  border: "1px solid rgba(46, 117, 89, 0.2)"
+                }}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  Khóa API đã được cấu hình hoạt động trong tài khoản của bạn.
+                </div>
+              )}
               <div className="form-group" style={{ marginBottom: "1.5rem" }}>
-                <label style={{ display: "block", marginBottom: "8px", fontWeight: 600 }}>Gemini API Key</label>
+                <label style={{ display: "block", marginBottom: "8px", fontWeight: 600 }}>
+                  {user?.has_gemini_key ? "Cập nhật Gemini API Key mới" : "Gemini API Key"}
+                </label>
                 <input
                   type="password"
                   value={geminiKey}
                   onChange={(e) => setGeminiKey(e.target.value)}
-                  placeholder="Nhập API Key từ Google AI Studio (AIzaSy...)"
+                  placeholder={user?.has_gemini_key ? "Nhập API Key mới để ghi đè (để trống nếu không đổi)" : "Nhập API Key từ Google AI Studio (AIzaSy...)"}
                   style={{ width: "100%", padding: "10px", borderRadius: "6px", border: "1px solid var(--border)" }}
                 />
                 <span className="text-sm text-muted" style={{ display: "block", marginTop: "8px", lineHeight: "1.4" }}>
@@ -228,6 +288,80 @@ export default function TeacherDashboard() {
                 <span style={{ fontSize: "2.8rem", fontWeight: 800, color: "#ffffff", marginTop: "4px", lineHeight: 1 }}>{classes.length}</span>
               </div>
             </div>
+
+            {/* API Key Guide Banner if not configured */}
+            {!user?.has_gemini_key && (
+              <div className="card glass animate-fade-in" style={{
+                background: "rgba(245, 158, 11, 0.04)",
+                border: "1px solid rgba(245, 158, 11, 0.3)",
+                borderRadius: "12px",
+                padding: "24px",
+                marginBottom: "2rem",
+                boxShadow: "0 4px 15px rgba(245, 158, 11, 0.05)"
+              }}>
+                <div style={{ display: "flex", alignItems: "flex-start", gap: "16px" }}>
+                  <div style={{
+                    background: "rgba(245, 158, 11, 0.15)",
+                    borderRadius: "50%",
+                    width: "40px",
+                    height: "40px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    flexShrink: 0
+                  }}>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d97706" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="10" />
+                      <line x1="12" y1="8" x2="12" y2="12" />
+                      <line x1="12" y1="16" x2="12.01" y2="16" />
+                    </svg>
+                  </div>
+                  <div style={{ flex: 1 }}>
+                    <h3 style={{ margin: "0 0 8px 0", fontSize: "1.1rem", fontWeight: 700, color: "#d97706" }}>
+                      Yêu cầu cấu hình Gemini API Key
+                    </h3>
+                    <p style={{ margin: "0 0 16px 0", fontSize: "0.9rem", color: "var(--text-secondary)", lineHeight: "1.5" }}>
+                      Để sử dụng tính năng tự động chấm bài và phân tích tiêu chí đánh giá (Rubric) bằng trí tuệ nhân tạo, thầy/cô cần thiết lập khóa API cá nhân. Làm theo hướng dẫn dưới đây để lấy khóa và cấu hình cho tài khoản:
+                    </p>
+                    
+                    <div style={{ display: "flex", flexDirection: "column", gap: "10px", marginBottom: "20px", fontSize: "0.85rem", color: "var(--text-primary)" }}>
+                      <div style={{ display: "flex", alignItems: "flex-start", gap: "8px" }}>
+                        <span style={{ fontWeight: 700, color: "#d97706" }}>1.</span>
+                        <span>Truy cập trang <a href="https://aistudio.google.com/" target="_blank" rel="noopener noreferrer" style={{ color: "#d97706", fontWeight: 600, textDecoration: "underline" }}>Google AI Studio</a> và đăng nhập bằng tài khoản Google của thầy/cô.</span>
+                      </div>
+                      <div style={{ display: "flex", alignItems: "flex-start", gap: "8px" }}>
+                        <span style={{ fontWeight: 700, color: "#d97706" }}>2.</span>
+                        <span>Nhấp vào nút <strong>"Create API Key"</strong> (hoặc "Get API key"), sau đó sao chép (copy) khóa API vừa tạo (khóa có dạng bắt đầu bằng <code>AIzaSy</code> hoặc <code>AQ.</code>).</span>
+                      </div>
+                      <div style={{ display: "flex", alignItems: "flex-start", gap: "8px" }}>
+                        <span style={{ fontWeight: 700, color: "#d97706" }}>3.</span>
+                        <span>Nhấp vào nút dưới đây để chuyển đến trang Cài đặt tài khoản và dán khóa API vào để lưu cấu hình.</span>
+                      </div>
+                    </div>
+
+                    <button 
+                      className="btn-primary" 
+                      onClick={() => navigate("/teacher?tab=settings")}
+                      style={{
+                        background: "#d97706",
+                        color: "#ffffff",
+                        fontWeight: 600,
+                        border: "none",
+                        boxShadow: "0 2px 4px rgba(217, 119, 6, 0.15)"
+                      }}
+                      onMouseEnter={(e) => e.currentTarget.style.background = "#b45309"}
+                      onMouseLeave={(e) => e.currentTarget.style.background = "#d97706"}
+                    >
+                      Cấu hình API Key ngay
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                        <polyline points="12 5 19 12 12 19" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
 
             {/* Quick Actions */}
             <h3 className="section-title">Thao tác nhanh</h3>

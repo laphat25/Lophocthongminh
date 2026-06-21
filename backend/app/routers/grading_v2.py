@@ -2,14 +2,15 @@
 import io
 import csv
 from datetime import datetime, timezone
-from fastapi import APIRouter, HTTPException, Depends
+from fastapi import APIRouter, HTTPException, Depends, BackgroundTasks
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 from typing import Optional
-from app.storage import submission_store, assignment_store, grading_store, user_store
+from app.storage import submission_store, assignment_store, grading_store, user_store, feedback_store
 from app.auth import get_current_user, require_teacher
-from app.services.bm25_grading import grade_by_rubric, compute_total_score
+from app.services.bm25_grading import compute_total_score
 from app.services.grading import grade_by_rubric_gemini
+from app.services.feedback_anchoring import process_ai_feedbacks
 
 router = APIRouter(tags=["grading"])
 
@@ -40,9 +41,9 @@ def auto_grade(submission_id: str, teacher: dict = Depends(require_teacher)):
     if not rubric:
         raise HTTPException(400, "Đề bài chưa có rubric")
 
-    # Try Gemini rubric grade, fallback to BM25 if it fails or isn't set up
+    # Try Gemini rubric grade with anchored feedbacks
     try:
-        criteria_scores = grade_by_rubric_gemini(
+        criteria_scores, raw_feedbacks = grade_by_rubric_gemini(
             sub.get("content_text", ""),
             rubric,
             api_key=teacher.get("gemini_api_key")
@@ -71,10 +72,32 @@ def auto_grade(submission_id: str, teacher: dict = Depends(require_teacher)):
     }
     grading_store.set(submission_id, result)
 
+    # Process and store anchored feedbacks
+    # First, clear any existing AI feedbacks for this submission
+    existing_fbs = [
+        fb for fb in feedback_store.values()
+        if fb.get("submission_id") == submission_id and fb.get("source") == "ai"
+    ]
+    for fb in existing_fbs:
+        feedback_store.delete(fb["id"])
+
+    # Process AI feedbacks through anchoring service
+    validated_feedbacks = process_ai_feedbacks(
+        ai_feedbacks=raw_feedbacks,
+        submission_text=sub.get("content_text", ""),
+        submission_id=submission_id,
+    )
+
+    # Store each feedback
+    for fb in validated_feedbacks:
+        feedback_store.set(fb["id"], fb)
+
     # Update submission status
     sub["status"] = "graded"
     submission_store.set(submission_id, sub)
 
+    # Include feedbacks in response
+    result["feedbacks"] = validated_feedbacks
     return result
 
 
@@ -97,10 +120,22 @@ def get_grade(submission_id: str, user: dict = Depends(get_current_user)):
         raise HTTPException(404, "Điểm chưa được công bố")
 
     assignment = assignment_store.get(sub["assignment_id"])
+
+    # Get feedbacks for this submission
+    feedbacks = [
+        fb for fb in feedback_store.values()
+        if fb.get("submission_id") == submission_id
+    ]
+    # Students should not see dismissed feedbacks
+    if user["role"] == "student":
+        feedbacks = [fb for fb in feedbacks if fb.get("status") != "dismissed"]
+    feedbacks.sort(key=lambda fb: fb.get("anchor", {}).get("char_offset_start", 0))
+
     return {
         "grading": grading,
         "submission": sub,
         "rubric": assignment.get("rubric", []) if assignment else [],
+        "feedbacks": feedbacks,
     }
 
 
@@ -169,7 +204,12 @@ def publish_grade(submission_id: str, teacher: dict = Depends(require_teacher)):
 # ---- GRADES LIST (teacher) ----
 
 @router.get("/assignments/{assignment_id}/grades")
-def list_grades(assignment_id: str, teacher: dict = Depends(require_teacher)):
+def list_grades(
+    assignment_id: str,
+    skip: int = 0,
+    limit: int = 50,
+    teacher: dict = Depends(require_teacher)
+):
     assignment = assignment_store.get(assignment_id)
     if not assignment or assignment["teacher_id"] != teacher["id"]:
         raise HTTPException(403, "Không có quyền")
@@ -202,7 +242,17 @@ def list_grades(assignment_id: str, teacher: dict = Depends(require_teacher)):
             "pass_count": sum(1 for s in scores if s >= threshold),
             "fail_count": sum(1 for s in scores if s < threshold),
         }
-    return {"grades": rows, "stats": stats, "rubric": assignment.get("rubric", [])}
+    
+    total = len(rows)
+    paginated = rows[skip:skip + limit]
+    return {
+        "grades": paginated,
+        "total": total,
+        "skip": skip,
+        "limit": limit,
+        "stats": stats,
+        "rubric": assignment.get("rubric", [])
+    }
 
 
 # ---- EXPORT CSV ----
@@ -252,9 +302,103 @@ def export_grades(assignment_id: str, teacher: dict = Depends(require_teacher)):
 
 # ---- BATCH AUTO GRADE ALL ----
 
+async def _run_batch_grading(assignment_id: str, teacher_id: str, api_key: Optional[str], task_id: str):
+    """Background task to grade all submissions with WebSocket updates."""
+    from app.routers.ws import update_task_progress
+    from app.logger import logger
+    
+    await update_task_progress(task_id, "running", 10.0, "Đang khởi tạo danh sách bài nộp cần chấm...")
+    
+    assignment = assignment_store.get(assignment_id)
+    if not assignment:
+        await update_task_progress(task_id, "failed", 0.0, "Không tìm thấy đề bài", error="Không tìm thấy đề bài")
+        return
+
+    rubric = assignment.get("rubric", [])
+    subs = [
+        s for s in submission_store.values()
+        if s["assignment_id"] == assignment_id and s["status"] == "submitted"
+    ]
+    total_subs = len(subs)
+    if total_subs == 0:
+        await update_task_progress(task_id, "completed", 100.0, "Không có bài nộp nào mới ở trạng thái chưa chấm")
+        return
+
+    graded_count = 0
+    now = datetime.now(timezone.utc).isoformat()
+    
+    for i, sub in enumerate(subs):
+        progress_pct = 10.0 + (i / total_subs) * 80.0
+        await update_task_progress(
+            task_id,
+            "running",
+            progress_pct,
+            f"Đang chấm bài {i + 1}/{total_subs} - Sinh viên: {sub.get('student_name', '')}"
+        )
+        
+        try:
+            criteria_scores, raw_feedbacks = grade_by_rubric_gemini(
+                sub.get("content_text", ""),
+                rubric,
+                api_key=api_key
+            )
+            total = compute_total_score(criteria_scores)
+            result = {
+                "id": sub["id"],
+                "submission_id": sub["id"],
+                "assignment_id": assignment_id,
+                "student_id": sub["student_id"],
+                "student_name": sub.get("student_name", ""),
+                "graded_by": teacher_id,
+                "criteria_scores": criteria_scores,
+                "total_score": total,
+                "overall_comment": "",
+                "graded_at": now,
+                "published_at": None,
+                "status": "graded",
+            }
+            grading_store.set(sub["id"], result)
+
+            # Process and store AI feedbacks
+            existing_fbs = [
+                fb for fb in feedback_store.values()
+                if fb.get("submission_id") == sub["id"] and fb.get("source") == "ai"
+            ]
+            for fb in existing_fbs:
+                feedback_store.delete(fb["id"])
+
+            validated_feedbacks = process_ai_feedbacks(
+                ai_feedbacks=raw_feedbacks,
+                submission_text=sub.get("content_text", ""),
+                submission_id=sub["id"],
+            )
+            for fb in validated_feedbacks:
+                feedback_store.set(fb["id"], fb)
+
+            sub["status"] = "graded"
+            submission_store.set(sub["id"], sub)
+            graded_count += 1
+            
+        except Exception as e:
+            logger.error(f"Lỗi chấm bài tự động cho sinh viên {sub.get('student_name', '')}: {e}")
+            # Keep going for other students in the batch
+            
+    await update_task_progress(
+        task_id,
+        "completed",
+        100.0,
+        f"Hoàn tất chấm điểm tự động. Đã chấm thành công {graded_count}/{total_subs} bài nộp.",
+        result={"graded_count": graded_count, "total_count": total_subs}
+    )
+
+
 @router.post("/assignments/{assignment_id}/grade/auto-all")
-def auto_grade_all(assignment_id: str, teacher: dict = Depends(require_teacher)):
-    """Auto-grade all submitted (ungraded) submissions for an assignment."""
+async def auto_grade_all(
+    assignment_id: str,
+    background_tasks: BackgroundTasks,
+    teacher: dict = Depends(require_teacher)
+):
+    """Auto-grade all submitted (ungraded) submissions for an assignment asynchronously."""
     assignment = assignment_store.get(assignment_id)
     if not assignment or assignment["teacher_id"] != teacher["id"]:
         raise HTTPException(403, "Không có quyền")
@@ -262,45 +406,23 @@ def auto_grade_all(assignment_id: str, teacher: dict = Depends(require_teacher))
     if not rubric:
         raise HTTPException(400, "Đề bài chưa có rubric")
 
-    subs = [
-        s for s in submission_store.values()
-        if s["assignment_id"] == assignment_id and s["status"] == "submitted"
-    ]
-    graded_count = 0
-    now = datetime.now(timezone.utc).isoformat()
-    for sub in subs:
-        try:
-            criteria_scores = grade_by_rubric_gemini(
-                sub.get("content_text", ""),
-                rubric,
-                api_key=teacher.get("gemini_api_key")
-            )
-        except Exception as e:
-            raise HTTPException(
-                status_code=502,
-                detail=f"Lỗi gọi API Gemini cho bài nộp {sub['id']}: {str(e)}"
-            )
-        total = compute_total_score(criteria_scores)
-        result = {
-            "id": sub["id"],
-            "submission_id": sub["id"],
-            "assignment_id": assignment_id,
-            "student_id": sub["student_id"],
-            "student_name": sub.get("student_name", ""),
-            "graded_by": teacher["id"],
-            "criteria_scores": criteria_scores,
-            "total_score": total,
-            "overall_comment": "",
-            "graded_at": now,
-            "published_at": None,
-            "status": "graded",
-        }
-        grading_store.set(sub["id"], result)
-        sub["status"] = "graded"
-        submission_store.set(sub["id"], sub)
-        graded_count += 1
+    task_id = f"batch_grade_{assignment_id}"
+    from app.routers.ws import update_task_progress
+    await update_task_progress(task_id, "pending", 0.0, "Đang khởi tạo tiến trình chấm bài hàng loạt...")
 
-    return {"message": f"Đã chấm xong {graded_count} bài", "graded_count": graded_count}
+    background_tasks.add_task(
+        _run_batch_grading,
+        assignment_id,
+        teacher["id"],
+        teacher.get("gemini_api_key"),
+        task_id
+    )
+
+    return {
+        "message": "Đang tiến hành chấm bài tự động toàn bộ lớp trong nền",
+        "status": "pending",
+        "task_id": task_id
+    }
 
 
 # ---- BATCH PUBLISH ALL GRADED ----

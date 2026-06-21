@@ -3,55 +3,9 @@ from typing import Optional
 from google import genai
 from google.genai import types
 from pydantic import BaseModel
-from app.config import GEMINI_API_KEY, GEMINI_MODEL
-from app.rubric import load_rubric
+from app.config import GEMINI_API_KEY, GEMINI_MODEL, decrypt_api_key
 from app.services.bm25_grading import _extract_highlights
-
-
-def grade_submission(text: str) -> dict:
-    if not GEMINI_API_KEY:
-        raise RuntimeError("GEMINI_API_KEY is not configured in .env")
-
-    client = genai.Client(
-        api_key=GEMINI_API_KEY,
-        http_options=types.HttpOptions(timeout=30_000)
-    )
-
-    import time
-    max_retries = 3
-    delay = 2
-    response = None
-    for attempt in range(max_retries):
-        try:
-            response = client.models.generate_content(
-                model=GEMINI_MODEL,
-                contents=f"Grade the following student submission:\n\n{text}",
-                config=types.GenerateContentConfig(
-                    system_instruction=load_rubric(),
-                    response_mime_type="application/json",
-                    temperature=0.3,
-                ),
-            )
-            break
-        except Exception as e:
-            if attempt == max_retries - 1:
-                raise e
-            print(f"Gemini API attempt {attempt + 1} failed: {e}. Retrying in {delay} seconds...")
-            time.sleep(delay)
-            delay *= 2
-
-    result = json.loads(response.text)
-
-    score = int(result["score"])
-    if score < 0:
-        score = 0
-    if score > 100:
-        score = 100
-
-    return {
-        "score": score,
-        "draft_feedback": str(result["draft_feedback"]),
-    }
+from app.logger import logger
 
 
 class CriterionEvaluation(BaseModel):
@@ -66,25 +20,59 @@ class RubricGradingResponse(BaseModel):
     evaluations: list[CriterionEvaluation]
 
 
-def grade_by_rubric_gemini(submission_text: str, rubric: list[dict], api_key: Optional[str] = None) -> list[dict]:
-    effective_api_key = api_key
-    if not effective_api_key or not effective_api_key.strip() or not effective_api_key.startswith("AIzaSy"):
-        effective_api_key = GEMINI_API_KEY
-    if not effective_api_key:
-        raise RuntimeError("Gemini API key is not configured. Vui lòng cấu hình API key trong cài đặt hoặc file .env")
+class AnchorOutput(BaseModel):
+    exact_quote: str
+    prefix_context: str = ""
+    suffix_context: str = ""
+    paragraph_index: Optional[int] = None
+    sentence_index: Optional[int] = None
+
+
+class SuggestedFixOutput(BaseModel):
+    original_text: str
+    replacement_text: str
+    explanation: str
+
+
+class FeedbackOutput(BaseModel):
+    anchor: AnchorOutput
+    severity: str
+    category: str
+    criteria_id: Optional[str] = None
+    comment: str
+    evidence: str
+    suggested_fix: Optional[SuggestedFixOutput] = None
+
+
+class AnchoredGradingResponse(BaseModel):
+    evaluations: list[CriterionEvaluation]
+    anchored_feedbacks: list[FeedbackOutput]
+
+
+def grade_by_rubric_gemini(submission_text: str, rubric: list[dict], api_key: Optional[str] = None) -> tuple[list[dict], list[dict]]:
+    """
+    Grade submission with rubric using Gemini.
+    Returns (criteria_scores, raw_anchored_feedbacks).
+    """
+    effective_api_key = decrypt_api_key(api_key) if api_key else ""
+    if not effective_api_key or not effective_api_key.strip():
+        raise RuntimeError("Gemini API key is not configured. Vui lòng cấu hình API key trong cài đặt tài khoản giảng viên.")
 
     if not rubric:
-        return []
+        return [], []
 
     client = genai.Client(
         api_key=effective_api_key,
-        http_options=types.HttpOptions(timeout=30_000)
+        http_options=types.HttpOptions(timeout=120_000)
     )
 
     # Format the rubric criteria to present to the model
     rubric_str = ""
+    criteria_ids = []
     for c in rubric:
-        rubric_str += f"- Tiêu chí: {c.get('criteria_name')} (ID: {c.get('criteria_id')}, Điểm tối đa: {c.get('max_score')}, Trọng số: {c.get('weight')}%)\n"
+        cid = c.get('criteria_id', '')
+        criteria_ids.append(cid)
+        rubric_str += f"- Tiêu chí: {c.get('criteria_name')} (ID: {cid}, Điểm tối đa: {c.get('max_score')}, Trọng số: {c.get('weight')}%)\n"
         rubric_str += "  Các mức điểm:\n"
         for lv in c.get("levels", []):
             rubric_str += f"    * {lv.get('score')} điểm: {lv.get('description')}\n"
@@ -92,18 +80,38 @@ def grade_by_rubric_gemini(submission_text: str, rubric: list[dict], api_key: Op
             rubric_str += f"  Từ khóa: {', '.join(c.get('keywords'))}\n"
         rubric_str += "\n"
 
-    prompt = f"""Bạn là một trợ lý AI chấm bài chuyên nghiệp. Nhiệm vụ của bạn là chấm bài nộp của sinh viên dựa trên bộ Tiêu chí chấm điểm (Rubric) được cung cấp dưới đây.
+    prompt = f"""Bạn là một trợ lý AI chấm bài chuyên nghiệp. Nhiệm vụ của bạn gồm 2 phần:
+
+## PHẦN 1: Chấm điểm theo Rubric
+Chấm bài nộp của sinh viên dựa trên Rubric. Với mỗi tiêu chí:
+1. Chọn mức điểm phù hợp nhất (MUST là một trong các mức có sẵn).
+2. Viết nhận xét ngắn gọn giải thích tại sao chọn mức điểm đó (tiếng Việt).
+
+## PHẦN 2: Phân tích chi tiết và tạo Anchored Feedbacks
+Phân tích bài làm và tạo danh sách nhận xét CỤ THỂ, mỗi nhận xét PHẢI gắn với một đoạn text chính xác trong bài.
+
+Với MỖI lỗi hoặc điểm cần cải thiện:
+1. **exact_quote**: Trích dẫn CHÍNH XÁC đoạn text từ bài làm (copy nguyên văn, KHÔNG paraphrase)
+2. **prefix_context**: ~30 ký tự ngay TRƯỚC đoạn lỗi
+3. **suffix_context**: ~30 ký tự ngay SAU đoạn lỗi
+4. **paragraph_index**: Chỉ số paragraph (đếm từ 0, paragraph = chia bởi dòng trống)
+5. **severity**: error (sai), warning (cần cải thiện), info (gợi ý), praise (khen)
+6. **category**: grammar | logic | structure | citation | clarity | completeness | originality | style | code_bug | other
+7. **criteria_id**: ID tiêu chí liên quan (một trong: {', '.join(criteria_ids)}) hoặc null
+8. **comment**: Nhận xét chi tiết bằng tiếng Việt
+9. **evidence**: Bằng chứng/lý do đánh dấu
+10. **suggested_fix**: Đề xuất cách sửa cụ thể (nếu có thể)
+
+LƯU Ý QUAN TRỌNG:
+- exact_quote PHẢI là copy chính xác từ bài làm, KHÔNG ĐƯỢC paraphrase hay chỉnh sửa
+- Tối đa 15 feedbacks, ưu tiên lỗi quan trọng
+- Bao gồm ít nhất 1-2 nhận xét tích cực (praise) nếu bài làm có điểm tốt
 
 [Nội dung bài làm của sinh viên]:
 {submission_text}
 
 [Danh sách Tiêu chí chấm điểm (Rubric)]:
 {rubric_str}
-
-Hãy phân tích bài làm của sinh viên và chấm điểm cho từng tiêu chí trong Rubric.
-Với mỗi tiêu chí:
-1. Hãy tìm mức điểm phù hợp nhất dựa trên phần mô tả của các mức điểm trong Rubric. Điểm số được chọn MUST là một trong các mức điểm được định nghĩa trong Rubric cho tiêu chí đó (không tự ý chấm điểm khác ngoài các mức có sẵn).
-2. Viết nhận xét ngắn gọn, mang tính xây dựng giải thích tại sao sinh viên nhận được mức điểm đó (nhận xét bằng tiếng Việt).
 """
 
     import time
@@ -117,7 +125,7 @@ Với mỗi tiêu chí:
                 contents=prompt,
                 config=types.GenerateContentConfig(
                     response_mime_type="application/json",
-                    response_schema=RubricGradingResponse,
+                    response_schema=AnchoredGradingResponse,
                     temperature=0.2,
                 ),
             )
@@ -125,18 +133,19 @@ Với mỗi tiêu chí:
         except Exception as e:
             if attempt == max_retries - 1:
                 raise e
-            print(f"Gemini API attempt {attempt + 1} failed: {e}. Retrying in {delay} seconds...")
+            logger.warning(f"Gemini API attempt {attempt + 1} failed: {e}. Retrying in {delay} seconds...")
             time.sleep(delay)
             delay *= 2
-
 
     try:
         data = json.loads(response.text)
         eval_list = data.get("evaluations", [])
         eval_map = {e["criteria_id"]: e for e in eval_list}
+        raw_feedbacks = data.get("anchored_feedbacks", [])
     except Exception as e:
-        print(f"Error parsing Gemini response: {e}. Raw response: {response.text}")
+        logger.error(f"Error parsing Gemini response: {e}. Raw response: {response.text}")
         eval_map = {}
+        raw_feedbacks = []
 
     results = []
     for criteria in rubric:
@@ -168,4 +177,13 @@ Với mỗi tiêu chí:
             "highlighted_text": _extract_highlights(submission_text, criteria.get("keywords", [])),
         })
 
-    return results
+    # Convert raw_feedbacks to dict format for downstream processing
+    feedbacks_dicts = []
+    for fb in raw_feedbacks:
+        if isinstance(fb, dict):
+            feedbacks_dicts.append(fb)
+        else:
+            feedbacks_dicts.append(fb.model_dump() if hasattr(fb, 'model_dump') else dict(fb))
+
+    return results, feedbacks_dicts
+

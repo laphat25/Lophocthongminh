@@ -5,7 +5,8 @@ from google import genai
 from google.genai import types
 from pydantic import BaseModel
 
-from app.config import GEMINI_API_KEY, GEMINI_MODEL
+from app.config import GEMINI_API_KEY, GEMINI_MODEL, decrypt_api_key
+from app.logger import logger
 
 
 class RubricLevelResponse(BaseModel):
@@ -29,11 +30,9 @@ class RubricTemplateResponse(BaseModel):
 
 def parse_rubric_with_gemini(text: str, api_key: Optional[str] = None) -> Optional[dict]:
     """Parse unstructured rubric text into a structured JSON template using Gemini."""
-    effective_api_key = api_key
-    if not effective_api_key or not effective_api_key.strip() or not effective_api_key.startswith("AIzaSy"):
-        effective_api_key = GEMINI_API_KEY
-    if not effective_api_key:
-        raise RuntimeError("Gemini API key is not configured. Vui lòng cấu hình API key trong cài đặt hoặc file .env")
+    effective_api_key = decrypt_api_key(api_key) if api_key else ""
+    if not effective_api_key or not effective_api_key.strip():
+        raise RuntimeError("Gemini API key is not configured. Vui lòng cấu hình API key trong cài đặt tài khoản giảng viên.")
 
     if not text or not text.strip():
         return None
@@ -85,7 +84,7 @@ LƯU Ý QUAN TRỌNG:
         except Exception as e:
             if attempt == max_retries - 1:
                 raise e
-            print(f"Gemini API attempt {attempt + 1} failed: {e}. Retrying in {delay} seconds...")
+            logger.warning(f"Gemini API attempt {attempt + 1} failed: {e}. Retrying in {delay} seconds...")
             time.sleep(delay)
             delay *= 2
 
@@ -110,5 +109,5 @@ LƯU Ý QUAN TRỌNG:
 
         return data
     except Exception as e:
-        print(f"Error parsing Gemini response: {e}. Raw response: {response.text}")
+        logger.error(f"Error parsing Gemini response: {e}. Raw response: {response.text}")
         return None

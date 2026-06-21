@@ -1,8 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
-import { getGrade, autoGrade, saveGrade, publishGrade } from "../api/client";
+import { getGrade, autoGrade, saveGrade, publishGrade, addFeedback, resolveFeedback, dismissFeedback } from "../api/client";
 import type { GradingResult, Submission, RubricCriteria } from "../types";
+import type { FeedbackItem } from "../types/feedback";
 import Navbar from "../components/Navbar";
+import HighlightedText from "../components/HighlightedText";
+import FeedbackPanel from "../components/FeedbackPanel";
+import { useAnchorNavigation } from "../hooks/useAnchorNavigation";
+import { EditIcon } from "../components/Icons";
+import DOMPurify from "dompurify";
+
+const API_HOST = import.meta.env.VITE_API_HOST || "http://localhost:8000";
 
 export default function GradingPage() {
   const { submissionId } = useParams<{ submissionId: string }>();
@@ -19,6 +27,46 @@ export default function GradingPage() {
   const [docxHtml, setDocxHtml] = useState<string | null>(null);
   const [docxLoading, setDocxLoading] = useState(false);
 
+  // Feedback anchoring state
+  const [feedbacks, setFeedbacks] = useState<FeedbackItem[]>([]);
+  const [activeFeedbackId, setActiveFeedbackId] = useState<string | null>(null);
+  const { submissionRef, scrollToAnchor, scrollToFeedback, registerFeedbackRef } = useAnchorNavigation();
+
+  // Manual feedback creation state
+  const [showAddModal, setShowAddModal] = useState(false);
+  const [manualFeedbackData, setManualFeedbackData] = useState<{
+    start: number;
+    end: number;
+    text: string;
+  } | null>(null);
+
+  const [manualSeverity, setManualSeverity] = useState<string>("warning");
+  const [manualCategory, setManualCategory] = useState<string>("grammar");
+  const [manualCriteriaId, setManualCriteriaId] = useState<string>("");
+  const [manualComment, setManualComment] = useState<string>("");
+  const [manualEvidence, setManualEvidence] = useState<string>("");
+  const [hasSuggestedFix, setHasSuggestedFix] = useState<boolean>(false);
+  const [suggestedReplacement, setSuggestedReplacement] = useState<string>("");
+  const [suggestedExplanation, setSuggestedExplanation] = useState<string>("");
+
+  const handleResolveFeedback = async (id: string) => {
+    try {
+      const updated = await resolveFeedback(id);
+      setFeedbacks((prev) => prev.map((f) => (f.id === id ? updated : f)));
+    } catch (err) {
+      alert(err instanceof Error ? err.message : "Lỗi giải quyết nhận xét");
+    }
+  };
+
+  const handleDismissFeedback = async (id: string) => {
+    try {
+      const updated = await dismissFeedback(id);
+      setFeedbacks((prev) => prev.map((f) => (f.id === id ? updated : f)));
+    } catch (err) {
+      alert(err instanceof Error ? err.message : "Lỗi bỏ qua nhận xét");
+    }
+  };
+
   const fetchData = async () => {
     if (!submissionId) return;
     try {
@@ -32,6 +80,10 @@ export default function GradingPage() {
         scores[cs.criteria_id] = { final_score: cs.final_score, teacher_comment: cs.teacher_comment };
       });
       setLocalScores(scores);
+      // Load feedbacks
+      if (data.feedbacks) {
+        setFeedbacks(data.feedbacks);
+      }
     } catch {
       // Not graded yet
     } finally {
@@ -41,18 +93,75 @@ export default function GradingPage() {
 
   useEffect(() => { fetchData(); }, [submissionId]);
 
+  // Feedback action handlers
+  const handleHighlightClick = useCallback((feedbackIds: string[]) => {
+    if (feedbackIds.length > 0) {
+      setActiveFeedbackId(feedbackIds[0]);
+      scrollToFeedback(feedbackIds[0]);
+    }
+  }, [scrollToFeedback]);
+
+  const handleFeedbackClick = useCallback((feedbackId: string) => {
+    setActiveFeedbackId(feedbackId);
+    scrollToAnchor(feedbackId);
+  }, [scrollToAnchor]);
+
+
+  const handleOpenAddModal = useCallback((start: number, end: number, text: string) => {
+    setManualFeedbackData({ start, end, text });
+    setSuggestedReplacement(text);
+    setManualComment("");
+    setManualEvidence("");
+    setHasSuggestedFix(false);
+    setSuggestedExplanation("");
+    setManualSeverity("warning");
+    setManualCategory("grammar");
+    setManualCriteriaId("");
+    setShowAddModal(true);
+  }, []);
+
+  const handleCreateManualFeedback = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!submissionId || !manualFeedbackData) return;
+    try {
+      const fixPayload = hasSuggestedFix ? {
+        replacement_text: suggestedReplacement,
+        explanation: suggestedExplanation,
+      } : null;
+
+      const newFb = await addFeedback(submissionId, {
+        char_offset_start: manualFeedbackData.start,
+        char_offset_end: manualFeedbackData.end,
+        severity: manualSeverity,
+        category: manualCategory,
+        criteria_id: manualCriteriaId,
+        comment: manualComment,
+        suggested_fix: fixPayload,
+      });
+
+      setFeedbacks((prev) => [...prev, newFb]);
+      setShowAddModal(false);
+      setManualFeedbackData(null);
+      setMsg({ text: "Thêm nhận xét thành công!", type: "success" });
+      setTimeout(() => setMsg(null), 3000);
+    } catch (err) {
+      console.error(err);
+      setMsg({ text: err instanceof Error ? err.message : "Không thể thêm nhận xét", type: "error" });
+    }
+  };
+
   useEffect(() => {
     if (viewMode === "file" && submission?.file_url && submission.file_name?.toLowerCase().endsWith(".docx")) {
       if (!docxHtml && !docxLoading) {
         setDocxLoading(true);
-        const url = `http://localhost:8000${submission.file_url}`;
+        const url = `${API_HOST}${submission.file_url}`;
         fetch(url)
           .then((res) => {
             if (!res.ok) throw new Error("Không thể tải file Word");
             return res.arrayBuffer();
           })
           .then((arrayBuffer) => {
-            const mammoth = (window as any).mammoth;
+            const mammoth = window.mammoth;
             if (mammoth) {
               return mammoth.convertToHtml({ arrayBuffer });
             } else {
@@ -86,6 +195,10 @@ export default function GradingPage() {
         scores[cs.criteria_id] = { final_score: cs.final_score, teacher_comment: cs.teacher_comment };
       });
       setLocalScores(scores);
+      // Capture anchored feedbacks from AI response
+      if (result.feedbacks) {
+        setFeedbacks(result.feedbacks);
+      }
       setMsg({ text: "AI đã chấm xong!", type: "success" });
     } catch (e) {
       setMsg({ text: e instanceof Error ? e.message : "Lỗi AI chấm", type: "error" });
@@ -154,7 +267,7 @@ export default function GradingPage() {
             {submission?.file_url && (
               <p style={{ marginTop: "8px" }}>
                 <a
-                  href={`http://localhost:8000${submission.file_url}`}
+                  href={`${API_HOST}${submission.file_url}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-secondary btn-sm"
@@ -288,14 +401,24 @@ export default function GradingPage() {
               }
             >
               {viewMode === "text" ? (
-                <div style={{ whiteSpace: "pre-wrap" }}>
-                  {submission?.content_text || <span className="text-muted">Không có nội dung</span>}
-                </div>
+                submission?.content_text ? (
+                  <HighlightedText
+                    text={submission.content_text}
+                    feedbacks={feedbacks}
+                    activeFeedbackId={activeFeedbackId}
+                    onHighlightClick={handleHighlightClick}
+                    submissionRef={submissionRef}
+                    isTeacher={true}
+                    onAddManualFeedback={handleOpenAddModal}
+                  />
+                ) : (
+                  <span className="text-muted">Không có nội dung</span>
+                )
               ) : (
                 submission?.file_url && (
                   submission.file_name?.toLowerCase().endsWith(".pdf") ? (
                     <iframe
-                      src={`http://localhost:8000${submission.file_url}`}
+                      src={`${API_HOST}${submission.file_url}`}
                       width="100%"
                       height="100%"
                       style={{ border: "1px solid var(--border)", borderRadius: "var(--radius)", minHeight: "550px" }}
@@ -339,7 +462,7 @@ export default function GradingPage() {
                             fontFamily: "var(--font-sans, 'Inter', sans-serif)",
                             lineHeight: "1.6"
                           }}
-                          dangerouslySetInnerHTML={{ __html: docxHtml || "" }}
+                          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(docxHtml || "") }}
                         />
                       )}
                     </div>
@@ -359,7 +482,7 @@ export default function GradingPage() {
                       <p style={{ fontWeight: 500, marginBottom: "8px" }}>File TXT không hỗ trợ xem trực tiếp.</p>
                       <p className="text-sm text-muted" style={{ marginBottom: "16px" }}>Vui lòng tải file về máy để xem định dạng gốc hoặc dùng tab "Văn bản trích xuất" bên cạnh.</p>
                       <a
-                        href={`http://localhost:8000${submission.file_url}`}
+                        href={`${API_HOST}${submission.file_url}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="btn-primary btn-sm"
@@ -482,8 +605,202 @@ export default function GradingPage() {
               </>
             )}
           </div>
+
+          {/* Right panel: Rubric + Feedback Panel */}
+          {feedbacks.length > 0 && grading && (
+            <div style={{ gridColumn: "1 / -1", marginTop: "8px" }}>
+              <div className="card" style={{ padding: "16px 20px" }}>
+                <FeedbackPanel
+                  feedbacks={feedbacks}
+                  activeFeedbackId={activeFeedbackId}
+                  onFeedbackClick={handleFeedbackClick}
+                  registerRef={registerFeedbackRef}
+                  onResolve={handleResolveFeedback}
+                  onDismiss={handleDismissFeedback}
+                />
+              </div>
+            </div>
+          )}
         </div>
       </main>
+
+      {/* Manual Feedback Modal */}
+      {showAddModal && manualFeedbackData && (
+        <div className="modal-overlay">
+          <div className="modal" style={{ maxWidth: "560px" }}>
+            <h2 style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+              <EditIcon size={20} />
+              Thêm nhận xét thủ công
+            </h2>
+            <form onSubmit={handleCreateManualFeedback}>
+              <div className="form-group mb-16">
+                <label className="form-label">Đoạn văn bản đã chọn:</label>
+                <div
+                  className="fb-card-quote"
+                  style={{
+                    maxHeight: "100px",
+                    overflowY: "auto",
+                    margin: 0,
+                    whiteSpace: "pre-wrap",
+                  }}
+                >
+                  "{manualFeedbackData.text}"
+                </div>
+              </div>
+
+              <div className="form-row mb-16" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
+                <div className="form-group">
+                  <label className="form-label">Mức độ:</label>
+                  <select
+                    className="form-input"
+                    value={manualSeverity}
+                    onChange={(e) => setManualSeverity(e.target.value)}
+                    required
+                  >
+                    <option value="error">Lỗi (Error)</option>
+                    <option value="warning">Cảnh báo (Warning)</option>
+                    <option value="info">Gợi ý (Info)</option>
+                    <option value="praise">Khen ngợi (Praise)</option>
+                  </select>
+                </div>
+
+                <div className="form-group">
+                  <label className="form-label">Phân loại:</label>
+                  <select
+                    className="form-input"
+                    value={manualCategory}
+                    onChange={(e) => setManualCategory(e.target.value)}
+                    required
+                  >
+                    <option value="grammar">Ngữ pháp (Grammar)</option>
+                    <option value="logic">Lập luận (Logic)</option>
+                    <option value="structure">Cấu trúc (Structure)</option>
+                    <option value="clarity">Rõ ràng (Clarity)</option>
+                    <option value="completeness">Đầy đủ (Completeness)</option>
+                    <option value="style">Phong cách (Style)</option>
+                    <option value="code_bug">Lỗi code (Code bug)</option>
+                    <option value="other">Khác (Other)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="form-group mb-16">
+                <label className="form-label">Liên kết tiêu chí chấm điểm:</label>
+                <select
+                  className="form-input"
+                  value={manualCriteriaId}
+                  onChange={(e) => setManualCriteriaId(e.target.value)}
+                >
+                  <option value="">-- Không liên kết --</option>
+                  {rubric.map((c) => (
+                    <option key={c.criteria_id} value={c.criteria_id}>
+                      {c.criteria_name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="form-group mb-16">
+                <label className="form-label">Nhận xét:</label>
+                <textarea
+                  className="form-input"
+                  rows={3}
+                  value={manualComment}
+                  onChange={(e) => setManualComment(e.target.value)}
+                  placeholder="Nhập nội dung nhận xét chi tiết..."
+                  required
+                />
+              </div>
+
+              <div className="form-group mb-16">
+                <label className="form-label">Bằng chứng/Giải thích:</label>
+                <input
+                  type="text"
+                  className="form-input"
+                  value={manualEvidence}
+                  onChange={(e) => setManualEvidence(e.target.value)}
+                  placeholder="Ví dụ: Theo quy tắc ngữ pháp tiếng Việt..."
+                />
+              </div>
+
+              <div className="form-group mb-16">
+                <label
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "8px",
+                    cursor: "pointer",
+                    fontSize: "0.85rem",
+                    fontWeight: 500,
+                  }}
+                >
+                  <input
+                    type="checkbox"
+                    checked={hasSuggestedFix}
+                    onChange={(e) => setHasSuggestedFix(e.target.checked)}
+                    style={{ width: "16px", height: "16px", cursor: "pointer" }}
+                  />
+                  Đề xuất cách sửa trực tiếp
+                </label>
+              </div>
+
+              {hasSuggestedFix && (
+                <div
+                  style={{
+                    background: "rgba(34, 197, 94, 0.03)",
+                    border: "1px solid rgba(34, 197, 94, 0.15)",
+                    borderRadius: "var(--radius)",
+                    padding: "12px",
+                    marginBottom: "16px",
+                  }}
+                >
+                  <div className="form-group mb-12">
+                    <label className="form-label" style={{ color: "#059669" }}>
+                      Văn bản thay thế:
+                    </label>
+                    <input
+                      type="text"
+                      className="form-input"
+                      value={suggestedReplacement}
+                      onChange={(e) => setSuggestedReplacement(e.target.value)}
+                      required
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label className="form-label" style={{ color: "#059669" }}>
+                      Giải thích cách sửa:
+                    </label>
+                    <input
+                      type="text"
+                      className="form-input"
+                      value={suggestedExplanation}
+                      onChange={(e) => setSuggestedExplanation(e.target.value)}
+                      placeholder="Ví dụ: Đổi sang từ viết đúng chính tả"
+                    />
+                  </div>
+                </div>
+              )}
+
+              <div className="modal-actions">
+                <button
+                  type="button"
+                  className="btn-accent"
+                  style={{ background: "transparent", color: "var(--text-secondary)", border: "1px solid var(--border)" }}
+                  onClick={() => {
+                    setShowAddModal(false);
+                    setManualFeedbackData(null);
+                  }}
+                >
+                  Hủy
+                </button>
+                <button type="submit" className="btn-primary">
+                  Tạo nhận xét
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

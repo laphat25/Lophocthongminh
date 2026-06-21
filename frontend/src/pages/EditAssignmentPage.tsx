@@ -53,7 +53,11 @@ export default function EditAssignmentPage() {
         });
         // Strip criteria_id for the builder
         setRubric(
-          asgn.rubric.map(({ criteria_id: _id, ...rest }) => rest)
+          asgn.rubric.map((item) => {
+            const rest = { ...item } as Partial<RubricCriteria>;
+            delete rest.criteria_id;
+            return rest as Omit<RubricCriteria, "criteria_id">;
+          })
         );
         setLoading(false);
       })

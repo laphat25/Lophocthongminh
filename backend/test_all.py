@@ -23,9 +23,10 @@ def log(status, name, detail=""):
     results.append((status, name, detail))
 
 def req(method, path, token=None, **kwargs):
-    headers = {}
+    headers = kwargs.pop("headers", {})
     if token:
         headers["Authorization"] = f"Bearer {token}"
+    headers["x-disable-rate-limit"] = "true"
     r = getattr(requests, method)(f"{BASE}{path}", headers=headers, **kwargs)
     return r
 
@@ -50,6 +51,27 @@ elif r.status_code == 400 and ("already" in r.text.lower() or "đăng ký" in r.
 else:
     log(False, "Register teacher", r.text[:100])
     teacher_token = None
+
+if teacher_token:
+    # Cấu hình Gemini API Key cho giáo viên dùng trong kiểm thử E2E (lấy từ .env cục bộ)
+    import os
+    from dotenv import load_dotenv
+    load_dotenv()
+    test_api_key = os.getenv("GEMINI_API_KEY", "")
+    if test_api_key:
+        # Giải mã API key từ .env để gửi bản rõ (raw key) lên endpoint /settings
+        try:
+            from app.config import decrypt_api_key
+            raw_key = decrypt_api_key(test_api_key)
+            if raw_key:
+                test_api_key = raw_key
+        except Exception as e:
+            print(f"Bypass decryption in test_all.py: {e}")
+        
+        r_settings = req("put", "/auth/settings", token=teacher_token, json={"gemini_api_key": test_api_key})
+        log(r_settings.ok, "Set teacher Gemini API key settings for E2E tests", f"starts with: {test_api_key[:10]}..." if r_settings.ok else r_settings.text[:80])
+    else:
+        log(False, "Set teacher Gemini API key settings", "No GEMINI_API_KEY found in .env")
 
 student1_data = {"email":"student1@test.com","password":"pass1234","full_name":"Tran Thi A","role":"student","student_id":"SV001"}
 r = req("post", "/auth/register", json=student1_data)
@@ -255,10 +277,12 @@ if sub1_id:
     else:
         log(False, "Auto grade student1", r.text[:80])
 
-# Batch grade all
+# Batch grade all (asynchronous task)
 r = req("post", f"/assignments/{assignment_id}/grade/auto-all", token=teacher_token)
 if r.ok:
-    log(True, "Batch grade ALL", f"{r.json().get('graded_count',0)} graded")
+    task_id = r.json().get("task_id", "?")
+    log(True, "Batch grade ALL triggered", f"task_id={task_id}, status={r.json().get('status','?')}")
+    time.sleep(2)  # Wait for background auto grading to complete
 else:
     log(False, "Batch grade all", r.text[:80])
 
@@ -366,14 +390,15 @@ else:
 # ─── 11. RUBRIC TEMPLATES API ────────────────────────────────────────────────
 print("\n═══ 11. RUBRIC TEMPLATES API ═══")
 
-# 1. Get templates list (verify empty initially)
+# 1. Get templates list (verify request ok)
 r = req("get", "/rubrics/templates")
 if r.ok:
-    templates = r.json().get("templates", [])
-    log(len(templates) == 0, "Get templates (verify empty initially)", f"found {len(templates)} templates")
+    initial_templates = r.json().get("templates", [])
+    initial_count = len(initial_templates)
+    log(True, "Get templates list", f"found {initial_count} templates initially")
 else:
     log(False, "Get templates list", r.text[:80])
-    templates = []
+    initial_count = 0
 
 # 2. Create custom rubric template
 custom_template_payload = {
@@ -407,7 +432,7 @@ if custom_template_id:
     if r.ok:
         templates2 = r.json().get("templates", [])
         found_custom = any(t["id"] == custom_template_id for t in templates2)
-        log(found_custom, "Verify custom template in list", f"found={found_custom}")
+        log(found_custom and len(templates2) == initial_count + 1, "Verify custom template in list", f"found={found_custom}, count={len(templates2)}")
     else:
         log(False, "Verify custom template in list", r.text[:80])
 
@@ -422,7 +447,7 @@ if custom_template_id:
     if r.ok:
         templates3 = r.json().get("templates", [])
         still_exists = any(t["id"] == custom_template_id for t in templates3)
-        log(not still_exists, "Verify template is deleted from list", f"still_exists={still_exists}")
+        log(not still_exists and len(templates3) == initial_count, "Verify template is deleted from list", f"still_exists={still_exists}, count={len(templates3)}")
     else:
         log(False, "Verify template is deleted from list", r.text[:80])
 

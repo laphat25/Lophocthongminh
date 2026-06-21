@@ -2,6 +2,11 @@
 import uuid
 import re
 import os
+try:
+    import magic
+except ImportError:
+    magic = None
+import mimetypes
 from datetime import datetime, timezone
 from fastapi import APIRouter, HTTPException, Depends, UploadFile, File, Form
 from pydantic import BaseModel
@@ -11,6 +16,47 @@ from app.auth import get_current_user, require_teacher
 from app.services.pdf_parser import extract_text_from_file
 from app.services.plagiarism import check_plagiarism
 from app.config import UPLOADS_DIR
+
+def sanitize_filename(filename: str) -> str:
+    # Only keep basename and remove any path characters
+    base = os.path.basename(filename)
+    base = re.sub(r"[/\\]", "", base)
+    return base
+
+def validate_uploaded_file(contents: bytes, filename: str):
+    # Check file size (10MB limit)
+    if len(contents) > 10 * 1024 * 1024:
+        raise HTTPException(413, "File quá lớn (tối đa 10MB)")
+
+    ext = os.path.splitext(filename.lower())[1]
+    if ext not in {".pdf", ".docx", ".txt"}:
+        raise HTTPException(400, "Chỉ chấp nhận file PDF, DOCX hoặc TXT")
+
+    # Use python-magic if possible, fallback to guessed mimetype
+    mime = None
+    if magic is not None:
+        try:
+            mime = magic.from_buffer(contents, mime=True)
+        except Exception:
+            pass
+    if not mime:
+        mime, _ = mimetypes.guess_type(filename)
+
+    allowed_mimes = {
+        "application/pdf",
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "text/plain",
+    }
+    
+    # Docx and PDF can sometimes be guessed differently depending on system env
+    if mime not in allowed_mimes and mime not in {"application/zip", "application/octet-stream"}:
+        raise HTTPException(400, f"Loại file không được hỗ trợ: {mime}")
+
+    # Double check header magic bytes
+    if ext == ".pdf" and not contents.startswith(b"%PDF"):
+        raise HTTPException(400, "File PDF không hợp lệ (không đúng định dạng)")
+    if ext == ".docx" and not contents.startswith(b"PK\x03\x04"):
+        raise HTTPException(400, "File DOCX không hợp lệ (không đúng định dạng)")
 
 router = APIRouter(tags=["submissions_v2"])
 
@@ -126,12 +172,15 @@ async def submit_file(
         raise HTTPException(400, "Chỉ chấp nhận file PDF, DOCX hoặc TXT")
 
     data = await file.read()
+    validate_uploaded_file(data, file.filename or "")
+    
     content_text = extract_text_from_file(file.filename or "", data)
     if not content_text.strip():
         raise HTTPException(400, "Không trích xuất được nội dung từ file")
 
-    # Save file
-    safe_name = f"{student['id']}_{assignment_id}{ext}"
+    # Save file using sanitized original name template
+    safe_filename = sanitize_filename(file.filename or "file")
+    safe_name = f"{student['id']}_{assignment_id}_{safe_filename}"
     save_path = UPLOADS_DIR / safe_name
     with open(save_path, "wb") as f_out:
         f_out.write(data)
@@ -150,7 +199,7 @@ async def submit_file(
         "version": version,
         "content_text": content_text,
         "file_url": f"/uploads/{safe_name}",
-        "file_name": file.filename,
+        "file_name": safe_filename,
         "submitted_at": datetime.now(timezone.utc).isoformat(),
         "status": "submitted",
         "word_count": _word_count(content_text),
@@ -164,13 +213,21 @@ async def submit_file(
 # ----- LIST / GET -----
 
 @router.get("/assignments/{assignment_id}/submissions")
-def list_submissions(assignment_id: str, teacher: dict = Depends(require_teacher)):
+def list_submissions(
+    assignment_id: str,
+    skip: int = 0,
+    limit: int = 50,
+    teacher: dict = Depends(require_teacher)
+):
     assignment = assignment_store.get(assignment_id)
     if not assignment or assignment["teacher_id"] != teacher["id"]:
         raise HTTPException(403, "Không có quyền")
     subs = [s for s in submission_store.values() if s["assignment_id"] == assignment_id]
     subs.sort(key=lambda s: s.get("submitted_at", ""), reverse=True)
-    return {"submissions": subs, "total": len(subs)}
+    
+    total = len(subs)
+    paginated = subs[skip:skip + limit]
+    return {"submissions": paginated, "total": total, "skip": skip, "limit": limit}
 
 
 @router.get("/submissions/my")
