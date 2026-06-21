@@ -1,95 +1,147 @@
-# ─────────────────────────────────────────
-#  BACKEND – Python / FastAPI
-# ─────────────────────────────────────────
+# ==============================================================================
+#  CẤU HÌNH GITIGNORE - DỰ ÁN AI ASSIGNMENT MARKING
+# ==============================================================================
 
-# Virtual environment
+# ──────────────────────────────────────────────────────────────────────────────
+#  1. HỆ ĐIỀU HÀNH & ĐỊNH DẠNG HỆ THỐNG (OS-specific files)
+# ──────────────────────────────────────────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# ──────────────────────────────────────────────────────────────────────────────
+#  2. TRÌNH SOẠN THẢO & IDE (Editors & IDEs)
+# ──────────────────────────────────────────────────────────────────────────────
+# VS Code / Cursor
+.vscode/
+!.vscode/extensions.json
+!.vscode/launch.json
+.history/
+*.code-workspace
+
+# JetBrains (IntelliJ, WebStorm, PyCharm, v.v.)
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Vim
+*~
+*.swp
+*.swo
+
+# ──────────────────────────────────────────────────────────────────────────────
+#  3. MÔI TRƯỜNG & BẢO MẬT (Environments & Secrets)
+# ──────────────────────────────────────────────────────────────────────────────
+# Bỏ qua tất cả các file .env chứa thông tin cấu hình nhạy cảm/secret keys
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env
+*.env.*
+
+# Không bỏ qua các file ví dụ/template cấu hình
+!.env.example
+!*.env.example
+
+# ──────────────────────────────────────────────────────────────────────────────
+#  4. BACKEND (Python / FastAPI)
+# ──────────────────────────────────────────────────────────────────────────────
+# Thư mục môi trường ảo (Virtual environments)
 backend/.venv/
 backend/venv/
 backend/env/
+backend/ENV/
+.venv/
+venv/
+env/
 
-# Python cache
-__pycache__/
+# Python cache & compiles
+**/__pycache__/
 *.py[cod]
-*.pyo
-*.pyd
-*.egg-info/
-*.egg
-.eggs/
-dist/
+*$py.class
+*.so
+.Python
 build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
 
-# Environment variables (chứa secret key, API key)
-backend/.env
-
-# File uploads của sinh viên (dữ liệu runtime, không commit)
-backend/uploads/
-
-# Dữ liệu runtime (JSON store) và tệp tin sao lưu
+# Thư mục dữ liệu runtime & uploads (không commit lên git)
+backend/uploads/*
+!backend/uploads/.gitkeep
 backend/data/*.json
 backend/data/*.json.bak
 
-# Logs
+
+# Logs của backend
+backend/logs/*.log
 backend/logs/
+*.log
 
+# Jupyter Notebook & Thử nghiệm
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
 
-# ─────────────────────────────────────────
-#  FRONTEND – Vite / React / TypeScript
-# ─────────────────────────────────────────
+# Kiểm thử & Coverage
+.pytest_cache/
+.coverage
+.coverage.*
+.cache
+htmlcov/
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
 
-# Dependencies
+# ──────────────────────────────────────────────────────────────────────────────
+#  5. FRONTEND (Vite / React / TypeScript)
+# ──────────────────────────────────────────────────────────────────────────────
+# Thư mục thư viện dependencies
 frontend/node_modules/
+node_modules/
 
-# Build output
+# Thư mục build output
 frontend/dist/
 frontend/build/
+dist/
+build/
 
-# Yarn PnP cache (chỉ commit .pnp.cjs nếu dùng Zero-Install)
-# Bỏ comment nếu KHÔNG dùng Zero-Install:
-# frontend/.pnp.cjs
-# frontend/.pnp.loader.mjs
-# frontend/.yarn/cache/
-# frontend/.yarn/unplugged/
-
-# Yarn install state (luôn bỏ)
-frontend/.yarn/install-state.gz
-
-# Vite / TS cache
+# Bộ nhớ tạm của Vite / TS / ESLint
 frontend/.vite/
 frontend/tsconfig.tsbuildinfo
-frontend/node_modules/.tmp/
+frontend/.eslintcache
 
-# Environment variables frontend
-frontend/.env
-frontend/.env.local
-frontend/.env.*.local
+# Cấu hình Yarn Berry (Yarn v2/v3/v4) - Dành cho nodeLinker: node-modules
+frontend/.yarn/install-state.gz
+frontend/.yarn/cache/
+frontend/.yarn/unplugged/
+frontend/.pnp.*
 
+# Giữ lại SDKs cho editor nếu cần, hoặc bỏ qua nếu không dùng
+# frontend/.yarn/sdks/
 
-# ─────────────────────────────────────────
-#  CHUNG
-# ─────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────────────
+#  6. DOCKER & RUNTIME KHÁC
+# ──────────────────────────────────────────────────────────────────────────────
+.docker/
 
-# macOS
-.DS_Store
-.AppleDouble
-.LSOverride
-
-# Editor / IDE
-.idea/
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-
-# Logs & Backups
-*.log
-*.bak
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Coverage / test output
-coverage/
-.coverage
-htmlcov/
-.pytest_cache/
