@@ -91,6 +91,7 @@ backend/uploads/*
 !backend/uploads/.gitkeep
 backend/data/*.json
 backend/data/*.json.bak
+backend/data/**/*.docx
 
 
 # Logs của backend
