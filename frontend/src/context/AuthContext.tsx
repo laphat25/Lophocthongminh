@@ -2,6 +2,8 @@
 import { createContext, useContext, useState, type ReactNode } from "react";
 import type { User } from "../types";
 
+import { logoutUser } from "../api/client";
+
 interface AuthContextType {
   user: User | null;
   token: string | null;
@@ -31,12 +33,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const login = (newToken: string, newUser: User) => {
     setToken(newToken);
-    setUser(newUser);
+    setUser(newToken ? newUser : null);
     localStorage.setItem("auth_token", newToken);
     localStorage.setItem("auth_user", JSON.stringify(newUser));
   };
 
   const logout = () => {
+    logoutUser().catch((err) => console.error("Error logging out from server:", err));
     setToken(null);
     setUser(null);
     localStorage.removeItem("auth_token");

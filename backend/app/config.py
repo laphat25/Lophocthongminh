@@ -8,8 +8,9 @@ import warnings
 load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-DATA_DIR = BASE_DIR / "data"
-UPLOADS_DIR = BASE_DIR / "uploads"
+DATA_DIR = Path(os.getenv("DATA_DIR", str(BASE_DIR / "data")))
+UPLOADS_DIR = Path(os.getenv("UPLOADS_DIR", str(BASE_DIR / "uploads")))
+DATABASE_URL = os.getenv("DATABASE_URL", "")
 
 # JSON storage files
 USERS_FILE = DATA_DIR / "users.json"
@@ -30,6 +31,9 @@ UPLOADS_DIR.mkdir(exist_ok=True)
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.5-flash")
+
+GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
+GROQ_MODEL = os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile")
 
 JWT_SECRET = os.getenv("JWT_SECRET", "")
 if not JWT_SECRET:

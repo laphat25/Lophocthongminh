@@ -76,8 +76,7 @@ def test_auto_grading_mocked(client, teacher_headers, submission_setup):
         "evidence": "Formula match",
         "suggested_fix": None
     }]
-
-    with patch("app.routers.grading_v2.grade_by_rubric_gemini", return_value=(mock_scores, mock_feedbacks)):
+    with patch("app.services.grading.grade_by_rubric_gemini", return_value=(mock_scores, mock_feedbacks)):
         res = client.post(f"/api/submissions/{sub_id}/grade/auto", headers=teacher_headers)
         assert res.status_code == 200
         assert res.json()["total_score"] == 90.0  # 9.0 out of 10 is 90% (weight 100)

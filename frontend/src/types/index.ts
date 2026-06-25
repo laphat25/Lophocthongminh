@@ -8,6 +8,7 @@ export interface User {
   is_active: boolean;
   created_at: string;
   has_gemini_key?: boolean;
+  ai_provider?: string;
 }
 
 export interface AuthResponse {
@@ -73,6 +74,20 @@ export interface Assignment {
   updated_at: string;
 }
 
+export interface CitationItem {
+  raw_text: string;
+  status: "verified" | "suspicious" | "local_document";
+  matched_title: string | null;
+  matched_doi: string | null;
+  matched_url: string | null;
+  score: number;
+}
+
+export interface CitationReport {
+  has_citations: boolean;
+  citations: CitationItem[];
+}
+
 // ─── Submissions ──────────────────────────────────────────────────────────────
 export interface Submission {
   id: string;
@@ -88,6 +103,7 @@ export interface Submission {
   word_count: number;
   plagiarism_score: number;
   plagiarism_flagged: boolean;
+  citation_report?: CitationReport;
 }
 
 // ─── Grading ──────────────────────────────────────────────────────────────────

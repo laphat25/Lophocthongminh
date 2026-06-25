@@ -1,5 +1,6 @@
 """PDF and DOCX text extraction."""
 import io
+import re
 
 try:
     import PyPDF2
@@ -14,6 +15,41 @@ except ImportError:
     _HAS_DOCX = False
 
 
+def clean_extracted_pdf_text(text: str) -> str:
+    """
+    Heuristic to fix PDF extraction layout bugs (e.g. PyPDF2 extracting Vietnamese word-by-word on separate lines).
+    If the number of lines is high relative to the number of words, merge single newlines.
+    """
+    if not text:
+        return ""
+    words = text.split()
+    if not words:
+        return text
+    lines = text.splitlines()
+    
+    # If more than 60% of words are on their own lines, it's likely a word-by-word layout bug
+    if len(lines) > 0.6 * len(words):
+        # Standardize newlines
+        cleaned = text.replace("\r\n", "\n")
+        
+        # Heuristic to distinguish word/line wraps from paragraph breaks.
+        # Word transitions in buggy PDFs usually have 1 or 2 newlines (e.g. \n \n).
+        # Real paragraph breaks have 3 or more newlines (e.g. \n \n \n).
+        def replace_newline_sequence(match):
+            seq = match.group(0)
+            newline_count = seq.count('\n')
+            if newline_count >= 3:
+                return "\n\n"
+            else:
+                return " "
+        
+        cleaned = re.sub(r'\n[\s\n]*', replace_newline_sequence, cleaned)
+        # Remove consecutive spaces
+        cleaned = re.sub(r' +', ' ', cleaned)
+        return cleaned.strip()
+    return text
+
+
 def extract_text_from_pdf(file_path: str) -> str:
     if not _HAS_PYPDF2:
         return ""
@@ -21,7 +57,8 @@ def extract_text_from_pdf(file_path: str) -> str:
         with open(file_path, "rb") as f:
             reader = PyPDF2.PdfReader(f)
             pages = [page.extract_text() or "" for page in reader.pages]
-        return "\n".join(pages).strip()
+        raw_text = "\n".join(pages).strip()
+        return clean_extracted_pdf_text(raw_text)
     except Exception:
         return ""
 
@@ -32,7 +69,8 @@ def extract_text_from_pdf_bytes(data: bytes) -> str:
     try:
         reader = PyPDF2.PdfReader(io.BytesIO(data))
         pages = [page.extract_text() or "" for page in reader.pages]
-        return "\n".join(pages).strip()
+        raw_text = "\n".join(pages).strip()
+        return clean_extracted_pdf_text(raw_text)
     except Exception:
         return ""
 
@@ -102,7 +140,6 @@ def extract_text_from_docx_bytes(data: bytes) -> str:
             return "\n".join(p.text for p in doc.paragraphs if p.text.strip()).strip()
         except Exception:
             return ""
-
 
 
 def extract_text_from_file(filename: str, data: bytes) -> str:

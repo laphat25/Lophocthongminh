@@ -9,8 +9,7 @@ from typing import Optional
 from app.storage import submission_store, assignment_store, grading_store, user_store, feedback_store
 from app.auth import get_current_user, require_teacher
 from app.services.bm25_grading import compute_total_score
-from app.services.grading import grade_by_rubric_gemini
-from app.services.feedback_anchoring import process_ai_feedbacks
+from app.services.grading import execute_full_grading
 
 router = APIRouter(tags=["grading"])
 
@@ -41,63 +40,20 @@ def auto_grade(submission_id: str, teacher: dict = Depends(require_teacher)):
     if not rubric:
         raise HTTPException(400, "Đề bài chưa có rubric")
 
-    # Try Gemini rubric grade with anchored feedbacks
     try:
-        criteria_scores, raw_feedbacks = grade_by_rubric_gemini(
-            sub.get("content_text", ""),
+        result, validated_feedbacks = execute_full_grading(
+            sub,
             rubric,
-            api_key=teacher.get("gemini_api_key")
+            teacher,
+            grading_store,
+            feedback_store,
+            submission_store
         )
     except Exception as e:
         raise HTTPException(
             status_code=502,
-            detail=f"Lỗi gọi API Gemini: {str(e)}"
+            detail=f"Lỗi gọi API chấm điểm: {str(e)}"
         )
-    total = compute_total_score(criteria_scores)
-
-    now = datetime.now(timezone.utc).isoformat()
-    result = {
-        "id": submission_id,
-        "submission_id": submission_id,
-        "assignment_id": sub["assignment_id"],
-        "student_id": sub["student_id"],
-        "student_name": sub.get("student_name", ""),
-        "graded_by": teacher["id"],
-        "criteria_scores": criteria_scores,
-        "total_score": total,
-        "overall_comment": "",
-        "graded_at": now,
-        "published_at": None,
-        "status": "graded",
-    }
-    grading_store.set(submission_id, result)
-
-    # Process and store anchored feedbacks
-    # First, clear any existing AI feedbacks for this submission
-    existing_fbs = [
-        fb for fb in feedback_store.values()
-        if fb.get("submission_id") == submission_id and fb.get("source") == "ai"
-    ]
-    for fb in existing_fbs:
-        feedback_store.delete(fb["id"])
-
-    # Process AI feedbacks through anchoring service
-    validated_feedbacks = process_ai_feedbacks(
-        ai_feedbacks=raw_feedbacks,
-        submission_text=sub.get("content_text", ""),
-        submission_id=submission_id,
-    )
-
-    # Store each feedback
-    for fb in validated_feedbacks:
-        feedback_store.set(fb["id"], fb)
-
-    # Update submission status
-    sub["status"] = "graded"
-    submission_store.set(submission_id, sub)
-
-    # Include feedbacks in response
-    result["feedbacks"] = validated_feedbacks
     return result
 
 
@@ -113,7 +69,22 @@ def get_grade(submission_id: str, user: dict = Depends(get_current_user)):
 
     grading = grading_store.get(submission_id)
     if not grading:
-        raise HTTPException(404, "Bài nộp chưa được chấm")
+        if user["role"] == "student":
+            raise HTTPException(404, "Bài nộp chưa được chấm")
+        
+        # For teachers, return metadata and empty/none grading so they can view/grade it.
+        assignment = assignment_store.get(sub["assignment_id"])
+        feedbacks = [
+            fb for fb in feedback_store.values()
+            if fb.get("submission_id") == submission_id
+        ]
+        feedbacks.sort(key=lambda fb: fb.get("anchor", {}).get("char_offset_start", 0))
+        return {
+            "grading": None,
+            "submission": sub,
+            "rubric": assignment.get("rubric", []) if assignment else [],
+            "feedbacks": feedbacks,
+        }
 
     # Students can only see published grades
     if user["role"] == "student" and grading.get("status") != "published":
@@ -302,7 +273,7 @@ def export_grades(assignment_id: str, teacher: dict = Depends(require_teacher)):
 
 # ---- BATCH AUTO GRADE ALL ----
 
-async def _run_batch_grading(assignment_id: str, teacher_id: str, api_key: Optional[str], task_id: str):
+async def _run_batch_grading(assignment_id: str, teacher_id: str, api_key: Optional[str], ai_provider: str, task_id: str):
     """Background task to grade all submissions with WebSocket updates."""
     from app.routers.ws import update_task_progress
     from app.logger import logger
@@ -337,46 +308,19 @@ async def _run_batch_grading(assignment_id: str, teacher_id: str, api_key: Optio
         )
         
         try:
-            criteria_scores, raw_feedbacks = grade_by_rubric_gemini(
-                sub.get("content_text", ""),
-                rubric,
-                api_key=api_key
-            )
-            total = compute_total_score(criteria_scores)
-            result = {
-                "id": sub["id"],
-                "submission_id": sub["id"],
-                "assignment_id": assignment_id,
-                "student_id": sub["student_id"],
-                "student_name": sub.get("student_name", ""),
-                "graded_by": teacher_id,
-                "criteria_scores": criteria_scores,
-                "total_score": total,
-                "overall_comment": "",
-                "graded_at": now,
-                "published_at": None,
-                "status": "graded",
+            teacher_mock = {
+                "id": teacher_id,
+                "gemini_api_key": api_key,
+                "ai_provider": ai_provider
             }
-            grading_store.set(sub["id"], result)
-
-            # Process and store AI feedbacks
-            existing_fbs = [
-                fb for fb in feedback_store.values()
-                if fb.get("submission_id") == sub["id"] and fb.get("source") == "ai"
-            ]
-            for fb in existing_fbs:
-                feedback_store.delete(fb["id"])
-
-            validated_feedbacks = process_ai_feedbacks(
-                ai_feedbacks=raw_feedbacks,
-                submission_text=sub.get("content_text", ""),
-                submission_id=sub["id"],
+            execute_full_grading(
+                sub,
+                rubric,
+                teacher_mock,
+                grading_store,
+                feedback_store,
+                submission_store
             )
-            for fb in validated_feedbacks:
-                feedback_store.set(fb["id"], fb)
-
-            sub["status"] = "graded"
-            submission_store.set(sub["id"], sub)
             graded_count += 1
             
         except Exception as e:
@@ -415,6 +359,7 @@ async def auto_grade_all(
         assignment_id,
         teacher["id"],
         teacher.get("gemini_api_key"),
+        teacher.get("ai_provider", "default"),
         task_id
     )
 

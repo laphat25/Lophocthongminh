@@ -23,6 +23,9 @@ limiter = RateLimiter()
 
 class RateLimitMiddleware(BaseHTTPMiddleware):
     async def dispatch(self, request: Request, call_next):
+        if request.method == "OPTIONS":
+            return await call_next(request)
+
         import os
         if os.getenv("DISABLE_RATE_LIMIT") == "true" or os.getenv("TESTING") == "true" or request.headers.get("x-disable-rate-limit") == "true":
             return await call_next(request)
@@ -56,16 +59,16 @@ class RateLimitMiddleware(BaseHTTPMiddleware):
         # Determine limits based on request type
         if is_auth:
             key = f"auth:{client_ip}"
-            limit = 5
-            label = "IP: 5 requests/minute"
+            limit = 15
+            label = "IP: 15 requests/minute"
         elif is_ai:
             key = f"ai:{user_id or client_ip}"
-            limit = 10
-            label = "User: 10 AI grading requests/minute"
+            limit = 60
+            label = "User: 60 AI grading requests/minute"
         else:
             key = f"general:{user_id or client_ip}"
-            limit = 60
-            label = "User: 60 requests/minute"
+            limit = 200
+            label = "User: 200 requests/minute"
 
         if limiter.is_rate_limited(key, limit, window=60):
             return Response(

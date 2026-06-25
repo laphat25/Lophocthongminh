@@ -53,7 +53,7 @@ export function buildHighlightSegments(
 
   // Filter out dismissed feedbacks and orphaned anchors
   const activeFeedbacks = feedbacks.filter(
-    (fb) => fb.status !== "dismissed" && fb.anchor.anchor_status !== "orphaned"
+    (fb) => fb && fb.status !== "dismissed" && fb.anchor && fb.anchor.anchor_status !== "orphaned"
   );
 
   if (activeFeedbacks.length === 0) {
@@ -63,6 +63,7 @@ export function buildHighlightSegments(
   // Collect all boundary points
   const boundaries = new Set<number>([0, text.length]);
   for (const fb of activeFeedbacks) {
+    if (!fb.anchor) continue;
     const start = Math.max(0, Math.min(fb.anchor.char_offset_start, text.length));
     const end = Math.max(0, Math.min(fb.anchor.char_offset_end, text.length));
     if (start < end) {
@@ -83,7 +84,7 @@ export function buildHighlightSegments(
     // Find overlapping feedbacks for this segment
     const overlapping = activeFeedbacks.filter(
       (fb) =>
-        fb.anchor.char_offset_start <= start && fb.anchor.char_offset_end >= end
+        fb.anchor && fb.anchor.char_offset_start <= start && fb.anchor.char_offset_end >= end
     );
 
     segments.push({

@@ -14,10 +14,15 @@ import GradesReportPage from "./pages/GradesReportPage";
 import StudentDashboard from "./pages/StudentDashboard";
 import StudentAssignmentPage from "./pages/StudentAssignmentPage";
 import EditAssignmentPage from "./pages/EditAssignmentPage";
+import QuickGradingPage from "./pages/QuickGradingPage";
 import { getPlagiarismPair } from "./api/client";
 import type { PlagiarismPairDetail } from "./types";
 import Navbar from "./components/Navbar";
-import { QuestionBankPage, RubricsLibraryPage, GuidePage } from "./pages/ExtraPages";
+import QuestionBankPage from "./pages/QuestionBankPage";
+import RubricsLibraryPage from "./pages/RubricsLibraryPage";
+import GuidePage from "./pages/GuidePage";
+import { ErrorBoundary } from "./components/ErrorBoundary";
+
 
 function ProtectedRoute({ children, role }: { children: React.ReactNode; role?: string }) {
   const { user, isLoading } = useAuth();
@@ -53,6 +58,7 @@ function AppRoutes() {
       <Route path="/teacher/assignments/:assignmentId/plagiarism" element={<ProtectedRoute role="teacher"><PlagiarismReportPage /></ProtectedRoute>} />
       <Route path="/teacher/assignments/:assignmentId/plagiarism/pair/:subAId/:subBId" element={<ProtectedRoute role="teacher"><PlagiarismPairPage /></ProtectedRoute>} />
       <Route path="/teacher/grade/:submissionId" element={<ProtectedRoute role="teacher"><GradingPage /></ProtectedRoute>} />
+      <Route path="/teacher/quick-grading" element={<ProtectedRoute role="teacher"><QuickGradingPage /></ProtectedRoute>} />
       <Route path="/teacher/questions" element={<ProtectedRoute role="teacher"><QuestionBankPage /></ProtectedRoute>} />
       <Route path="/teacher/rubrics" element={<ProtectedRoute role="teacher"><RubricsLibraryPage /></ProtectedRoute>} />
       <Route path="/teacher/guide" element={<ProtectedRoute role="teacher"><GuidePage /></ProtectedRoute>} />
@@ -130,10 +136,13 @@ function PlagiarismPairPage() {
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <AuthProvider>
-        <AppRoutes />
-      </AuthProvider>
-    </BrowserRouter>
+    <ErrorBoundary>
+      <BrowserRouter>
+        <AuthProvider>
+          <AppRoutes />
+        </AuthProvider>
+      </BrowserRouter>
+    </ErrorBoundary>
   );
 }
+

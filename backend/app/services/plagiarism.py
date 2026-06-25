@@ -121,3 +121,16 @@ def compute_similarity_matrix(submissions: list[dict]) -> list[dict]:
     # Sort by similarity descending
     results.sort(key=lambda x: x["similarity_pct"], reverse=True)
     return results
+
+
+def run_assignment_plagiarism_check(new_text: str, assignment_id: str, exclude_student_id: str) -> float:
+    """Compare a new submission's text against other students' submissions for the same assignment."""
+    from app.storage import submission_store
+    others = [
+        s["content_text"] for s in submission_store.values()
+        if s["assignment_id"] == assignment_id
+        and s["student_id"] != exclude_student_id
+        and s.get("content_text")
+    ]
+    return check_plagiarism(new_text, others)
+

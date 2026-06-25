@@ -41,7 +41,10 @@ export default function AssignmentPage() {
     }
   };
 
-  useEffect(() => { fetchData(); }, [assignmentId]);
+  useEffect(() => {
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [assignmentId]);
 
   const handleAutoGrade = async (subId: string) => {
     setGradingId(subId);

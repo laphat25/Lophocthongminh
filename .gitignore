@@ -37,7 +37,7 @@ Thumbs.db
 # ──────────────────────────────────────────────────────────────────────────────
 #  3. MÔI TRƯỜNG & BẢO MẬT (Environments & Secrets)
 # ──────────────────────────────────────────────────────────────────────────────
-# Bỏ qua tất cả các file .env chứa thông tin cấu hình nhạy cảm/secret keys
+# Bỏ qua tất cả các file .env chứa thông tin cấu hình nhạy cảm/secret keys ở mọi cấp thư mục
 .env
 .env.local
 .env.development.local
@@ -45,10 +45,14 @@ Thumbs.db
 .env.production.local
 *.env
 *.env.*
+**/.env
+**/.env.*
+**/config.local.json
 
 # Không bỏ qua các file ví dụ/template cấu hình
 !.env.example
 !*.env.example
+!**/.env.example
 
 # ──────────────────────────────────────────────────────────────────────────────
 #  4. BACKEND (Python / FastAPI)
@@ -82,7 +86,6 @@ var/
 wheels/
 share/python-wheels/
 *.egg-info/
-.installed.cfg
 *.egg
 MANIFEST
 
@@ -90,14 +93,19 @@ MANIFEST
 backend/uploads/*
 !backend/uploads/.gitkeep
 backend/data/*.json
-backend/data/*.json.bak
+backend/data/**/*.json
+backend/data/*.bak
+backend/data/**/*.bak
+backend/data/*.repair_bak
+backend/data/**/*.repair_bak
 backend/data/**/*.docx
-
+backend/data/sample_assignments/
 
 # Logs của backend
 backend/logs/*.log
 backend/logs/
 *.log
+**/*.log
 
 # Jupyter Notebook & Thử nghiệm
 .ipynb_checkpoints
@@ -113,6 +121,12 @@ nosetests.xml
 coverage.xml
 *.cover
 .hypothesis/
+
+# Sao lưu chung (General backups)
+*.bak
+*.repair_bak
+*.tmp
+*~
 
 # ──────────────────────────────────────────────────────────────────────────────
 #  5. FRONTEND (Vite / React / TypeScript)

@@ -128,14 +128,30 @@ def add_feedback(
     return feedback
 
 
+def _get_feedback_or_404(feedback_id: str) -> dict:
+    fb = feedback_store.get(feedback_id)
+    if not fb:
+        raise HTTPException(status_code=404, detail="Không tìm thấy feedback")
+    return fb
+
+
+def _update_and_save_feedback(feedback_id: str, updates: dict) -> dict:
+    fb = _get_feedback_or_404(feedback_id)
+    for k, v in updates.items():
+        if k == "suggested_fix_status" and fb.get("suggested_fix"):
+            fb["suggested_fix"]["fix_status"] = v
+        else:
+            fb[k] = v
+    fb["updated_at"] = datetime.now(timezone.utc).isoformat()
+    feedback_store.set(feedback_id, fb)
+    return fb
+
+
 # ── GET single feedback ──
 
 @router.get("/feedbacks/{feedback_id}")
 def get_feedback(feedback_id: str, user: dict = Depends(get_current_user)):
-    fb = feedback_store.get(feedback_id)
-    if not fb:
-        raise HTTPException(404, "Không tìm thấy feedback")
-    return fb
+    return _get_feedback_or_404(feedback_id)
 
 
 # ── PUT update feedback ──
@@ -146,34 +162,25 @@ def update_feedback(
     req: UpdateFeedbackRequest,
     teacher: dict = Depends(require_teacher),
 ):
-    fb = feedback_store.get(feedback_id)
-    if not fb:
-        raise HTTPException(404, "Không tìm thấy feedback")
-
-    now = datetime.now(timezone.utc).isoformat()
-
+    updates = {}
     if req.severity is not None:
         if req.severity in ("error", "warning", "info", "praise"):
-            fb["severity"] = req.severity
+            updates["severity"] = req.severity
     if req.category is not None:
-        fb["category"] = req.category
+        updates["category"] = req.category
     if req.comment is not None:
-        fb["comment"] = req.comment
+        updates["comment"] = req.comment
     if req.evidence is not None:
-        fb["evidence"] = req.evidence
+        updates["evidence"] = req.evidence
 
-    fb["updated_at"] = now
-    feedback_store.set(feedback_id, fb)
-    return fb
+    return _update_and_save_feedback(feedback_id, updates)
 
 
 # ── DELETE feedback ──
 
 @router.delete("/feedbacks/{feedback_id}")
 def delete_feedback(feedback_id: str, teacher: dict = Depends(require_teacher)):
-    fb = feedback_store.get(feedback_id)
-    if not fb:
-        raise HTTPException(404, "Không tìm thấy feedback")
+    fb = _get_feedback_or_404(feedback_id)
     feedback_store.delete(feedback_id)
     return {"message": "Đã xóa feedback"}
 
@@ -182,60 +189,37 @@ def delete_feedback(feedback_id: str, teacher: dict = Depends(require_teacher)):
 
 @router.put("/feedbacks/{feedback_id}/resolve")
 def resolve_feedback(feedback_id: str, teacher: dict = Depends(require_teacher)):
-    fb = feedback_store.get(feedback_id)
-    if not fb:
-        raise HTTPException(404, "Không tìm thấy feedback")
-
-    fb["status"] = "resolved"
-    fb["updated_at"] = datetime.now(timezone.utc).isoformat()
-    feedback_store.set(feedback_id, fb)
-    return fb
+    return _update_and_save_feedback(feedback_id, {"status": "resolved"})
 
 
 # ── PUT dismiss feedback ──
 
 @router.put("/feedbacks/{feedback_id}/dismiss")
 def dismiss_feedback(feedback_id: str, teacher: dict = Depends(require_teacher)):
-    fb = feedback_store.get(feedback_id)
-    if not fb:
-        raise HTTPException(404, "Không tìm thấy feedback")
-
-    fb["status"] = "dismissed"
-    fb["updated_at"] = datetime.now(timezone.utc).isoformat()
-    feedback_store.set(feedback_id, fb)
-    return fb
+    return _update_and_save_feedback(feedback_id, {"status": "dismissed"})
 
 
 # ── PUT accept suggested fix ──
 
 @router.put("/feedbacks/{feedback_id}/fix/accept")
 def accept_fix(feedback_id: str, teacher: dict = Depends(require_teacher)):
-    fb = feedback_store.get(feedback_id)
-    if not fb:
-        raise HTTPException(404, "Không tìm thấy feedback")
-
+    fb = _get_feedback_or_404(feedback_id)
     if not fb.get("suggested_fix"):
-        raise HTTPException(400, "Feedback này không có gợi ý sửa")
+        raise HTTPException(status_code=400, detail="Feedback này không có gợi ý sửa")
 
-    fb["suggested_fix"]["fix_status"] = "accepted"
-    fb["status"] = "accepted"
-    fb["updated_at"] = datetime.now(timezone.utc).isoformat()
-    feedback_store.set(feedback_id, fb)
-    return fb
+    return _update_and_save_feedback(
+        feedback_id, 
+        {"suggested_fix_status": "accepted", "status": "accepted"}
+    )
 
 
 # ── PUT reject suggested fix ──
 
 @router.put("/feedbacks/{feedback_id}/fix/reject")
 def reject_fix(feedback_id: str, teacher: dict = Depends(require_teacher)):
-    fb = feedback_store.get(feedback_id)
-    if not fb:
-        raise HTTPException(404, "Không tìm thấy feedback")
-
+    fb = _get_feedback_or_404(feedback_id)
     if not fb.get("suggested_fix"):
-        raise HTTPException(400, "Feedback này không có gợi ý sửa")
+        raise HTTPException(status_code=400, detail="Feedback này không có gợi ý sửa")
 
-    fb["suggested_fix"]["fix_status"] = "rejected"
-    fb["updated_at"] = datetime.now(timezone.utc).isoformat()
-    feedback_store.set(feedback_id, fb)
-    return fb
+    return _update_and_save_feedback(feedback_id, {"suggested_fix_status": "rejected"})
+

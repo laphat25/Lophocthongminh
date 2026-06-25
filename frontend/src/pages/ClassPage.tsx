@@ -32,7 +32,10 @@ export default function ClassPage() {
     }
   };
 
-  useEffect(() => { fetchData(); }, [classId]);
+  useEffect(() => {
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [classId]);
 
   const statusBadge = (status: Assignment["status"]) => {
     const map = {

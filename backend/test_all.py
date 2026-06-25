@@ -290,7 +290,7 @@ else:
 if sub1_id:
     r = req("get", f"/submissions/{sub1_id}/grade", token=teacher_token)
     if r.ok:
-        g = r.json().get("grading",{})
+        g = r.json().get("grading") or {}
         criteria_count = len(g.get("criteria_scores",[]))
         log(True, "Get grade detail (teacher)", f"total={g.get('total_score','?')}, {criteria_count} criteria")
     else:
@@ -300,7 +300,7 @@ if sub1_id:
 if sub1_id:
     r_grade = req("get", f"/submissions/{sub1_id}/grade", token=teacher_token)
     if r_grade.ok:
-        g = r_grade.json().get("grading",{})
+        g = r_grade.json().get("grading") or {}
         criteria_scores = [
             {"criteria_id": cs["criteria_id"], "final_score": cs["final_score"], "teacher_comment": "Lam tot!"}
             for cs in g.get("criteria_scores", [])
@@ -325,7 +325,7 @@ else:
 if sub1_id:
     r = req("get", f"/submissions/{sub1_id}/grade", token=s1_token)
     if r.ok:
-        g = r.json().get("grading",{})
+        g = r.json().get("grading") or {}
         log(True, "Student1 view grade", f"total={g.get('total_score','?')}, status={g.get('status','?')}")
     else:
         log(False, "Student1 view grade", r.text[:80])

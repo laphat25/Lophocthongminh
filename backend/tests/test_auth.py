@@ -99,3 +99,39 @@ def test_reset_student_password_unauthorized(client, student_headers, student_us
         headers=student_headers
     )
     assert response.status_code == 403
+
+
+def test_update_settings_ai_provider_default(client, teacher_headers):
+    payload = {
+        "ai_provider": "default",
+        "gemini_api_key": ""
+    }
+    response = client.put("/api/auth/settings", json=payload, headers=teacher_headers)
+    assert response.status_code == 200
+    data = response.json()
+    assert data["user"]["ai_provider"] == "default"
+
+
+def test_update_settings_ai_provider_gemini_without_key(client, teacher_headers):
+    # Try updating to gemini provider without key (should fail as there's no pre-existing key)
+    payload = {
+        "ai_provider": "gemini",
+        "gemini_api_key": ""
+    }
+    response = client.put("/api/auth/settings", json=payload, headers=teacher_headers)
+    assert response.status_code == 400
+    assert "Vui lòng nhập Gemini API Key" in response.json()["detail"]
+
+
+def test_update_settings_ai_provider_gemini_with_key(client, teacher_headers):
+    # Updating to gemini provider with valid key should succeed
+    payload = {
+        "ai_provider": "gemini",
+        "gemini_api_key": "AIzaSyValidGeminiKeyHere"
+    }
+    response = client.put("/api/auth/settings", json=payload, headers=teacher_headers)
+    assert response.status_code == 200
+    data = response.json()
+    assert data["user"]["ai_provider"] == "gemini"
+    assert data["user"]["has_gemini_key"] is True
+

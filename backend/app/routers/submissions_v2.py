@@ -2,61 +2,18 @@
 import uuid
 import re
 import os
-try:
-    import magic
-except ImportError:
-    magic = None
-import mimetypes
 from datetime import datetime, timezone
-from fastapi import APIRouter, HTTPException, Depends, UploadFile, File, Form
+from fastapi import APIRouter, Depends, UploadFile, File, Form
 from pydantic import BaseModel
 from typing import Optional
 from app.storage import submission_store, assignment_store, enrollment_store, user_store
 from app.auth import get_current_user, require_teacher
 from app.services.pdf_parser import extract_text_from_file
-from app.services.plagiarism import check_plagiarism
+from app.services.plagiarism import run_assignment_plagiarism_check
+from app.services.citation_verifier import verify_all_citations
 from app.config import UPLOADS_DIR
-
-def sanitize_filename(filename: str) -> str:
-    # Only keep basename and remove any path characters
-    base = os.path.basename(filename)
-    base = re.sub(r"[/\\]", "", base)
-    return base
-
-def validate_uploaded_file(contents: bytes, filename: str):
-    # Check file size (10MB limit)
-    if len(contents) > 10 * 1024 * 1024:
-        raise HTTPException(413, "File quá lớn (tối đa 10MB)")
-
-    ext = os.path.splitext(filename.lower())[1]
-    if ext not in {".pdf", ".docx", ".txt"}:
-        raise HTTPException(400, "Chỉ chấp nhận file PDF, DOCX hoặc TXT")
-
-    # Use python-magic if possible, fallback to guessed mimetype
-    mime = None
-    if magic is not None:
-        try:
-            mime = magic.from_buffer(contents, mime=True)
-        except Exception:
-            pass
-    if not mime:
-        mime, _ = mimetypes.guess_type(filename)
-
-    allowed_mimes = {
-        "application/pdf",
-        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-        "text/plain",
-    }
-    
-    # Docx and PDF can sometimes be guessed differently depending on system env
-    if mime not in allowed_mimes and mime not in {"application/zip", "application/octet-stream"}:
-        raise HTTPException(400, f"Loại file không được hỗ trợ: {mime}")
-
-    # Double check header magic bytes
-    if ext == ".pdf" and not contents.startswith(b"%PDF"):
-        raise HTTPException(400, "File PDF không hợp lệ (không đúng định dạng)")
-    if ext == ".docx" and not contents.startswith(b"PK\x03\x04"):
-        raise HTTPException(400, "File DOCX không hợp lệ (không đúng định dạng)")
+from app.utils.file_utils import sanitize_filename, validate_uploaded_file
+from app.exceptions import ValidationError, NotFoundError, ForbiddenError
 
 router = APIRouter(tags=["submissions_v2"])
 
@@ -73,7 +30,7 @@ def _word_count(text: str) -> int:
 def _can_submit(assignment: dict, student_id: str) -> None:
     """Raise if submission not allowed."""
     if assignment["status"] != "published":
-        raise HTTPException(400, "Đề bài chưa được phát hành hoặc đã đóng")
+        raise ValidationError("Đề bài chưa được phát hành hoặc đã đóng")
     deadline = assignment.get("deadline")
     if deadline:
         try:
@@ -81,12 +38,12 @@ def _can_submit(assignment: dict, student_id: str) -> None:
             if dl.tzinfo is None:
                 dl = dl.replace(tzinfo=timezone.utc)
             if datetime.now(timezone.utc) > dl:
-                raise HTTPException(400, "Đã quá hạn nộp bài")
+                raise ValidationError("Đã quá hạn nộp bài")
         except ValueError:
             pass
     existing = submission_store.find_one(assignment_id=assignment["id"], student_id=student_id)
     if existing and not assignment.get("allow_resubmit", False):
-        raise HTTPException(400, "Bạn đã nộp bài cho đề bài này. Giảng viên không cho phép nộp lại.")
+        raise ValidationError("Bạn đã nộp bài cho đề bài này. Giảng viên không cho phép nộp lại.")
 
 
 def _get_student_name(student_id: str) -> str:
@@ -94,40 +51,34 @@ def _get_student_name(student_id: str) -> str:
     return user["full_name"] if user else student_id
 
 
-def _plagiarism_check(new_text: str, assignment_id: str, exclude_student_id: str) -> float:
-    others = [
-        s["content_text"] for s in submission_store.values()
-        if s["assignment_id"] == assignment_id
-        and s["student_id"] != exclude_student_id
-        and s.get("content_text")
-    ]
-    return check_plagiarism(new_text, others)
-
-
 # ----- TEXT SUBMISSION -----
 
 @router.post("/assignments/{assignment_id}/submit/text")
-def submit_text(
+async def submit_text(
     assignment_id: str,
     req: TextSubmitRequest,
     student: dict = Depends(get_current_user),
 ):
     if student["role"] == "teacher":
-        raise HTTPException(400, "Giảng viên không nộp bài")
+        raise ValidationError("Giảng viên không nộp bài")
     assignment = assignment_store.get(assignment_id)
     if not assignment:
-        raise HTTPException(404, "Không tìm thấy đề bài")
+        raise NotFoundError("Không tìm thấy đề bài")
     _can_submit(assignment, student["id"])
 
     if assignment.get("submission_type") == "file":
-        raise HTTPException(400, "Đề bài này yêu cầu nộp file")
+        raise ValidationError("Đề bài này yêu cầu nộp file")
+
+    if not req.content_text.strip():
+        raise ValidationError("Nội dung bài nộp không được để trống")
 
     # Check existing → version
     existing = submission_store.find_one(assignment_id=assignment_id, student_id=student["id"])
     version = (existing.get("version", 0) + 1) if existing else 1
     sub_id = existing["id"] if existing else str(uuid.uuid4())
 
-    plag_score = _plagiarism_check(req.content_text, assignment_id, student["id"])
+    plag_score = run_assignment_plagiarism_check(req.content_text, assignment_id, student["id"])
+    citation_report = await verify_all_citations(req.content_text)
 
     submission = {
         "id": sub_id,
@@ -143,9 +94,11 @@ def submit_text(
         "word_count": _word_count(req.content_text),
         "plagiarism_score": round(plag_score, 2),
         "plagiarism_flagged": plag_score >= 40.0,
+        "citation_report": citation_report,
     }
     submission_store.set(sub_id, submission)
     return submission
+
 
 
 # ----- FILE SUBMISSION -----
@@ -157,26 +110,26 @@ async def submit_file(
     student: dict = Depends(get_current_user),
 ):
     if student["role"] == "teacher":
-        raise HTTPException(400, "Giảng viên không nộp bài")
+        raise ValidationError("Giảng viên không nộp bài")
     assignment = assignment_store.get(assignment_id)
     if not assignment:
-        raise HTTPException(404, "Không tìm thấy đề bài")
+        raise NotFoundError("Không tìm thấy đề bài")
     _can_submit(assignment, student["id"])
 
     if assignment.get("submission_type") == "text":
-        raise HTTPException(400, "Đề bài này chỉ nhận bài dạng văn bản")
+        raise ValidationError("Đề bài này chỉ nhận bài dạng văn bản")
 
     allowed_exts = {".pdf", ".docx", ".txt"}
     ext = os.path.splitext(file.filename or "")[1].lower()
     if ext not in allowed_exts:
-        raise HTTPException(400, "Chỉ chấp nhận file PDF, DOCX hoặc TXT")
+        raise ValidationError("Chỉ chấp nhận file PDF, DOCX hoặc TXT")
 
     data = await file.read()
     validate_uploaded_file(data, file.filename or "")
     
     content_text = extract_text_from_file(file.filename or "", data)
     if not content_text.strip():
-        raise HTTPException(400, "Không trích xuất được nội dung từ file")
+        raise ValidationError("Không trích xuất được nội dung từ file")
 
     # Save file using sanitized original name template
     safe_filename = sanitize_filename(file.filename or "file")
@@ -189,7 +142,8 @@ async def submit_file(
     version = (existing.get("version", 0) + 1) if existing else 1
     sub_id = existing["id"] if existing else str(uuid.uuid4())
 
-    plag_score = _plagiarism_check(content_text, assignment_id, student["id"])
+    plag_score = run_assignment_plagiarism_check(content_text, assignment_id, student["id"])
+    citation_report = await verify_all_citations(content_text)
 
     submission = {
         "id": sub_id,
@@ -205,6 +159,7 @@ async def submit_file(
         "word_count": _word_count(content_text),
         "plagiarism_score": round(plag_score, 2),
         "plagiarism_flagged": plag_score >= 40.0,
+        "citation_report": citation_report,
     }
     submission_store.set(sub_id, submission)
     return submission
@@ -221,7 +176,7 @@ def list_submissions(
 ):
     assignment = assignment_store.get(assignment_id)
     if not assignment or assignment["teacher_id"] != teacher["id"]:
-        raise HTTPException(403, "Không có quyền")
+        raise ForbiddenError("Không có quyền")
     subs = [s for s in submission_store.values() if s["assignment_id"] == assignment_id]
     subs.sort(key=lambda s: s.get("submitted_at", ""), reverse=True)
     
@@ -241,8 +196,31 @@ def my_submissions(user: dict = Depends(get_current_user)):
 def get_submission(submission_id: str, user: dict = Depends(get_current_user)):
     sub = submission_store.get(submission_id)
     if not sub:
-        raise HTTPException(404, "Không tìm thấy bài nộp")
+        raise NotFoundError("Không tìm thấy bài nộp")
     # Students can only see their own
     if user["role"] == "student" and sub["student_id"] != user["id"]:
-        raise HTTPException(403, "Không có quyền xem bài này")
+        raise ForbiddenError("Không có quyền xem bài này")
     return sub
+
+
+
+@router.post("/submissions/{submission_id}/verify-citations")
+async def verify_submission_citations(
+    submission_id: str,
+    user: dict = Depends(get_current_user)
+):
+    sub = submission_store.get(submission_id)
+    if not sub:
+        raise NotFoundError("Không tìm thấy bài nộp")
+    # Teachers can verify any, students can only verify their own
+    if user["role"] == "student" and sub["student_id"] != user["id"]:
+        raise ForbiddenError("Không có quyền thực hiện")
+        
+    text = sub.get("content_text", "")
+    report = await verify_all_citations(text)
+    
+    sub["citation_report"] = report
+    sub["updated_at"] = datetime.now(timezone.utc).isoformat()
+    submission_store.set(submission_id, sub)
+    
+    return report

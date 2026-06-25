@@ -1,0 +1,26 @@
+/* ── Forms ──────────────────────────────────────────────────────────────────── */
+.form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+.form-group label { font-size: 0.875rem; font-weight: 600; color: var(--text-secondary); }
+
+input:not([type]), input[type="text"], input[type="email"], input[type="password"], input[type="number"],
+input[type="datetime-local"], select, textarea {
+  background: var(--bg-input); color: var(--text-primary);
+  border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 10px 14px; font-size: 0.9rem; font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s; outline: none; width: 100%;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: #C92328; box-shadow: 0 0 0 3px rgba(201,35,40,0.1);
+}
+input::placeholder, textarea::placeholder { color: var(--text-muted); }
+textarea { resize: vertical; line-height: 1.6; }
+select option { background: var(--bg-surface); color: var(--text-primary); }
+
+.form-group-inline { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.form-group-inline input[type="checkbox"] { width: 16px; height: 16px; cursor: pointer; }
+.form-group-inline label { font-size: 0.875rem; color: var(--text-secondary); cursor: pointer; }
+
+.form-row-3 { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 16px; }
+.form-section { padding: 24px; margin-bottom: 20px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); box-shadow: var(--shadow); }
+.section-header { font-size: 1.05rem; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); color: #C92328; }
+input[type="file"] { display: none; }

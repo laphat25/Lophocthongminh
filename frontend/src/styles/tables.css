@@ -1,0 +1,12 @@
+/* ── Tables ─────────────────────────────────────────────────────────────────── */
+.table-container { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow); }
+table { width: 100%; border-collapse: collapse; }
+th {
+  text-align: left; padding: 10px 14px; background: #f8fafc;
+  color: var(--text-secondary); font-size: 0.72rem; text-transform: uppercase;
+  letter-spacing: 0.05em; border-bottom: 1px solid var(--border);
+  font-weight: 600;
+}
+td { padding: 12px 14px; border-bottom: 1px solid var(--border-light); font-size: 0.85rem; vertical-align: middle; }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: rgba(201, 35, 40, 0.01); }

@@ -1,20 +1,9 @@
 import json
-from pathlib import Path
-from typing import Optional
-from app.config import (
-    USERS_FILE, CLASSES_FILE, ENROLLMENTS_FILE, ASSIGNMENTS_FILE,
-    NEW_SUBMISSIONS_FILE, GRADING_FILE, PLAGIARISM_FILE,
-    RUBRIC_TEMPLATES_FILE, FEEDBACKS_FILE, QUESTIONS_FILE,
-)
-
-
-# ---------------------------------------------------------------------------
-# Generic stores
-# ---------------------------------------------------------------------------
-
 import shutil
 import threading
 import warnings
+from pathlib import Path
+from typing import Optional
 
 class JsonStore:
     """Dict-based JSON store (key = item id) with file locking and backups."""
@@ -165,22 +154,3 @@ class ListStore:
                 if all(i.get(k) == v for k, v in kwargs.items()):
                     return i
             return None
-
-
-# ---------------------------------------------------------------------------
-# Instantiate stores
-# ---------------------------------------------------------------------------
-
-user_store = JsonStore(USERS_FILE)
-class_store = JsonStore(CLASSES_FILE)
-enrollment_store = ListStore(ENROLLMENTS_FILE)
-assignment_store = JsonStore(ASSIGNMENTS_FILE)
-submission_store = JsonStore(NEW_SUBMISSIONS_FILE)
-grading_store = JsonStore(GRADING_FILE)
-plagiarism_store = JsonStore(PLAGIARISM_FILE)
-rubric_template_store = JsonStore(RUBRIC_TEMPLATES_FILE)
-feedback_store = JsonStore(FEEDBACKS_FILE)
-question_store = JsonStore(QUESTIONS_FILE)
-
-
-

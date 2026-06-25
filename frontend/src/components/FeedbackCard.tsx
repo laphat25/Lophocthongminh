@@ -84,7 +84,7 @@ export default function FeedbackCard({
             </span>
           )}
         </div>
-        {feedback.anchor.confidence < 1 && (
+        {feedback.anchor && feedback.anchor.confidence < 1 && (
           <span className="fb-confidence" title={`Độ tin cậy vị trí: ${Math.round(feedback.anchor.confidence * 100)}%`}>
             {feedback.anchor.anchor_status === "relocated" ? "≈" : ""}
             {Math.round(feedback.anchor.confidence * 100)}%
@@ -93,11 +93,13 @@ export default function FeedbackCard({
       </div>
 
       {/* Quote */}
-      <div className="fb-card-quote">
-        "{feedback.anchor.exact_quote.length > 80
-          ? feedback.anchor.exact_quote.slice(0, 80) + "..."
-          : feedback.anchor.exact_quote}"
-      </div>
+      {feedback.anchor && (
+        <div className="fb-card-quote">
+          "{feedback.anchor.exact_quote.length > 80
+            ? feedback.anchor.exact_quote.slice(0, 80) + "..."
+            : feedback.anchor.exact_quote}"
+        </div>
+      )}
 
       {/* Comment */}
       <p className="fb-card-comment">{feedback.comment}</p>

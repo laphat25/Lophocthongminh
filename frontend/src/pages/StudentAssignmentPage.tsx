@@ -90,7 +90,10 @@ export default function StudentAssignmentPage() {
     scrollToAnchor(feedbackId);
   }, [scrollToAnchor]);
 
-  useEffect(() => { fetchData(); }, [assignmentId]);
+  useEffect(() => {
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [assignmentId]);
 
   const isDeadlinePassed = assignment?.deadline && new Date(assignment.deadline) < new Date();
 

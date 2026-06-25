@@ -24,7 +24,7 @@ export default function Navbar() {
       return location.pathname === "/student" && !location.search;
     }
     if (path === "/teacher") {
-      return location.pathname === "/teacher";
+      return location.pathname === "/teacher" && !location.search;
     }
     return location.pathname.startsWith(path);
   };

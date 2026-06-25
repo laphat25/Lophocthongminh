@@ -7,12 +7,10 @@ from fastapi import APIRouter, HTTPException, Depends
 from pydantic import BaseModel
 from app.storage import class_store, enrollment_store, user_store
 from app.auth import get_current_user, require_teacher
+from app.utils.helpers import generate_random_code
+from app.exceptions import AppError
 
 router = APIRouter(prefix="/classes", tags=["classes"])
-
-
-def _gen_code(length: int = 6) -> str:
-    return "".join(random.choices(string.ascii_uppercase + string.digits, k=length))
 
 
 class CreateClassRequest(BaseModel):
@@ -28,13 +26,18 @@ class JoinClassRequest(BaseModel):
 @router.post("")
 def create_class(req: CreateClassRequest, teacher: dict = Depends(require_teacher)):
     # Generate unique class_code
-    for _ in range(10):
-        code = _gen_code()
-        if not class_store.find_one(class_code=code):
+    code = None
+    for _ in range(100):
+        c = generate_random_code()
+        if not class_store.find_one(class_code=c):
+            code = c
             break
+    if not code:
+        raise AppError(500, "Không thể tạo mã lớp học duy nhất. Vui lòng thử lại.")
 
     class_id = str(uuid.uuid4())
     now = datetime.now(timezone.utc).isoformat()
+
     cls = {
         "id": class_id,
         "class_name": req.class_name,

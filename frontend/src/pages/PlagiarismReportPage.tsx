@@ -22,7 +22,10 @@ export default function PlagiarismReportPage() {
     }
   };
 
-  useEffect(() => { fetchReport(); }, [assignmentId]);
+  useEffect(() => {
+    fetchReport();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [assignmentId]);
 
   const handleCheck = async () => {
     setChecking(true);
